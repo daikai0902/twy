@@ -4,18 +4,18 @@ import Vue from 'vue'
 import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
-import Home from './components/Qcode'
+import Home from './components/SignUp'
 
-import { WechatPlugin, AjaxPlugin } from 'vux'
+// import { WechatPlugin, AjaxPlugin } from 'vux'
 
 Vue.use(VueRouter)
 // Vue.use(AlertPlugin)
 // Vue.use(ToastPlugin)
-Vue.use(WechatPlugin)
-Vue.use(AjaxPlugin)
+// Vue.use(WechatPlugin)
+// Vue.use(AjaxPlugin)
 
-console.log(Vue.wechat)
-console.log(Vue.http)
+// console.log(Vue.wechat)
+// console.log(Vue.http)
 
 const routes = [{
   path: '/',

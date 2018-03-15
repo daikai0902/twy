@@ -13,7 +13,8 @@
       <p class="qcode-tip">长按二维码，付款时备注小朋友姓名</p>
       <p class="qcode-ft">
         <img src="../assets/wepay.png" class="wepay">
-        支持微信支付</p>
+        支持微信支付
+      </p>
     </div>
   </div>
 </template>
@@ -31,8 +32,9 @@ export default {
 
 <style scoped>
 .qcode-wrap{
-  background-color: #fff;
+  background-color: #bcbeca;
   position: relative;
+  height: 100%;
 }
 .qcode-header{
   background-image:linear-gradient(-180deg, rgba(255,255,255,0.00) 29%, #bcbeca 100%);
@@ -46,15 +48,17 @@ export default {
   bottom: 0;
   width: 100%;
   left: 0;
+  z-index: 1;
 }
 .qcode-bd{
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 195px;
+  margin-top: -140px;
+  z-index: 9;
 }
 .q-name{
   font-size:14px;
-  color:#634c49;
+  color:#A4897E;
   letter-spacing:0.4px;
   text-align: right;
   text-shadow:0 2px 4px rgba(0,0,0,0.25);
@@ -64,7 +68,7 @@ export default {
 }
 .q-slogan{
   font-size:24px;
-  color:#634C49;
+  color:#A4897E;
   letter-spacing:0.69px;
   text-align: right;
   width: 250px;

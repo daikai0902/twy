@@ -3,8 +3,22 @@
     <div class="signup-header">
       <img class="bg-top" src="../assets/bg_top.png">
       <img class="bg-top-mask" src="../assets/bg_top_mask.png">
+      <div class="sh-txt">
+        <p class="p-name">宁波天唯艺星教育</p>
+        <p class="p-slogan">让艺术为孩子成长助航</p>
+        <p class="p-keyword">
+          <label class="p-zhaozheng">春季招生</label>
+          <label class="p-baoming">火热报名中</label>
+        </p>
+      </div>
     </div>
     <group class="signup-bd">
+      <div class="sut">
+        <label class="su-tip">亲，请填写报名信息！</label>
+        <div class="require-tip">
+          <img class="star" src="../assets/star.png"> 必填
+        </div>
+      </div>
       <x-input  v-model="value" placeholder="孩子姓名"></x-input>
       <x-input  v-model="value" placeholder="年龄" type="number"></x-input>
       <x-input  v-model="value" placeholder="性别"></x-input>
@@ -57,6 +71,7 @@ export default {
     #bcbeca 100%
   );
   position: relative;
+  height: 191px;
 }
 .bg-top {
   width: 100%;
@@ -68,7 +83,7 @@ export default {
   left: 0;
 }
 .signup-bd {
-  background: #fff;
+  background: #f1f1f3;
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.13);
   border-radius: 16px;
   width: 315px;
@@ -89,6 +104,7 @@ export default {
 }
 .weui-cells {
   border-radius: 16px;
+  background: #f1f1f3;
 }
 ::-webkit-input-placeholder {
   color: #886d67;
@@ -141,4 +157,60 @@ export default {
   bottom: 0;
   z-index: 1;
 }
+
+.sh-txt{
+  position: relative;
+  width: 310px;
+  top: -161px;
+  margin: 0 auto;
+}
+.p-name{
+  font-size:14px;
+  color:#A4897E ;
+  text-align: right;
+  text-shadow:0 2px 4px rgba(0,0,0,0.25);
+  font-weight: bold;
+}
+.p-slogan{
+  font-size:24px;
+  color:#A4897E;
+  letter-spacing:0.69px;
+  text-align: right;
+}
+.p-keyword{
+  font-size:24px;
+  color:#A4897E;
+  text-align:right;
+}
+.p-baoming{
+  font-size:24px;
+  color:#7b0614;
+  text-align:right;
+  font-weight: bold;
+}
+.sut{
+  width: 270px;
+  margin: 30px auto;
+  position: relative;
+  padding-right: 50px;
+  box-sizing: border-box;
+  top: 3px;
+}
+.su-tip{
+  font-size:18px;
+  color:#634c49;
+}
+.require-tip{
+  position: absolute;
+  right: 0;
+  font-size:12px;
+  color:#634c49;
+  top: 3px;
+}
+.require-tip img{
+  width:10px;
+  height:9px;
+  vertical-align: middle;
+}
+
 </style>
