@@ -19,20 +19,20 @@
           <img class="star" src="../assets/star.png"> 必填
         </div>
       </div>
-      <x-input  v-model="value" placeholder="孩子姓名"></x-input>
-      <x-input  v-model="value" placeholder="年龄" type="number"></x-input>
-      <x-input  v-model="value" placeholder="性别"></x-input>
-      <x-input  v-model="value" placeholder="衣尺码" type="number"></x-input>
-      <x-input  v-model="value" placeholder="鞋尺码" type="number"></x-input>
-      <x-input  v-model="value" placeholder="妈妈姓名"></x-input>
-      <x-input  v-model="value" placeholder="手机" type="tel"></x-input>
-      <x-input  v-model="value" placeholder="爸爸姓名"></x-input>
-      <x-input  v-model="value" placeholder="手机" type="tel"></x-input>
-      <x-input  v-model="value" placeholder="现就读的幼儿园"></x-input>
-      <x-input  v-model="value" placeholder="家庭住址"></x-input>
-      <x-input  v-model="value" placeholder="选课程"></x-input>
-      <x-textarea :max="50" placeholder="备注"></x-textarea>
-      <x-button type="primary" class="btn-save">填写完成，立即付款</x-button>
+      <x-input  v-model="name" placeholder="孩子姓名"></x-input>
+      <x-input  v-model="age" placeholder="年龄" type="number"></x-input>
+      <x-input  v-model="sex" placeholder="性别"></x-input>
+      <x-input  v-model="clothsize" placeholder="衣尺码" type="number"></x-input>
+      <x-input  v-model="shoessize" placeholder="鞋尺码" type="number"></x-input>
+      <x-input  v-model="momname" placeholder="妈妈姓名"></x-input>
+      <x-input  v-model="momphone" placeholder="手机" type="tel"></x-input>
+      <x-input  v-model="dadname" placeholder="爸爸姓名"></x-input>
+      <x-input  v-model="dadphone" placeholder="手机" type="tel"></x-input>
+      <x-input  v-model="nursery" placeholder="现就读的幼儿园"></x-input>
+      <x-input  v-model="address" placeholder="家庭住址"></x-input>
+      <x-input  v-model="course" placeholder="选课程"></x-input>
+      <x-textarea v-model="remark" :max="50" placeholder="备注"></x-textarea>
+      <x-button type="primary" class="btn-save" @click.native="bindSignup">填写完成，立即付款</x-button>
       <img class="bg-ft" src="../assets/bg_ft.png">
       <img class="bg-ft-mask" src="../assets/bg_ft_mask.png">
     </group>
@@ -52,7 +52,41 @@ export default {
   },
   data () {
     return {
-      value: null
+      name: null,
+      age: null,
+      sex: null,
+      clothsize: null,
+      shoessize: null,
+      momname: null,
+      momphone: null,
+      dadname: null,
+      dadphone: null,
+      nursery: null,
+      address: null,
+      course: null,
+      remark: null
+
+    }
+  },
+  methods: {
+    bindSignup () {
+      this.$http.post('http://twyapi.joy-read.com/api/signup', {
+        name: this.name,
+        age: this.age,
+        sex: this.sex,
+        clothsize: this.clothsize,
+        shoessize: this.shoessize,
+        momname: this.momname,
+        momphone: this.momphone,
+        dadname: this.dadname,
+        dadphone: this.dadphone,
+        nursery: this.nursery,
+        address: this.address,
+        course: this.course,
+        remark: this.remark
+      }).then((res) => {
+        console.log(res)
+      })
     }
   }
 }

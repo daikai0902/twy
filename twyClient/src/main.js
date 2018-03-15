@@ -6,13 +6,13 @@ import VueRouter from 'vue-router'
 import App from './App'
 import Home from './components/SignUp'
 
-// import { WechatPlugin, AjaxPlugin } from 'vux'
+import { AjaxPlugin } from 'vux'
 
 Vue.use(VueRouter)
 // Vue.use(AlertPlugin)
 // Vue.use(ToastPlugin)
 // Vue.use(WechatPlugin)
-// Vue.use(AjaxPlugin)
+Vue.use(AjaxPlugin)
 
 // console.log(Vue.wechat)
 // console.log(Vue.http)
