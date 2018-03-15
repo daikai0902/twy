@@ -167,12 +167,7 @@ export default {
             content: res.message
           })
         } else {
-          AlertModule.show({
-            content: '保存成功',
-            onHide () {
-              that.$router.push({ name: 'qcode' })
-            }
-          })
+          that.$router.push({ name: 'qcode' })
         }
       })
     },
@@ -241,7 +236,7 @@ export default {
   width: 270px;
   height: 36px;
   box-sizing: border-box;
-  margin: 30px auto 0;
+  margin:20px auto 0;
   border: 1px solid #e1e1e1;
   border-radius: 4px;
   background-color: #fff;
@@ -254,13 +249,11 @@ export default {
   content: " ";
   border: none !important
 }
-.vux-tap-active .vux-cell-value{
-  font-size: 14px;
-  color:#000;
-}
-.vux-tap-active .vux-cell-placeholder{
-  font-size: 14px;
-  color:#886d67;
+.vux-tap-active .vux-cell-value,
+.vux-tap-active .vux-cell-placeholder,
+.weui-input{
+  font-size: 14px !important;
+  color:#886d67 !important;
 }
 .weui-cells {
   border-radius: 16px;

@@ -60,19 +60,19 @@ html{
 .q-name{
   font-size:14px;
   color:#A4897E;
-  letter-spacing:0.4px;
   text-align: right;
   text-shadow:0 2px 4px rgba(0,0,0,0.25);
-  width: 250px;
+  width: 280px;
+  padding-right:2%;
   margin: 0 auto;
   font-weight: bold;
 }
 .q-slogan{
   font-size:24px;
   color:#A4897E;
-  letter-spacing:0.69px;
   text-align: right;
-  width: 250px;
+  width: 280px;
+  padding-right:2%;
   margin: 0 auto;
 }
 .qcode-cont{

@@ -10,12 +10,12 @@ export default new Router({
   base: __dirname,
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: Home
     },
     {
-      path: '/qcode',
+      path: '/',
       name: 'qcode',
       component: Qcode
     }
