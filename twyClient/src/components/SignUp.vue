@@ -160,7 +160,7 @@ export default {
           AlertModule.show({
             content: '保存成功'
           })
-          this.$router.push({ name: 'Qcode' })
+          this.$router.push({ name: 'qcode' })
         }
       })
     },
