@@ -151,6 +151,8 @@ export default {
         course: this.course,
         remark: this.remark
       }
+      let that = this
+      // this.$http.get('localapi/api/signup?' + this.serializeQuery(_data)).then((res) => {
       this.$http.get('http://twyapi.joy-read.com/api/signup?' + this.serializeQuery(_data)).then((res) => {
         if (res.status === 'fail') {
           AlertModule.show({
@@ -158,15 +160,16 @@ export default {
           })
         } else {
           AlertModule.show({
-            content: '保存成功'
+            content: '保存成功',
+            onHide () {
+              that.$router.push({ name: 'qcode' })
+            }
           })
-          this.$router.push({ name: 'qcode' })
         }
       })
     },
 
     serializeQuery (params, prefix) {
-      console.log(params)
       const query = Object.keys(params).map((key) => {
         const value = params[key]
 
