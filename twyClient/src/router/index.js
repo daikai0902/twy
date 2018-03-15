@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/SignUp'
-import Qcode from '@/components/Qcode'
+import Qrcode from '@/components/Qrcode'
+import PianoSucc from '@/components/PianoSucc'
+import ChoirSucc from '@/components/ChoirSucc'
 
 Vue.use(Router)
 
@@ -15,9 +17,19 @@ export default new Router({
       component: Home
     },
     {
-      path: '/qcode',
-      name: 'qcode',
-      component: Qcode
+      path: '/qrcode',
+      name: 'qrcode',
+      component: Qrcode
+    },
+    {
+      path: '/choirSucc',
+      name: 'choirSucc',
+      component: ChoirSucc
+    },
+    {
+      path: '/pianoSucc',
+      name: 'pianoSucc',
+      component: PianoSucc
     }
   ]
 })

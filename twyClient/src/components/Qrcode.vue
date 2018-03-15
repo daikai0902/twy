@@ -1,14 +1,14 @@
 <template>
   <div class="qcode-wrap">
     <div class="qcode-header">
-      <img class="qcode-bg" src="../assets/qcode_bg.png">
+      <img class="qcode-bg" src="../assets/qcode_bg.jpg">
       <img class="qcode-mask" src="../assets/qcode_mask.png">
     </div>
     <div class="qcode-bd">
       <p class="q-name">宁波天唯艺星教育</p>
       <p class="q-slogan">让艺术为孩子成长助航</p>
       <div class="qcode-cont">
-        <img src="../assets/qcode.png" class="qcode-img">
+        <img src="../assets/qcode.jpg" class="qcode-img">
       </div>
       <p class="qcode-tip">长按二维码，付款时备注小朋友姓名</p>
       <p class="qcode-ft">

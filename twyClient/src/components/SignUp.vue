@@ -1,7 +1,7 @@
 <template>
   <div class="signup-wrap">
     <div class="signup-header">
-      <img class="bg-top" src="../assets/bg_top.png">
+      <img class="bg-top" src="../assets/bg_top.jpg">
       <img class="bg-top-mask" src="../assets/bg_top_mask.png">
       <div class="sh-txt">
         <p class="p-name">宁波天唯艺星教育</p>
@@ -58,7 +58,7 @@
         <popup-radio :options="courseOptions" v-model="course" placeholder="选课程" required></popup-radio>
       </div>
       <x-textarea v-model="remark" :max="50" placeholder="备注"></x-textarea>
-      <x-button type="primary" class="btn-save" @click.native="bindSignup">填写完成，立即付款</x-button>
+      <x-button type="primary" class="btn-save" @click.native="bindSignup">填写完成，提交</x-button>
       <img class="bg-ft" src="../assets/bg_ft.png">
       <img class="bg-ft-mask" src="../assets/bg_ft_mask.png">
     </group>
@@ -84,7 +84,7 @@ export default {
   data () {
     return {
       sexOptions: ['男孩', '女孩'],
-      courseOptions: ['民族舞', '影视表演', '声乐歌舞'],
+      courseOptions: ['民族舞', '影视表演', '声乐歌舞', '涂鸦创想班', '素描班', '幼儿合唱团', '钢琴班'],
       name: '',
       age: '',
       sex: '男孩',
@@ -167,7 +167,13 @@ export default {
             content: res.message
           })
         } else {
-          that.$router.push({ name: 'qcode' })
+          if (that.course === '钢琴班') {
+            that.$router.push({ name: 'pianoSucc' })
+          } else if (that.course === '幼儿合唱团') {
+            that.$router.push({ name: 'choirSucc' })
+          } else {
+            that.$router.push({ name: 'qrcode' })
+          }
         }
       })
     },
