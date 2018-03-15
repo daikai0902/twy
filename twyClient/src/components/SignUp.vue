@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     bindSignup () {
-      this.$http.post('http://twyapi.joy-read.com/api/signup', {
+      this.$http.post('localapi/api/signup', {
         name: this.name,
         age: this.age,
         sex: this.sex,
