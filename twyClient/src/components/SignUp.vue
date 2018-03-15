@@ -19,18 +19,44 @@
           <img class="star" src="../assets/star.png"> 必填
         </div>
       </div>
-      <x-input  v-model="name" placeholder="孩子姓名"></x-input>
-      <x-input  v-model="age" placeholder="年龄" type="number"></x-input>
-      <x-input  v-model="sex" placeholder="性别"></x-input>
-      <x-input  v-model="clothsize" placeholder="衣尺码" type="number"></x-input>
-      <x-input  v-model="shoessize" placeholder="鞋尺码" type="number"></x-input>
-      <x-input  v-model="momname" placeholder="妈妈姓名"></x-input>
-      <x-input  v-model="momphone" placeholder="手机" type="tel"></x-input>
+      <div class="su-cell">
+        <img class="star" src="../assets/star.png">
+        <x-input  v-model="name" placeholder="孩子姓名" required></x-input>
+      </div>
+      <div class="su-cell">
+        <img class="star" src="../assets/star.png">
+        <x-input  v-model="age" placeholder="年龄" type="number" required></x-input>
+      </div>
+      <!-- <x-input  v-model="sex" placeholder="性别"></x-input> -->
+      <div class="su-cell">
+        <img class="star" src="../assets/star.png">
+        <popup-radio :options="sexOptions" v-model="sex" required></popup-radio>
+      </div>
+      <div class="su-cell">
+        <img class="star" src="../assets/star.png">
+        <x-input  v-model="clothsize" placeholder="衣尺码" type="number" required></x-input>
+      </div>
+      <div class="su-cell">
+        <img class="star" src="../assets/star.png">
+        <x-input  v-model="shoessize" placeholder="鞋尺码" type="number" required></x-input>
+      </div>
+      <div class="su-cell">
+        <img class="star" src="../assets/star.png">
+        <x-input  v-model="momname" placeholder="妈妈姓名" required></x-input>
+      </div>
+      <div class="su-cell">
+        <img class="star" src="../assets/star.png">
+        <x-input  v-model="momphone" placeholder="手机" type="tel" required keyboard="number" is-type="china-mobile"></x-input>
+      </div>
       <x-input  v-model="dadname" placeholder="爸爸姓名"></x-input>
-      <x-input  v-model="dadphone" placeholder="手机" type="tel"></x-input>
+      <x-input  v-model="dadphone" placeholder="手机" type="tel" keyboard="number" is-type="china-mobile"></x-input>
       <x-input  v-model="nursery" placeholder="现就读的幼儿园"></x-input>
       <x-input  v-model="address" placeholder="家庭住址"></x-input>
-      <x-input  v-model="course" placeholder="选课程"></x-input>
+      <!-- <x-input  v-model="course" placeholder="选课程"></x-input> -->
+      <div class="su-cell">
+        <img class="star" src="../assets/star.png">
+        <popup-radio :options="courseOptions" v-model="course" placeholder="选课程" required></popup-radio>
+      </div>
       <x-textarea v-model="remark" :max="50" placeholder="备注"></x-textarea>
       <x-button type="primary" class="btn-save" @click.native="bindSignup">填写完成，立即付款</x-button>
       <img class="bg-ft" src="../assets/bg_ft.png">
@@ -40,7 +66,7 @@
 </template>
 
 <script>
-import { Group, Cell, XInput, XTextarea, XButton } from 'vux'
+import { Group, Cell, XInput, XTextarea, XButton, PopupRadio, AlertModule } from 'vux'
 
 export default {
   components: {
@@ -48,29 +74,69 @@ export default {
     Cell,
     XInput,
     XTextarea,
-    XButton
+    XButton,
+    PopupRadio,
+    AlertModule
   },
   data () {
     return {
-      name: null,
-      age: null,
-      sex: null,
-      clothsize: null,
-      shoessize: null,
-      momname: null,
-      momphone: null,
-      dadname: null,
-      dadphone: null,
-      nursery: null,
-      address: null,
-      course: null,
-      remark: null
-
+      sexOptions: ['男', '女'],
+      courseOptions: ['民族舞', '影视表演', '声乐歌舞'],
+      name: '',
+      age: '',
+      sex: '男',
+      clothsize: '',
+      shoessize: '',
+      momname: '',
+      momphone: '',
+      dadname: '',
+      dadphone: '',
+      nursery: '',
+      address: '',
+      course: '',
+      remark: ''
     }
   },
   methods: {
     bindSignup () {
-      this.$http.post('localapi/api/signup', {
+      if (!this.name) {
+        AlertModule.show({
+          content: '用户名不能为空'
+        })
+        return false
+      } else if (!this.age) {
+        AlertModule.show({
+          content: '年龄不能为空'
+        })
+        return false
+      } else if (!this.clothsize) {
+        AlertModule.show({
+          content: '衣尺码不能为空'
+        })
+        return false
+      } else if (!this.shoessize) {
+        AlertModule.show({
+          content: '鞋尺码不能为空'
+        })
+        return false
+      } else if (!this.momname) {
+        AlertModule.show({
+          content: '妈妈姓名不能为空'
+        })
+        return false
+      } else if (!this.momphone) {
+        AlertModule.show({
+          content: '妈妈手机不能为空'
+        })
+        return false
+      } else if (!this.course) {
+        AlertModule.show({
+          content: '选课程不能为空'
+        })
+        return false
+      }
+
+      let _data = {
         name: this.name,
         age: this.age,
         sex: this.sex,
@@ -84,9 +150,40 @@ export default {
         address: this.address,
         course: this.course,
         remark: this.remark
-      }).then((res) => {
-        console.log(res)
+      }
+      this.$http.get('http://twyapi.joy-read.com/api/signup?' + this.serializeQuery(_data)).then((res) => {
+        if (res.status === 'fail') {
+          AlertModule.show({
+            content: res.message
+          })
+        } else {
+          AlertModule.show({
+            content: '保存成功'
+          })
+          this.$router.push({ name: 'Qcode' })
+        }
       })
+    },
+
+    serializeQuery (params, prefix) {
+      console.log(params)
+      const query = Object.keys(params).map((key) => {
+        const value = params[key]
+
+        if (params.constructor === Array) {
+          key = `${prefix}[${key}]`
+        } else if (params.constructor === Object) {
+          key = (prefix ? `${prefix}.${key}` : key)
+        }
+
+        if (typeof value === 'object') {
+          return this.serializeQuery(value, key)
+        } else {
+          return `${key}=${encodeURIComponent(value)}`
+        }
+      })
+
+      return [].concat.apply([], query).join('&')
     }
   }
 }
@@ -128,17 +225,35 @@ export default {
 .weui-cell{
   padding: 10px !important;
 }
-.vux-x-input {
+.vux-x-input,
+.vux-tap-active {
   width: 270px;
   height: 36px;
   box-sizing: border-box;
   margin: 30px auto 0;
   border: 1px solid #e1e1e1;
   border-radius: 4px;
+  background-color: #fff;
+}
+.vux-tap-active .weui-cell__ft{
+  text-align: left;
+  width: 100%;
+}
+.vux-tap-active .weui-cell__ft::after{
+  content: " ";
+  border: none !important
+}
+.vux-tap-active .vux-cell-value{
+  font-size: 14px;
+  color:#000;
+}
+.vux-tap-active .vux-cell-placeholder{
+  font-size: 14px;
+  color:#886d67;
 }
 .weui-cells {
   border-radius: 16px;
-  background: #f1f1f3;
+  background: #f1f1f3 !important;
 }
 ::-webkit-input-placeholder {
   color: #886d67;
@@ -156,6 +271,7 @@ export default {
 .weui-input,
 .weui-textarea{
   font-size: 14px !important;
+  background-color: #fff;
 }
 .weui-cell:before{
   border-top: none;
@@ -224,7 +340,7 @@ export default {
 }
 .sut{
   width: 270px;
-  margin: 30px auto;
+  margin: 20px auto;
   position: relative;
   padding-right: 50px;
   box-sizing: border-box;
@@ -241,10 +357,21 @@ export default {
   color:#634c49;
   top: 3px;
 }
-.require-tip img{
+.star{
   width:10px;
   height:9px;
   vertical-align: middle;
+}
+.su-cell{
+  position: relative;
+}
+.su-cell .star{
+  position: absolute;
+  left: 8px;
+  top: 13px;
+}
+.vux-x-textarea .weui-textarea-counter{
+  font-size: 14px;
 }
 
 </style>

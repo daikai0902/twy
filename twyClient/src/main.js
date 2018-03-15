@@ -3,28 +3,12 @@
 import Vue from 'vue'
 import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
+import router from './router'
 import App from './App'
-import Home from './components/SignUp'
-
 import { AjaxPlugin } from 'vux'
 
 Vue.use(VueRouter)
-// Vue.use(AlertPlugin)
-// Vue.use(ToastPlugin)
-// Vue.use(WechatPlugin)
 Vue.use(AjaxPlugin)
-
-// console.log(Vue.wechat)
-// console.log(Vue.http)
-
-const routes = [{
-  path: '/',
-  component: Home
-}]
-
-const router = new VueRouter({
-  routes
-})
 
 FastClick.attach(document.body)
 

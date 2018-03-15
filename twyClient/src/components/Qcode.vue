@@ -21,12 +21,7 @@
 
 <script>
 export default {
-  name: 'Qcode',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
+  name: 'qcode'
 }
 </script>
 
