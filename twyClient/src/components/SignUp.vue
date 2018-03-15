@@ -21,32 +21,32 @@
       </div>
       <div class="su-cell">
         <img class="star" src="../assets/star.png">
-        <x-input  v-model="name" placeholder="孩子姓名" required></x-input>
+        <x-input  v-model="name" placeholder="孩子姓名"></x-input>
       </div>
       <div class="su-cell">
         <img class="star" src="../assets/star.png">
-        <x-input  v-model="age" placeholder="年龄" type="number" required></x-input>
+        <x-input  v-model="age" placeholder="年龄" type="number"></x-input>
       </div>
       <!-- <x-input  v-model="sex" placeholder="性别"></x-input> -->
       <div class="su-cell">
         <img class="star" src="../assets/star.png">
-        <popup-radio :options="sexOptions" v-model="sex" required></popup-radio>
+        <popup-radio :options="sexOptions" v-model="sex"></popup-radio>
       </div>
       <div class="su-cell">
         <img class="star" src="../assets/star.png">
-        <x-input  v-model="clothsize" placeholder="衣尺码" type="number" required></x-input>
+        <x-input  v-model="clothsize" placeholder="衣尺码" type="number"></x-input>
       </div>
       <div class="su-cell">
         <img class="star" src="../assets/star.png">
-        <x-input  v-model="shoessize" placeholder="鞋尺码" type="number" required></x-input>
+        <x-input  v-model="shoessize" placeholder="鞋尺码" type="number" ></x-input>
       </div>
       <div class="su-cell">
         <img class="star" src="../assets/star.png">
-        <x-input  v-model="momname" placeholder="妈妈姓名" required></x-input>
+        <x-input  v-model="momname" placeholder="妈妈姓名"></x-input>
       </div>
       <div class="su-cell">
         <img class="star" src="../assets/star.png">
-        <x-input  v-model="momphone" placeholder="手机" type="tel" required keyboard="number" is-type="china-mobile"></x-input>
+        <x-input  v-model="momphone" placeholder="手机" type="tel" keyboard="number" is-type="china-mobile"></x-input>
       </div>
       <x-input  v-model="dadname" placeholder="爸爸姓名"></x-input>
       <x-input  v-model="dadphone" placeholder="手机" type="tel" keyboard="number" is-type="china-mobile"></x-input>
@@ -62,11 +62,13 @@
       <img class="bg-ft" src="../assets/bg_ft.png">
       <img class="bg-ft-mask" src="../assets/bg_ft_mask.png">
     </group>
+
+    <!-- <actionsheet v-model="course" :menus="courseOptions" theme="android" @on-click-menu="click"></actionsheet> -->
   </div>
 </template>
 
 <script>
-import { Group, Cell, XInput, XTextarea, XButton, PopupRadio, AlertModule } from 'vux'
+import { Group, Cell, XInput, XTextarea, XButton, PopupRadio, AlertModule, Actionsheet } from 'vux'
 
 export default {
   components: {
@@ -76,15 +78,16 @@ export default {
     XTextarea,
     XButton,
     PopupRadio,
-    AlertModule
+    AlertModule,
+    Actionsheet
   },
   data () {
     return {
-      sexOptions: ['男', '女'],
+      sexOptions: ['男孩', '女孩'],
       courseOptions: ['民族舞', '影视表演', '声乐歌舞'],
       name: '',
       age: '',
-      sex: '男',
+      sex: '男孩',
       clothsize: '',
       shoessize: '',
       momname: '',
@@ -99,39 +102,44 @@ export default {
   },
   methods: {
     bindSignup () {
-      if (!this.name) {
+      if (!this.name && !this.age && !this.clothsize && !this.shoessize && !this.momname && !this.momphone && !this.course) {
         AlertModule.show({
-          content: '用户名不能为空'
+          content: '您好，带星号的信息是必填的哦，请务必认真填写！'
+        })
+        return false
+      } else if (!this.name) {
+        AlertModule.show({
+          content: '您好，请填写孩子姓名再提交付款！'
         })
         return false
       } else if (!this.age) {
         AlertModule.show({
-          content: '年龄不能为空'
+          content: '您好，请填写年龄再提交付款！'
         })
         return false
       } else if (!this.clothsize) {
         AlertModule.show({
-          content: '衣尺码不能为空'
+          content: '您好，请填写衣尺码再提交付款！'
         })
         return false
       } else if (!this.shoessize) {
         AlertModule.show({
-          content: '鞋尺码不能为空'
+          content: '您好，请填写鞋尺码再提交付款！'
         })
         return false
       } else if (!this.momname) {
         AlertModule.show({
-          content: '妈妈姓名不能为空'
+          content: '您好，请填写妈妈姓名再提交付款！'
         })
         return false
       } else if (!this.momphone) {
         AlertModule.show({
-          content: '妈妈手机不能为空'
+          content: '您好，请填写妈妈手机再提交付款！'
         })
         return false
       } else if (!this.course) {
         AlertModule.show({
-          content: '选课程不能为空'
+          content: '您好，请填写选课程再提交付款！'
         })
         return false
       }
@@ -277,7 +285,7 @@ export default {
   background-color: #fff;
 }
 .weui-cell:before{
-  border-top: none;
+  border-top: none !important;
 }
 .vux-x-textarea{
   width: 270px;
@@ -375,6 +383,15 @@ export default {
 }
 .vux-x-textarea .weui-textarea-counter{
   font-size: 14px;
+}
+.vux-popup-dialog{
+  left: 10% !important;
+  bottom: 45% !important;
+  width: 80% !important;
+  border-radius: 5px;
+}
+.vux-popup-dialog .weui-cell{
+  padding: 10px 15px;
 }
 
 </style>

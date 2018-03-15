@@ -25,11 +25,17 @@ export default {
 }
 </script>
 
+<style>
+html{
+  min-height: 100%;
+  background-color: #bcbeca;
+}
+</style>
 <style scoped>
 .qcode-wrap{
   background-color: #bcbeca;
   position: relative;
-  height: 100%;
+  min-height: 100%;
 }
 .qcode-header{
   background-image:linear-gradient(-180deg, rgba(255,255,255,0.00) 29%, #bcbeca 100%);
