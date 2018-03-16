@@ -43,7 +43,7 @@
         <img class="item-bg" src="../assets/bg_intro5.jpg">
         <p class="intro-title fadeInUp animated" style="margin-top:350px;">涂鸦创想课</p>
         <div class="intro-desc1">
-          4-8周岁儿童<br/>每学期16周次，每次150分钟
+          4-8周岁儿童<br/>滚动开班，每周1次，每次90分钟
         </div>
         <div class="intro-desc2">
           培养美术兴趣，玩与学结合，发掘<br/>孩子艺术天赋
@@ -53,7 +53,7 @@
         <img class="item-bg" src="../assets/bg_intro6.jpg">
         <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:190px;">素描课</p>
         <div class="intro-desc1 txt-right pr45">
-          4-8周岁儿童<br/>每学期16周次，每次150分钟
+          9岁以上零基础孩子<br/>滚动开班，每周1次，每次150分钟
         </div>
         <div class="intro-desc2 txt-right pr45">
           感受艺术的美感，培养孩子的观察力、造型能力与表现能力
@@ -61,9 +61,9 @@
       </swiper-item>
       <swiper-item class="intro-item c-white" >
         <img class="item-bg" src="../assets/bg_intro7.jpg">
-        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:65px;">幼儿合唱团</p>
+        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:65px;">少儿合唱团</p>
         <div class="intro-desc1 txt-right pr45">
-          4-8周岁儿童<br/>每学期16周次，每次150分钟
+          5-9周岁儿童<br/>每学期16周次，每次150分钟
         </div>
         <div class="intro-desc2 txt-right pr45">
           开发儿童智力，培养专注力与团队<br/>合作能力
@@ -73,7 +73,7 @@
         <img class="item-bg" src="../assets/bg_intro8.jpg">
         <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:250px;">钢琴课</p>
         <div class="intro-desc1 txt-right pr45">
-          4-8周岁儿童<br/>每学期16周次，每次150分钟
+          4岁以上儿童，一对一教学<br/>每周一次，每次45分钟
         </div>
         <div class="intro-desc2 txt-right pr45">
           专业院校师资，感受古典音乐的<br/>魅力，打造孩子的贵族气质
