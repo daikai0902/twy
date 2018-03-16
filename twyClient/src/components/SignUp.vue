@@ -212,6 +212,7 @@ export default {
   );
   position: relative;
   height: 191px;
+  overflow: hidden;
 }
 .bg-top {
   width: 100%;

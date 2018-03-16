@@ -7,7 +7,7 @@ import ChoirSucc from '@/components/ChoirSucc'
 
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   mode: 'history',
   base: __dirname,
   routes: [
@@ -33,3 +33,9 @@ export default new Router({
     }
   ]
 })
+
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0)
+})
+
+export default router
