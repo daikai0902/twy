@@ -165,7 +165,7 @@ export default {
           })
         } else {
           if (that.course === '钢琴班') {
-            that.$router.push({ name: 'pianoSucc' })
+            that.$router.push({ name: 'pianoSucc', query: {type: 'signup'} })
           } else if (that.course === '幼儿合唱团') {
             that.$router.push({ name: 'choirSucc' })
           } else {

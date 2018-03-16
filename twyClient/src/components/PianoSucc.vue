@@ -1,8 +1,8 @@
 <template>
   <div class="piano-room">
     <div class="piano-wrap">
-      <p><img class="wepay-succ" src="../assets/wepay_succ_black.png"></p>
-      <p class="p1">报名成功</p>
+      <p v-if="type == 'signup'"><img class="wepay-succ" src="../assets/wepay_succ_black.png"></p>
+      <p v-if="type == 'signup'" class="p1">报名成功</p>
       <p class="p2">钢琴课程（一对一）</p>
       <p class="p3">请家长联系客服，预约试听课程</p>
       <p class="p4">教师级别与收费</p>
@@ -76,6 +76,14 @@ export default {
   components: {
     Flexbox,
     FlexboxItem
+  },
+  data () {
+    return {
+      type: 'intro'
+    }
+  },
+  created () {
+    this.type = this.$route.query.type
   }
 }
 </script>
@@ -100,9 +108,9 @@ export default {
 }
 .p1{
   font-size:20px;
+  margin-bottom: 20px;
 }
 .p2{
-  margin-top: 20px;
   font-size:24px;
 }
 .p3{

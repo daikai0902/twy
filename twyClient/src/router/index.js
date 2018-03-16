@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/SignUp'
+import SignUp from '@/components/SignUp'
 import Qrcode from '@/components/Qrcode'
 import PianoSucc from '@/components/PianoSucc'
 import ChoirSucc from '@/components/ChoirSucc'
+import Introduce from '@/components/Introduce'
 
 Vue.use(Router)
 
@@ -13,8 +14,8 @@ let router = new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'signUp',
+      component: SignUp
     },
     {
       path: '/qrcode',
@@ -30,6 +31,11 @@ let router = new Router({
       path: '/pianoSucc',
       name: 'pianoSucc',
       component: PianoSucc
+    },
+    {
+      path: '/introduce',
+      name: 'introduce',
+      component: Introduce
     }
   ]
 })
