@@ -62,13 +62,11 @@
       <img class="bg-ft" src="../assets/bg_ft.png">
       <img class="bg-ft-mask" src="../assets/bg_ft_mask.png">
     </group>
-
-    <!-- <actionsheet v-model="course" :menus="courseOptions" theme="android" @on-click-menu="click"></actionsheet> -->
   </div>
 </template>
 
 <script>
-import { Group, Cell, XInput, XTextarea, XButton, PopupRadio, AlertModule, Actionsheet } from 'vux'
+import { Group, Cell, XInput, XTextarea, XButton, PopupRadio, AlertModule } from 'vux'
 
 export default {
   components: {
@@ -78,8 +76,7 @@ export default {
     XTextarea,
     XButton,
     PopupRadio,
-    AlertModule,
-    Actionsheet
+    AlertModule
   },
   data () {
     return {
@@ -392,5 +389,7 @@ export default {
 .vux-popup-dialog .weui-cell{
   padding: 10px 15px;
 }
-
+.vux-radio-label{
+  color: #000;
+}
 </style>

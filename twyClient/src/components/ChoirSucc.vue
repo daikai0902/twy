@@ -25,12 +25,14 @@ html{
 }
 html, body{
   background-color: #000;
-  color: #fff;
   min-height: 100%;
 }
 </style>
 
 <style scoped>
+.choir-text{
+  color: #fff;
+}
 .wepay-succ{
   width: 25px;
   height: 25px;
