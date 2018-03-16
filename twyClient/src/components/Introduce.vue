@@ -21,7 +21,7 @@
       </swiper-item>
       <swiper-item class="intro-item c-white"  style="background-color:#362505;" :style="{height: h + 'px'}">
         <img class="item-bg" src="../assets/bg_intro3.jpg">
-        <p class="intro-title fadeInUp animated" style="margin-top:10px">影视表演</p>
+        <p class="intro-title fadeInUp animated" style="margin-top:30px">影视表演</p>
         <div class="intro-desc1">
           4-8周岁儿童<br/>每学期16周次，每次150分钟
         </div>
@@ -61,7 +61,7 @@
       </swiper-item>
       <swiper-item class="intro-item c-white" :style="{height: h + 'px'}">
         <img class="item-bg" src="../assets/bg_intro7.jpg">
-        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:15px;">少儿合唱团</p>
+        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:20px;">少儿合唱团</p>
         <div class="intro-desc1 txt-right pr45">
           5-9周岁儿童<br/>每学期16周次，每次150分钟
         </div>
@@ -174,7 +174,7 @@ export default {
   bottom: 0;
 }
 .intro-title{
-  font-size:36px;
+  font-size:34px;
   width: 256px;
   margin: 0 auto
 }
