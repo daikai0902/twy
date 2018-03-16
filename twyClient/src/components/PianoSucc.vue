@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="piano-room">
     <div class="piano-wrap">
       <p><img class="wepay-succ" src="../assets/wepay_succ_black.png"></p>
       <p class="p1">报名成功</p>
@@ -80,20 +80,17 @@ export default {
 }
 </script>
 
-<style>
-html{
-  position: relative;
-}
-html, body{
-  min-height: 100%;
-  background-color: #ededed;
-}
-</style>
-
 <style scoped>
+.piano-room{
+  background-color: #ededed;
+  position: relative;
+  z-index: 0;
+}
 .piano-wrap{
   width: 300px;
-  margin: 60px auto 30px;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  margin: 0 auto;
   z-index: 9;
   position: relative;
 }
@@ -159,14 +156,14 @@ html, body{
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: 0;
+  z-index: 1;
 }
 .bg-piano-mask{
   width: 100%;
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .pi1{
   margin-top: 15px;

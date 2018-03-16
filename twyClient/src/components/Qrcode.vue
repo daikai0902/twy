@@ -1,5 +1,6 @@
 <template>
   <div class="qcode-wrap">
+    <div class="qcode-room"></div>
     <div class="qcode-header">
       <img class="qcode-bg" src="../assets/qcode_bg.jpg">
       <img class="qcode-mask" src="../assets/qcode_mask.png">
@@ -25,13 +26,14 @@ export default {
 }
 </script>
 
-<style>
-html{
-  min-height: 100%;
-  background-color: #bcbeca;
-}
-</style>
 <style scoped>
+.qcode-room{
+  background-color: #bcbeca;
+  position: fixed;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
 .qcode-wrap{
   background-color: #bcbeca;
   position: relative;

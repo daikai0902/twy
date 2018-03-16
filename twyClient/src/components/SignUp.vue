@@ -99,6 +99,7 @@ export default {
   },
   methods: {
     bindSignup () {
+      let that = this
       if (!this.name && !this.age && !this.clothsize && !this.shoessize && !this.momname && !this.momphone && !this.course) {
         AlertModule.show({
           content: '您好，带星号的信息是必填的哦，请务必认真填写！'
@@ -156,7 +157,6 @@ export default {
         course: this.course,
         remark: this.remark
       }
-      let that = this
       // this.$http.get('localapi/api/signup?' + this.serializeQuery(_data)).then((res) => {
       this.$http.get('http://twyapi.joy-read.com/api/signup?' + this.serializeQuery(_data)).then((res) => {
         if (res.status === 'fail') {

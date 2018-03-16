@@ -13,6 +13,10 @@ export default {
 <style lang="less">
 @import '~vux/src/styles/reset.less';
 
+html{
+  position: relative;
+  min-height: 100%;
+}
 body {
   background-color: #fbf9fe;
 }

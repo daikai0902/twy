@@ -1,5 +1,6 @@
 <template>
   <div class="choir-wrap">
+    <div class="chior-room"></div>
     <div class="choir-text">
       <p><img class="wepay-succ" src="../assets/wepay_succ.png"></p>
       <p class="p1">报名成功</p>
@@ -18,20 +19,13 @@ export default {
 }
 </script>
 
-
-<style>
-html{
-  position: relative;
-}
-html, body{
-  background-color: #000;
-  min-height: 100%;
-}
-</style>
-
 <style scoped>
-.choir-text{
-  color: #fff;
+.chior-room{
+  background-color: #000;
+  position: fixed;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
 }
 .wepay-succ{
   width: 25px;
@@ -43,13 +37,14 @@ html, body{
   right: 0;
   width: 300px;
   height: 370px;
-  z-index: 0;
+  z-index: 1;
 }
 .choir-text{
+  color: #fff;
   width: 300px;
   padding-top: 120px;
   margin: 0 auto;
-  z-index: 1;
+  z-index: 10;
   position: relative;
 }
 .choir-text .p1{
