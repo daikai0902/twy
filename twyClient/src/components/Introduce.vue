@@ -1,17 +1,17 @@
 <template>
-  <div>
+  <div class="intro-wrap">
     <img class="intro-bg" src="../assets/bg_intro.jpg">
-    <swiper class="swiper-wrap" dots-class="intro-dot" dots-position="center" height="564px">
-      <swiper-item class="intro-item" style="background-color:#babcc9;">
-        <img class="item-bg" src="../assets/bg_intro1.jpg">
-        <p class="intro-title fadeInUp animated txt-center c-white" style="font-size:20px;margin-bottom:20px;margin-bottom: 20px;margin-top: 280px;font-weight: lighter;">培训学校课程</p>
+    <swiper class="swiper-wrap" dots-class="intro-dot" dots-position="center" :style="{height: h + 'px', 'padding-top': pt + 'px'}">
+      <swiper-item class="intro-item" style="background-color:#babcc9;" :style="{height: h + 'px'}">
+        <img class="item-bg" src="../assets/bg_intro1.jpg" style="top:0;">
+        <p class="intro-title fadeInUp animated txt-center c-white" style="font-size:20px;margin-bottom:20px;margin-bottom: 20px;margin-top: 220px;font-weight: lighter;">培训学校课程</p>
         <div class="intro-desc txt-center c-white">
           针对零基础以上儿童<br/>分为初级、中级、高级课程<br/>每班 <span style="font-size:20px;">2</span> 位专业教师 <span style="font-size:20px;">1</span> 位生活教师
         </div>
       </swiper-item>
-      <swiper-item class="intro-item c-white" style="background-color:#242735;">
+      <swiper-item class="intro-item c-white" style="background-color:#242735;" :style="{height: h + 'px'}">
         <img class="item-bg item-bg2" src="../assets/bg_intro2.jpg">
-        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:126px">声乐歌舞</p>
+        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:30px">声乐歌舞</p>
         <div class="intro-desc1 txt-right pr45">
           4-8周岁儿童<br/>每学期16周次，每次150分钟
         </div>
@@ -19,9 +19,9 @@
           发挥儿童歌舞表演天性，全面塑造舞台艺术表现力
         </div>
       </swiper-item>
-      <swiper-item class="intro-item" >
+      <swiper-item class="intro-item c-white"  style="background-color:#362505;" :style="{height: h + 'px'}">
         <img class="item-bg" src="../assets/bg_intro3.jpg">
-        <p class="intro-title fadeInUp animated" style="margin-top:65px">影视表演</p>
+        <p class="intro-title fadeInUp animated" style="margin-top:10px">影视表演</p>
         <div class="intro-desc1">
           4-8周岁儿童<br/>每学期16周次，每次150分钟
         </div>
@@ -29,9 +29,9 @@
           学在教室，用在生活<br/>培养观察和理解力，提高表现能力<br/>与沟通能力
         </div>
       </swiper-item>
-      <swiper-item class="intro-item" >
+      <swiper-item class="intro-item" :style="{height: h + 'px'}">
         <img class="item-bg" src="../assets/bg_intro4.jpg">
-        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:126px;margin-bottom:20px;">民族舞</p>
+        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:40px;margin-bottom:20px;">民族舞</p>
         <div class="intro-desc1 txt-right pr45">
           4-8周岁儿童<br/>每学期16周次，每次150分钟
         </div>
@@ -39,9 +39,9 @@
           学习民族舞精髓，体验民族舞风情
         </div>
       </swiper-item>
-      <swiper-item class="intro-item c-white">
+      <swiper-item class="intro-item c-white" :style="{height: h + 'px'}">
         <img class="item-bg" src="../assets/bg_intro5.jpg">
-        <p class="intro-title fadeInUp animated" style="margin-top:350px;">涂鸦创想课</p>
+        <p class="intro-title fadeInUp animated" style="margin-top:240px;">涂鸦创想课</p>
         <div class="intro-desc1">
           4-8周岁儿童<br/>滚动开班，每周1次，每次90分钟
         </div>
@@ -49,9 +49,9 @@
           培养美术兴趣，玩与学结合，发掘<br/>孩子艺术天赋
         </div>
       </swiper-item>
-      <swiper-item class="intro-item" >
+      <swiper-item class="intro-item" :style="{height: h + 'px'}">
         <img class="item-bg" src="../assets/bg_intro6.jpg">
-        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:190px;">素描课</p>
+        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:90px;">素描课</p>
         <div class="intro-desc1 txt-right pr45">
           9岁以上零基础孩子<br/>滚动开班，每周1次，每次150分钟
         </div>
@@ -59,9 +59,9 @@
           感受艺术的美感，培养孩子的观察力、造型能力与表现能力
         </div>
       </swiper-item>
-      <swiper-item class="intro-item c-white" >
+      <swiper-item class="intro-item c-white" :style="{height: h + 'px'}">
         <img class="item-bg" src="../assets/bg_intro7.jpg">
-        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:65px;">少儿合唱团</p>
+        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:15px;">少儿合唱团</p>
         <div class="intro-desc1 txt-right pr45">
           5-9周岁儿童<br/>每学期16周次，每次150分钟
         </div>
@@ -69,9 +69,9 @@
           开发儿童智力，培养专注力与团队<br/>合作能力
         </div>
       </swiper-item>
-      <swiper-item class="intro-item" >
+      <swiper-item class="intro-item c-white" :style="{height: h + 'px'}">
         <img class="item-bg" src="../assets/bg_intro8.jpg">
-        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:250px;">钢琴课</p>
+        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:155px;">钢琴课</p>
         <div class="intro-desc1 txt-right pr45">
           4岁以上儿童，一对一教学<br/>每周一次，每次45分钟
         </div>
@@ -93,21 +93,44 @@ export default {
   components: {
     Swiper,
     SwiperItem
+  },
+  data () {
+    return {
+      pt: 50,
+      h: 450,
+      w: 320
+    }
+  },
+  created () {
+    let _w = window.innerWidth * 0.9
+    let _h = window.innerHeight
+    if (_w > 320) {
+      this.w = 320
+      this.h = 450
+    } else {
+      this.w = _w
+      this.h = parseInt(_w * 450 / 320)
+    }
+    this.pt = parseInt((_h - this.h - 77) / 2)
   }
 }
 </script>
 
 <style>
 .swiper-wrap > .vux-indicator{
-  bottom: -35px !important;
+  bottom: -28px !important;
   box-sizing: border-box;
-  right: inherit !important;
+}
+.swiper-wrap > .vux-swiper{
+  height: 100% !important;
 }
 .swiper-wrap > .vux-swiper > .vux-swiper-item{
-  width: 320px !important;
-  height: 564px !important;
+  width: 90% !important;
+  max-width: 320px !important;
+  max-height: 564px !important;
   border-radius: 28px;
   left: calc((100% - 320px) / 2) !important;
+  overflow: hidden;
 }
 .swiper-wrap > .vux-indicator > a > .vux-icon-dot{
   background:#c6b3aa !important;;
@@ -132,8 +155,8 @@ export default {
   top: 0;
 }
 .swiper-wrap{
-  height: 564px;
-  margin: 60px auto 0;
+  margin: 0 auto;
+  /* padding-top: 10%; */
   border-radius: 28px;
   overflow: inherit;
 }
@@ -145,6 +168,7 @@ export default {
   border-radius: 28px;
   position: absolute;
   z-index: -1;
+  bottom: 0;
 }
 .item-bg2{
   bottom: 0;
@@ -160,7 +184,7 @@ export default {
 }
 .intro-desc1{
   font-size:16px;
-  line-height:38px;
+  line-height:32px;
   width: 256px;
   margin: 0 auto 5px;
   /* font-weight: lighter; */
@@ -189,7 +213,7 @@ export default {
   display:block;
   margin:5px auto 0;
   font-size:14px;
-  color:#6f5144;
+  color:#fff;
   text-decoration: underline;
 }
 .signUp-link{
@@ -198,7 +222,7 @@ export default {
   display: block;
   border-radius:100px;
   background:#634c49;
-  margin: 50px auto 20px;
+  margin:45px auto 0;
   width: 90px;
   height: 32px;
   position: relative;
