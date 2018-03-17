@@ -5,6 +5,7 @@ import Qrcode from '@/components/Qrcode'
 import PianoSucc from '@/components/PianoSucc'
 import ChoirSucc from '@/components/ChoirSucc'
 import Introduce from '@/components/Introduce'
+import Home from '@/components/Home'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ let router = new Router({
       path: '/',
       name: 'signUp',
       component: SignUp
+    },
+    {
+      path: '/home',
+      name: 'Home',
+      component: Home
     },
     {
       path: '/qrcode',

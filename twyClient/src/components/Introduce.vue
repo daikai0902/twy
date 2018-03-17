@@ -78,7 +78,7 @@
         <div class="intro-desc2 txt-right pr45">
           专业院校师资，感受古典音乐的<br/>魅力，打造孩子的贵族气质
         </div>
-         <router-link :to="{name: 'pianoSucc', query: { 'type': 'intro' }}" class="txt-right pr45 piano-link">查看详细入学报名细则</router-link>
+        <router-link :to="{name: 'pianoSucc', query: { 'type': 'intro' }}" class="txt-right pr45 piano-link">查看详细入学报名细则</router-link>
       </swiper-item>
     </swiper>
     <router-link :to="{name: 'signUp'}" class="signUp-link">立即报名</router-link>
