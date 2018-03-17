@@ -81,7 +81,7 @@ export default {
   data () {
     return {
       sexOptions: ['男孩', '女孩'],
-      courseOptions: ['民族舞', '影视表演', '声乐歌舞', '涂鸦创想班', '素描班', '幼儿合唱团', '钢琴班'],
+      courseOptions: ['民族舞', '影视表演', '声乐歌舞', '涂鸦创想班', '素描班', '少儿合唱团', '钢琴课'],
       name: '',
       age: '',
       sex: '男孩',
