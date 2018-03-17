@@ -120,6 +120,7 @@ export default {
 .swiper-wrap > .vux-indicator{
   bottom: -28px !important;
   box-sizing: border-box;
+  right: inherit !important;
 }
 .swiper-wrap > .vux-swiper{
   height: 100% !important;
