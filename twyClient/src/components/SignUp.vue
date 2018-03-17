@@ -164,9 +164,9 @@ export default {
             content: res.message
           })
         } else {
-          if (that.course === '钢琴班') {
+          if (that.course === '钢琴课') {
             that.$router.push({ name: 'pianoSucc', query: {type: 'signup'} })
-          } else if (that.course === '幼儿合唱团') {
+          } else if (that.course === '少儿合唱团') {
             that.$router.push({ name: 'choirSucc' })
           } else {
             that.$router.push({ name: 'qrcode' })
