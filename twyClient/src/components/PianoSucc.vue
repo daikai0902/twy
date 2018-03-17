@@ -10,7 +10,7 @@
 
       <div class="piano-item pi1">
         <div class="piano-title">A级专业教师</div>
-        <div class="piano-desc">毕业于国内专业院校钢琴表演专业、音乐教育专业，获取教师资格证。并获得省级以上专业（钢琴）比赛（独奏）三等奖以上。</div>
+        <div class="piano-desc">毕业于国内专业院校钢琴表演专业、音乐教育专业，获取教师资格证。并获得省级以上专业钢琴比赛（独奏）三等奖以上。</div>
         <flexbox>
           <flexbox-item><div class="flex-demo">初级（零基础-3级）</div></flexbox-item>
           <flexbox-item><div class="flex-demo txt-right">260元/45分钟</div></flexbox-item>
@@ -27,30 +27,30 @@
 
       <div class="piano-item">
         <div class="piano-title">特级专业教师</div>
-        <div class="piano-desc">毕业于国内十一所独立设置的高等音乐院校钢琴系、键盘系。获得省级专业钢琴比赛（独奏）第一名；国家级专业钢琴比赛（独奏）一等奖、三等奖以上。</div>
+        <div class="piano-desc">毕业于国内十一所独立设置的高等音乐院校钢琴系、键盘系。获得省级专业钢琴比赛（独奏）第一名；国家级专业钢琴比赛（独奏）第一名、三等奖以上。</div>
         <flexbox>
-          <flexbox-item><div class="flex-demo">初级</div></flexbox-item>
+          <flexbox-item><div class="flex-demo">初级（零基础-3级）</div></flexbox-item>
           <flexbox-item><div class="flex-demo txt-right">320元/45分钟</div></flexbox-item>
         </flexbox>
         <flexbox>
-          <flexbox-item><div class="flex-demo">中级</div></flexbox-item>
+          <flexbox-item><div class="flex-demo">中级（4-6级）</div></flexbox-item>
           <flexbox-item><div class="flex-demo txt-right">380元/45分钟</div></flexbox-item>
         </flexbox>
         <flexbox>
-          <flexbox-item><div class="flex-demo">高级</div></flexbox-item>
+          <flexbox-item><div class="flex-demo">高级（7-10级）</div></flexbox-item>
           <flexbox-item><div class="flex-demo txt-right">450元/45分钟</div></flexbox-item>
         </flexbox>
       </div>
 
       <div class="piano-item">
         <div class="piano-title">预约类教师</div>
-        <div class="piano-desc">毕业于国内十一所独立设置的高等音乐院校钢琴系或全球排名前60名音乐院校钢琴系。获得国际钢琴专业比赛（独奏）一等奖、三等奖以上。</div>
+        <div class="piano-desc">毕业于国内十一所独立设置的高等音乐院校钢琴系或全球排名前60名音乐院校钢琴系。获得国际专业钢琴比赛（独奏）第一名、三等奖以上。</div>
         <flexbox>
-          <flexbox-item><div class="flex-demo">初级</div></flexbox-item>
+          <flexbox-item><div class="flex-demo">初级（零基础-3级）</div></flexbox-item>
           <flexbox-item><div class="flex-demo txt-right">380元/45分钟</div></flexbox-item>
         </flexbox>
         <flexbox>
-          <flexbox-item><div class="flex-demo">中级</div></flexbox-item>
+          <flexbox-item><div class="flex-demo">中级（4-6级）</div></flexbox-item>
           <flexbox-item><div class="flex-demo txt-right">480元/45分钟</div></flexbox-item>
         </flexbox>
         <flexbox>
