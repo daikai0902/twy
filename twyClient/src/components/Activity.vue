@@ -1,5 +1,5 @@
 <template>
-  <div class="news-wrap">
+  <div class="activity-wrap">
     <side-menu isGoback="true"></side-menu>
 
     <div class="ac-wrap">
@@ -17,7 +17,7 @@
 <script>
 import SideMenu from '@/components/common/SideMenu'
 export default {
-  name: 'News',
+  name: 'Activity',
   components: {
     SideMenu
   },

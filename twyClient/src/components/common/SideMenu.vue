@@ -50,7 +50,7 @@ export default {
         },
         {
           name: '名师团队',
-          pathname: 'teatchers'
+          pathname: 'teachers'
         },
         {
           name: '孩子成长艺星之路',
@@ -74,7 +74,7 @@ export default {
   props: ['isGoback'],
   methods: {
     goback () {
-      this.$router.go(-1);
+      this.$router.go(-1)
     }
   }
 }
