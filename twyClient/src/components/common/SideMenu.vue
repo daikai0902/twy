@@ -35,35 +35,35 @@ export default {
       menuList: [
         {
           name: '新闻·公告',
-          pathname: 'choirSucc'
+          pathname: 'news'
         },
         {
           name: '精彩活动',
-          pathname: 'choirSucc'
+          pathname: 'activity'
         },
         {
           name: '课程介绍',
-          pathname: 'news'
+          pathname: 'introduce'
         },
         {
           name: '名师团队',
-          pathname: 'news'
+          pathname: 'teatchers'
         },
         {
           name: '孩子成长艺星之路',
-          pathname: 'news'
+          pathname: 'growth'
         },
         {
           name: '网点布局',
-          pathname: 'news'
+          pathname: 'org'
         },
         {
           name: '如何报名',
-          pathname: 'news'
+          pathname: 'help'
         },
         {
           name: '预约报名',
-          pathname: 'news'
+          pathname: 'order'
         }
       ]
     }

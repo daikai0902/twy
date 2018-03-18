@@ -12,35 +12,35 @@
     </div>
 
     <div class="home-menu-wrap">
-      <div class="flex-demo flex-item1">
+      <router-link to="news" class="flex-demo flex-item1">
         <img class="m-img" src="../assets/m1.png">
         <p class="m-name">新闻·公告 ></p>
-      </div>
-       <div class="flex-demo flex-item1">
-        <img class="m-img" src="../assets/m1.png">
+      </router-link>
+      <router-link to="activity" class="flex-demo flex-item1">
+        <img class="m-img m-img2" src="../assets/m2.png">
         <p class="m-name">精彩活动 ></p>
-      </div>
+      </router-link>
       <flexbox>
         <flexbox-item>
-          <div class="flex-demo flex-item2">
+          <router-link to="introduce" class="flex-demo flex-item2">
             <img class="m-img" src="../assets/m3.png">
             <p class="m-name">课程介绍</p>
             <p class="m-ename">Course introduction</p>
-          </div>
+          </router-link>
         </flexbox-item>
         <flexbox-item>
-          <div class="flex-demo flex-item2">
+          <router-link to="teachers" class="flex-demo flex-item2">
             <img class="m-img" src="../assets/m4.png">
             <p class="m-name">名师团队</p>
             <p class="m-ename">Teacher Team</p>
-          </div>
-          </flexbox-item>
+          </router-link>
+        </flexbox-item>
         <flexbox-item>
-          <div class="flex-demo flex-item2">
+          <router-link to="open" class="flex-demo flex-item2">
             <img class="m-img" src="../assets/m5.png">
             <p class="m-name">公开课</p>
             <p class="m-ename">Open class</p>
-          </div>
+          </router-link>
         </flexbox-item>
       </flexbox>
     </div>
@@ -127,6 +127,7 @@ export default {
   position: relative;
   padding-left: 100px;
   box-sizing: border-box;
+  display: block;
 }
 .flex-item1 .m-img{
   width:22px;
@@ -135,6 +136,12 @@ export default {
   position: absolute;
   left: 15px;
   top: 16px;
+}
+.flex-item1 .m-img2{
+  width:28px;
+  height:28px;
+  left: 15px;
+  top: 12px;
 }
 .flex-item1 .m-name{
   opacity:0.5;
@@ -152,6 +159,7 @@ export default {
   padding-top: 8px;
   padding-left: 6px;
   box-sizing: border-box;
+  display: block;
 }
 .flex-item2 .m-img{
   height: 27px;
