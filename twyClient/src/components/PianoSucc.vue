@@ -54,7 +54,7 @@
           <flexbox-item><div class="flex-demo txt-right">480元/45分钟</div></flexbox-item>
         </flexbox>
         <flexbox>
-          <flexbox-item><div class="flex-demo">高级</div></flexbox-item>
+          <flexbox-item><div class="flex-demo">高级（7-10级）</div></flexbox-item>
           <flexbox-item><div class="flex-demo txt-right">580元/45分钟</div></flexbox-item>
         </flexbox>
       </div>
