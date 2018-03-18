@@ -6,6 +6,8 @@ import PianoSucc from '@/components/PianoSucc'
 import ChoirSucc from '@/components/ChoirSucc'
 import Introduce from '@/components/Introduce'
 import Home from '@/components/Home'
+import News from '@/components/News'
+import Order from '@/components/Order'
 
 Vue.use(Router)
 
@@ -42,6 +44,16 @@ let router = new Router({
       path: '/introduce',
       name: 'introduce',
       component: Introduce
+    },
+    {
+      path: '/news',
+      name: 'news',
+      component: News
+    },
+    {
+      path: '/order',
+      name: 'order',
+      component: Order
     }
   ]
 })

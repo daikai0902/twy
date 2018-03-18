@@ -4,12 +4,11 @@
       <img class="img-sidemenu" src="../../assets/btn_sidemenu.png" />
     </div>
     <div v-transfer-dom>
-      <popup v-model="sideMenu" position="left" width="100%">
+      <popup v-model="sideMenu" class="popup-smenu" position="left" width="100%">
         <div class="side-menu">
           <span class="vux-close" @click="sideMenu = false"></span>
 
-
-          <router-link :to="{name: home}" class="home-link">HOME</router-link>
+          <router-link :to="{name: 'home'}" class="home-link">HOME</router-link>
           <div classs="menu-wrap">
             <router-link v-for="(item, index) in menuList" :key="index" :to="{name: item.pathname}" class="menu-link">{{item.name}}</router-link>
           </div>

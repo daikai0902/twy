@@ -1,6 +1,5 @@
 <template>
   <div class="index-wrap">
-    <div class="index-room"></div>
     <div class="topbar">
       <router-link :to="{name: 'order'}" class="order-link">预约报名</router-link>
       <side-menu></side-menu>
@@ -70,24 +69,6 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 1;
-}
-.topbar{
-  position: relative;
-  z-index: 10;
-  margin-top: 15px;
-  margin-right: 20px;
-  text-align: right;
-}
-.order-link{
-  width: 76px;
-  height: 30px;
-  line-height: 30px;
-  display: inline-block;
-  text-align: center;
-  color: #fff;
-  font-size:14px;
-  background:rgba(255,255,255,0.30);
-  border-radius:100px;
 }
 .index-intro{
   z-index: 10;
