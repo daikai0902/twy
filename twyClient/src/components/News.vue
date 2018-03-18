@@ -1,9 +1,6 @@
 <template>
   <div class="news-wrap">
-    <div class="topbar">
-      <router-link :to="{name: 'order'}" class="order-link">预约报名</router-link>
-      <side-menu></side-menu>
-    </div>
+    <side-menu isGoback="true"></side-menu>
 
     <div class="tabs">
       <div class="tabs-news" @click="type = 'news'">

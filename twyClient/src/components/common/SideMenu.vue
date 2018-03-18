@@ -1,7 +1,11 @@
 <template>
   <div class="sidemenu-wrap">
-    <div class="btn-sidemenu" @click="sideMenu = true">
-      <img class="img-sidemenu" src="../../assets/btn_sidemenu.png" />
+    <div class="topbar">
+      <div class="goback" @click="goback" v-if="isGoback"></div>
+      <router-link :to="{name: 'order'}" class="order-link">预约报名</router-link>
+      <div class="btn-sidemenu" @click="sideMenu = true">
+        <img class="img-sidemenu" src="../../assets/btn_sidemenu.png" />
+      </div>
     </div>
     <div v-transfer-dom>
       <popup v-model="sideMenu" class="popup-smenu" position="left" width="100%">
@@ -66,15 +70,48 @@ export default {
         }
       ]
     }
+  },
+  props: ['isGoback'],
+  methods: {
+    goback () {
+      this.$router.go(-1);
+    }
   }
 }
 </script>
 
 <style scoped>
   .sidemenu-wrap{
+    width: 100%;
     display: inline-block;
     vertical-align: top;
-    margin-left: 10px;
+  }
+  .topbar{
+    position: relative;
+    z-index: 10;
+    margin-top: 15px;
+    margin-right: 20px;
+    text-align: right;
+  }
+  .goback{
+    position: absolute;
+    left: 20px;
+    top: 0;
+    background: url('~/src/assets/goback.png') no-repeat center center;
+    background-size: cover;
+    width:12px;
+    height:22px;
+  }
+  .order-link{
+    width: 76px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    font-size:14px;
+    background:rgba(255,255,255,0.30);
+    border-radius:100px;
   }
   .btn-sidemenu{
     width: 30px;
@@ -83,6 +120,8 @@ export default {
     border-radius:50%;
     display: inline-block;
     position: relative;
+    vertical-align: middle;
+    margin-left: 15px;
   }
   .img-sidemenu{
     width:16px;
