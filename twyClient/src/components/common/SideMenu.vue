@@ -121,7 +121,7 @@ export default {
     display: inline-block;
     position: relative;
     vertical-align: middle;
-    margin-left: 15px;
+    margin-left: 8px;
   }
   .img-sidemenu{
     width:16px;

@@ -31,7 +31,7 @@
         </a>
       </div>
     </div>
-    <img class="bg-news">
+    <img class="bg-black">
   </div>
 </template>
 
@@ -103,15 +103,6 @@ export default {
 </script>
 
 <style scoped>
-.news-wrap .bg-news{
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background-color: #000;
-}
 .tabs{
   position: relative;
   z-index: 10;

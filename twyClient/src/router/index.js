@@ -8,6 +8,7 @@ import Introduce from '@/components/Introduce'
 import Home from '@/components/Home'
 import News from '@/components/News'
 import Order from '@/components/Order'
+import Activity from '@/components/Activity'
 
 Vue.use(Router)
 
@@ -54,6 +55,11 @@ let router = new Router({
       path: '/order',
       name: 'order',
       component: Order
+    },
+    {
+      path: '/activity',
+      name: 'activity',
+      component: Activity
     }
   ]
 })
