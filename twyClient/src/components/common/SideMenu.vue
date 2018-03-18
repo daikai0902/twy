@@ -110,13 +110,13 @@ export default {
     text-align: center;
     color: #fff;
     font-size:14px;
-    background:rgba(255,255,255,0.30);
+    background:#525759;
     border-radius:100px;
   }
   .btn-sidemenu{
     width: 30px;
     height: 30px;
-    background:rgba(255,255,255,0.30);
+    background:#525759;
     border-radius:50%;
     display: inline-block;
     position: relative;
