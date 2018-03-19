@@ -9,27 +9,27 @@
         <div class="st-desc">扫二维码关注公众号<br/>“宁波天唯艺星教育”</div>
         <img src="../assets/step_next.png" style="width:25px;margin-bottom:10px;">
       </div>
-      <div class="step-item step1">
+      <div class="step-item step2">
         <div class="st-num">第二步</div>
         <div class="st-name">报名入口</div>
         <img src="../assets/step2.jpg" style="width:250px;">
         <div class="st-desc">打开公众号<br/>点击“入学申请”</div>
         <img src="../assets/step_next.png" style="width:25px;margin-bottom:10px;">
       </div>
-      <div class="step-item step1">
+      <div class="step-item step3">
         <div class="st-num">第三步</div>
         <div class="st-name">填写信息</div>
         <img src="../assets/step3.jpg" style="width:250px;">
         <img src="../assets/step_next.png" style="width:25px;margin-bottom:10px;">
       </div>
-      <div class="step-item step1">
+      <div class="step-item step4">
         <div class="st-num">第四步</div>
         <div class="st-name">付款</div>
         <img src="../assets/wepay.png" style="width:40px;height:37px;">
         <div class="st-desc">微信支付，支付成功后，报名即可成功</div>
       </div>
 
-      <router-link :to="{name: 'order'}" class="horder-link">预约报名</router-link>
+      <!-- <router-link :to="{name: 'order'}" class="horder-link">预约报名</router-link> -->
     </div>
     <div class="bg-black"></div>
   </div>
@@ -98,6 +98,9 @@ export default {
     display: block;
     margin: 0 auto;
     margin-top: 40px;
+    margin-bottom: 50px;
+  }
+  .step4{
     margin-bottom: 50px;
   }
 </style>

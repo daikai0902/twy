@@ -4,7 +4,8 @@
 
     <div class="teacher-wrap">
       <div class="t-item" v-for="(item, index) in teacherList" :key="index">
-        <img :src="'src/assets/'+item.img">
+        <p class="t-team" v-if="item.img == 'TEAM'">{{item.img}}</p>
+        <img class="t-img" :src="'src/assets/'+item.img" v-else>
         <p class="t-name">{{item.name}}</p>
       </div>
     </div>
@@ -25,6 +26,10 @@ export default {
         {
           name: '徐明德',
           img: 'teachers/1.jpg'
+        },
+        {
+          name: '名师团队',
+          img: 'TEAM'
         },
         {
           name: '严建红',
@@ -88,5 +93,58 @@ export default {
   .teacher-wrap{
     position: relative;
     z-index: 10;
+    width: 94%;
+    margin: 25px auto;
+  }
+  .t-item{
+    width: 32%;
+    border-radius:12px;
+    position: relative;
+    float: left;
+    margin-right: 2%;
+    margin-bottom: 10px;
+  }
+  .t-item:nth-child(3n+4){
+    margin-right: 0;
+  }
+  .t-item .t-img{
+    width: 100%;
+    border-radius:12px;
+  }
+  .t-item .t-name{
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: #fff;
+    font-size: 16px;
+  }
+  .t-item:nth-child(1){
+    width: 71%;
+  }
+  .t-item:nth-child(2),
+  .t-item:nth-child(3),
+  .t-item:nth-child(4){
+    width: 27%;
+    margin-right: 0;
+  } 
+  .t-item:nth-child(2){
+    margin-right: 0;
+    height: 80px;
+    background:#0074cd;
+    font-size: 14px;
+    overflow: hidden;
+  }
+  .t-item:nth-child(2) .t-team{
+    opacity:0.17;
+    font-size:36px;
+    color:#fff;
+    position: absolute;
+    top: -8px;
+    left: 12px;
+  }
+  .t-item:nth-child(2) .t-name{
+    font-size: 14px;
+    bottom: 10px;
+    left: 10px;
   }
 </style>

@@ -11,6 +11,7 @@
           <p class="p2">鄞州中心区泰安中路508号，创意设计大厦三楼</p>
         </div>
         <div class="org-card card3" style="background-color: #fff;">
+          <router-link :to="{name: 'order'}" class="org-order-link">预约报名</router-link>
           <div class="card-info">
             <p>联系人：陈老师</p>
             <p>咨询热线：13819837773</p>
@@ -108,5 +109,17 @@ export default {
   }
   .card4 .p1{
     font-size: 18px;
+  }
+  .org-order-link{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    background:#060606;
+    border-radius:100px;
+    width:76px;
+    height:30px;
+    line-height: 30px;
+    color: #fff;
+    font-size: 14px;
   }
 </style>
