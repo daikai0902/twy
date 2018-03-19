@@ -5,7 +5,7 @@
     <div class="teacher-wrap">
       <div class="t-item" v-for="(item, index) in teacherList" :key="index">
         <p class="t-team" v-if="item.img == 'TEAM'">{{item.img}}</p>
-        <img class="t-img" :src="'src/assets/'+item.img" v-else>
+        <img class="t-img" :src="'/src/assets/'+item.img" v-else>
         <p class="t-name">{{item.name}}</p>
       </div>
     </div>
@@ -16,7 +16,7 @@
 <script>
 import SideMenu from '@/components/common/SideMenu'
 export default {
-  name: 'Activity',
+  name: 'Teacher',
   components: {
     SideMenu
   },

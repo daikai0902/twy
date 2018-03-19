@@ -10,6 +10,7 @@ import News from '@/components/News'
 import Order from '@/components/Order'
 import Activity from '@/components/Activity'
 import Teachers from '@/components/Teachers'
+import TeacherDetail from '@/components/TeacherDetail'
 import Help from '@/components/Help'
 import Org from '@/components/Org'
 
@@ -70,6 +71,11 @@ let router = new Router({
       component: Teachers
     },
     {
+      path: '/teachers/detail',
+      name: 'teacherDetail',
+      component: TeacherDetail
+    },
+    {
       path: '/help',
       name: 'help',
       component: Help
@@ -79,7 +85,6 @@ let router = new Router({
       name: 'org',
       component: Org
     }
-
   ]
 })
 
