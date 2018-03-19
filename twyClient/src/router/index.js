@@ -11,6 +11,7 @@ import Order from '@/components/Order'
 import Activity from '@/components/Activity'
 import Teachers from '@/components/Teachers'
 import Help from '@/components/Help'
+import Org from '@/components/Org'
 
 Vue.use(Router)
 
@@ -25,7 +26,7 @@ let router = new Router({
     },
     {
       path: '/home',
-      name: 'Home',
+      name: 'home',
       component: Home
     },
     {
@@ -72,6 +73,11 @@ let router = new Router({
       path: '/help',
       name: 'help',
       component: Help
+    },
+    {
+      path: '/org',
+      name: 'org',
+      component: Org
     }
 
   ]
