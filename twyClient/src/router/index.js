@@ -10,6 +10,7 @@ import News from '@/components/News'
 import Order from '@/components/Order'
 import Activity from '@/components/Activity'
 import Teachers from '@/components/Teachers'
+import Help from '@/components/Help'
 
 Vue.use(Router)
 
@@ -66,7 +67,13 @@ let router = new Router({
       path: '/teachers',
       name: 'teachers',
       component: Teachers
+    },
+    {
+      path: '/help',
+      name: 'help',
+      component: Help
     }
+
   ]
 })
 

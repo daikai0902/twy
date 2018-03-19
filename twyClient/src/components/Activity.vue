@@ -31,7 +31,7 @@ export default {
         },
         {
           type: 'img',
-          imgName: 'active1.jpg' 
+          imgName: 'active1.jpg'
         },
         {
           title: '活动标题',
@@ -51,7 +51,7 @@ export default {
         },
         {
           type: 'img',
-          imgName: 'active2.jpg' 
+          imgName: 'active2.jpg'
         },
         {
           title: '活动标题',
@@ -77,7 +77,7 @@ export default {
     }
   },
   created () {
-    this.itemHeight =  parseInt(window.innerWidth * 0.94 * 0.48)
+    this.itemHeight = parseInt(window.innerWidth * 0.94 * 0.48)
   }
 }
 </script>
