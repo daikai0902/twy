@@ -5,19 +5,22 @@
       <div class="step-item step1">
         <div class="st-num">第一步</div>
         <div class="st-name">关注我们</div>
-        <img src="">
+        <img src="../assets/help_qrcode.jpg" style="width:200px;">
         <div class="st-desc">扫二维码关注公众号<br/>“宁波天唯艺星教育”</div>
+        <img src="../assets/step_next.png" style="width:25px;margin-bottom:10px;">
       </div>
       <div class="step-item step1">
         <div class="st-num">第二步</div>
         <div class="st-name">报名入口</div>
-        <img src="">
+        <img src="../assets/step2.jpg" style="width:250px;">
         <div class="st-desc">打开公众号<br/>点击“入学申请”</div>
+        <img src="../assets/step_next.png" style="width:25px;margin-bottom:10px;">
       </div>
       <div class="step-item step1">
         <div class="st-num">第三步</div>
         <div class="st-name">填写信息</div>
-        <img src="">
+        <img src="../assets/step3.jpg" style="width:250px;">
+        <img src="../assets/step_next.png" style="width:25px;margin-bottom:10px;">
       </div>
       <div class="step-item step1">
         <div class="st-num">第四步</div>
@@ -64,7 +67,7 @@ export default {
     font-size:18px;
     color:#fff;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 28px;
   }
   .st-name::after{
     content: '';
@@ -76,7 +79,8 @@ export default {
     background-color: #fff;
   }
   .step-item img{
-    margin: 10px 0;
+    margin: 5px auto;
+    display: block;
   }
   .st-desc{
     font-size:14px;
