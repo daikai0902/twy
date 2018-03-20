@@ -4,7 +4,7 @@
     <div class="index-intro">
       <div class="intro-title">天唯艺星教育</div>
       <div class="intro-desc">宁波天唯艺星教育是上海小荧星核心战略合作伙伴，由上海戏剧学院徐明德教授和27年资深教育管理者带领，携手各艺术领域专家教师，志在做最专业的艺术基础教育。</div>
-      <div class="intro-link">学校简介  ></div>
+      <router-link to="school" class="intro-link">学校简介  ></router-link>
     </div>
 
     <div class="home-menu-wrap">
@@ -83,6 +83,7 @@ export default {
 .index-intro .intro-desc,
 .index-intro .intro-link{
   font-size: 12px;
+  color: #fff;
 }
 .index-intro .intro-link{
   margin-top: 10px;

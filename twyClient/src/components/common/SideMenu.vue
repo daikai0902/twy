@@ -89,6 +89,8 @@ export default {
     width: 100%;
     display: inline-block;
     vertical-align: top;
+    z-index: 19;
+    position: relative;
   }
   .topbar{
     position: relative;
