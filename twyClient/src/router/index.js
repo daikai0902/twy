@@ -7,6 +7,7 @@ import ChoirSucc from '@/components/ChoirSucc'
 import Introduce from '@/components/Introduce'
 import Home from '@/components/Home'
 import News from '@/components/News'
+import NewsDetail from '@/components/NewsDetail'
 import Order from '@/components/Order'
 import Activity from '@/components/Activity'
 import ActivityDetail from '@/components/ActivityDetail'
@@ -55,6 +56,11 @@ let router = new Router({
       path: '/news',
       name: 'news',
       component: News
+    },
+    {
+      path: '/news/detail',
+      name: 'newsDetail',
+      component: NewsDetail
     },
     {
       path: '/order',
