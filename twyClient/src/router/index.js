@@ -16,6 +16,7 @@ import TeacherDetail from '@/components/TeacherDetail'
 import Help from '@/components/Help'
 import Org from '@/components/Org'
 import School from '@/components/School'
+import Growth from '@/components/Growth'
 
 Vue.use(Router)
 
@@ -102,6 +103,11 @@ let router = new Router({
       path: '/school',
       name: 'school',
       component: School
+    },
+    {
+      path: '/growth',
+      name: 'growth',
+      component: Growth
     }
   ]
 })
