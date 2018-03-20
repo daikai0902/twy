@@ -37,6 +37,10 @@ export default {
       sideMenu: false,
       menuList: [
         {
+          name: '学校简介',
+          pathname: 'school'
+        },
+        {
           name: '新闻·公告',
           pathname: 'news'
         },
