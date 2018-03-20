@@ -9,6 +9,7 @@ import Home from '@/components/Home'
 import News from '@/components/News'
 import Order from '@/components/Order'
 import Activity from '@/components/Activity'
+import ActivityDetail from '@/components/ActivityDetail'
 import Teachers from '@/components/Teachers'
 import TeacherDetail from '@/components/TeacherDetail'
 import Help from '@/components/Help'
@@ -64,6 +65,11 @@ let router = new Router({
       path: '/activity',
       name: 'activity',
       component: Activity
+    },
+    {
+      path: '/activity/detail',
+      name: 'activityDetail',
+      component: ActivityDetail
     },
     {
       path: '/teachers',
