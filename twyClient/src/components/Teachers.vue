@@ -43,12 +43,12 @@ export default {
         {
           name: '姚皓',
           img: 'teachers/4.jpg',
-          title: '总部培训学校负责人'
+          title: '学校总部培训负责人'
         },
         {
           name: '王舵',
           img: 'teachers/5.jpg',
-          title: '教学主任，播音主持、影视表演主课教师'
+          title: '教学主任，播音主持、影视表演教师'
         },
         {
           name: '陆倩雯',
@@ -78,7 +78,7 @@ export default {
         {
           name: '陈艳',
           img: 'teachers/11.jpg',
-          title: '负责学校内部管理工作'
+          title: '学校内部管理工作'
         },
         {
           name: '俞磊',
@@ -88,12 +88,12 @@ export default {
         {
           name: '吴悦',
           img: 'teachers/13.jpg',
-          title: '责学校宣传、活动策划、拓展等工作'
+          title: '学校宣传、活动策划、拓展等工作'
         },
         {
           name: '吴建峰',
           img: 'teachers/14.jpg',
-          title: '负责学校网络管理等工作'
+          title: '学校网络管理'
         }
       ]
     }
@@ -132,7 +132,7 @@ export default {
   }
   .t-item .t-info{
     position: absolute;
-    bottom: 6px;
+    bottom: 15px;
     left: 6px;
   }
   .t-item .t-name{
@@ -147,6 +147,9 @@ export default {
   }
   .t-item:nth-child(1){
     width: 71%;
+  }
+  .t-item:nth-child(1) .t-name{
+    font-size: 24px;
   }
   .t-item:nth-child(2),
   .t-item:nth-child(3),
