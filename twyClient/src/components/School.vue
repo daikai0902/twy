@@ -392,7 +392,7 @@ export default {
 .sc7-dot::before,
 .sc7-dot::after{
   content: '';
-  background: url('~/src/assets/school8.png') no-repeat center center;
+  background: url('../assets/school8.png') no-repeat center center;
   background-size: cover;
   width:149px;
   height:4px;

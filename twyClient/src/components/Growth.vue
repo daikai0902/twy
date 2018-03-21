@@ -164,7 +164,7 @@ export default {
   .sc7-dot::before,
   .sc7-dot::after{
     content: '';
-    background: url('~/src/assets/gw_dot.png') no-repeat center center;
+    background: url('../assets/gw_dot.png') no-repeat center center;
     background-size: cover;
     width:149px;
     height:4px;
@@ -180,7 +180,7 @@ export default {
   }
 
   .gw1{
-    background: url('~/src/assets/gw1_border.png') no-repeat center center;
+    background: url('../assets/gw1_border.png') no-repeat center center;
     background-size: cover;
     width: 308px;
     height: 285px;
@@ -223,7 +223,7 @@ export default {
     margin-left: 0;
   }
   .gw2{
-    background: url('~/src/assets/gw2_border.png') no-repeat center center;
+    background: url('../assets/gw2_border.png') no-repeat center center;
     background-size: cover;
     width:313px;
     height:314px;
@@ -269,7 +269,7 @@ export default {
   }
 
   .gw3{
-    background: url('~/src/assets/gw3_border.png') no-repeat top right;
+    background: url('../assets/gw3_border.png') no-repeat top right;
     background-size: contain;
     width:313px;
     height:339px;
@@ -290,7 +290,7 @@ export default {
     box-sizing: border-box;
   }
   .gw4{
-    background: url('~/src/assets/gw4_border.png') no-repeat center center;
+    background: url('../assets/gw4_border.png') no-repeat center center;
     background-size: cover;
     width:266px;
     height:247px;
@@ -314,7 +314,7 @@ export default {
     top: 182px;
   }
   .gw5{
-    background: url(/src/assets/gw5_border.png) no-repeat top left;
+    background: url('../assets/gw5_border.png') no-repeat top left;
     background-size: contain;
     height: 276px;
     margin: 10px 0 0 30px;
@@ -339,7 +339,7 @@ export default {
     text-align: right;
   }
   .gw6{
-    background: url(/src/assets/gw6_border.png) no-repeat center center;
+    background: url('../assets/gw6_border.png') no-repeat center center;
     background-size: cover;
     width:275px;
     height:313px;
@@ -351,7 +351,7 @@ export default {
     padding-top: 60px;
   }
   .gw7{
-    background: url(/src/assets/gw7_border.png) no-repeat top right;
+    background: url('../assets/gw7_border.png') no-repeat top right;
     background-size: contain;
     height:276px;
     margin: 0 20% 0 auto;

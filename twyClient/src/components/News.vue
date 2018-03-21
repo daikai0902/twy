@@ -19,16 +19,16 @@
 
     <div class="cont-wrap">
       <div class="news-list" v-if="type == 'news'">
-        <a hrer="/" class="nl-item" v-for="(item, index) in newsList" :key="index">
+        <div class="nl-item" v-for="(item, index) in newsList" :key="index" @click="gotoNewsDetail">
           <p class="nl-title">{{item.title}}</p>
           <p class="nl-time">{{item.time}}</p>
-        </a>
+        </div>
       </div>
       <div class="notify-list" v-if="type == 'notify'">
-        <a hrer="/" class="nl-item" v-for="(item, index) in notifyList" :key="index">
+        <div class="nl-item" v-for="(item, index) in notifyList" :key="index" @click="gotoNewsDetail">
           <p class="nl-title">{{item.title}}</p>
           <p class="nl-time">{{item.time}}</p>
-        </a>
+        </div>
       </div>
     </div>
     <img class="bg-black">
@@ -97,6 +97,11 @@ export default {
           time: '20 May 2018'
         }
       ]
+    }
+  },
+  methods: {
+    gotoNewsDetail () {
+      this.$router.push({name: 'newsDetail'})
     }
   }
 }

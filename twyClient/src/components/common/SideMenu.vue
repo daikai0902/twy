@@ -103,7 +103,7 @@ export default {
     position: absolute;
     left: 20px;
     top: 0;
-    background: url('~/src/assets/goback.png') no-repeat center center;
+    background: url('../../assets/goback.png') no-repeat center center;
     background-size: cover;
     width:12px;
     height:22px;
@@ -141,12 +141,12 @@ export default {
   }
   .side-menu{
     height: 100%;
-    background: url('~/src/assets/bg_menu.jpg') no-repeat center center;
+    background: url('../../assets/bg_menu.jpg') no-repeat center center;
     background-size: cover;
     position: relative;
   }
   .vux-close{
-    background: url('~/src/assets/close.png') no-repeat center center;
+    background: url('../../assets/close.png') no-repeat center center;
     background-size: cover;
     width: 24px;
     height: 24px;

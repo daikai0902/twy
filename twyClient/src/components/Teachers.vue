@@ -3,9 +3,9 @@
     <side-menu isGoback="true"></side-menu>
 
     <div class="teacher-wrap">
-      <div class="t-item" v-for="(item, index) in teacherList" :key="index">
+      <div class="t-item" v-for="(item, index) in teacherList" :key="index" @click="gotoTeacherDetail">
         <p class="t-team" v-if="item.img == 'TEAM'">{{item.img}}</p>
-        <img class="t-img" :src="'/src/assets/'+item.img" v-else>
+        <img class="t-img" v-else :src="'/static/'+item.img" >
         <p class="t-name">{{item.name}}</p>
       </div>
     </div>
@@ -84,6 +84,11 @@ export default {
           img: 'teachers/14.jpg'
         }
       ]
+    }
+  },
+  methods: {
+    gotoTeacherDetail () {
+      this.$router.push({name: 'teacherDetail'})
     }
   }
 }

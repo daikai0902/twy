@@ -60,12 +60,12 @@ export default {
     text-align: center;
   }
   .card1, .card2{
-    background: url('~/src/assets/org1.jpg') no-repeat center center;
+    background: url('../assets/org1.jpg') no-repeat center center;
     background-size: cover;
     color: #fff;
   }
   .card2{
-    background-image: url('~/src/assets/org2.jpg')
+    background-image: url('../assets/org2.jpg')
   }
   .card .p1{
     font-size: 18px;

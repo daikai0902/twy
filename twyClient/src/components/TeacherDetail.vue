@@ -3,9 +3,9 @@
     <side-menu isGoback="true"></side-menu>
 
     <div class="teacher-wrap">
-      <swiper ref="swiper" :show-dots="false" @on-index-change="swiperChange">
+      <swiper ref="swiper" :show-dots="false" @on-index-change="swiperChange" height="1200px">
         <swiper-item class="black t-item" v-for="(item, index) in teacherList" :key="index">
-          <img class="t-img" :src="'/src/assets/'+item.img">
+          <img class="t-img" :src="'/static/'+item.img">
           <p class="t-name">{{item.name}}</p>
           <p class="t-title">{{item.title}}</p>
           <p class="t-desc">{{item.desc}}</p>
@@ -125,7 +125,8 @@ export default {
     swiperChange (currentIndex) {
       this.curr = currentIndex + 1
       this.$nextTick(() => {
-        this.$refs.swiper.xheight = '100px'
+        // window.scrollTo(0, 0)
+        this.$refs.swiper.xheight = '1200px'
       })
     }
   }
