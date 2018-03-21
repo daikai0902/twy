@@ -1,6 +1,5 @@
 <template>
   <div class="news-wrap">
-    <side-menu isGoback="true"></side-menu>
 
     <div class="teacher-wrap">
       <swiper ref="swiper" :show-dots="false" @on-index-change="swiperChange" height="1200px">
@@ -20,12 +19,10 @@
 </template>
 
 <script>
-import SideMenu from '@/components/common/SideMenu'
 import { Swiper, SwiperItem } from 'vux'
 export default {
   name: 'Teacher',
   components: {
-    SideMenu,
     Swiper,
     SwiperItem
   },

@@ -1,6 +1,5 @@
 <template>
   <div class="intro-wrap">
-    <!-- <side-menu isGoback="true"></side-menu> -->
     <img class="intro-bg" src="../assets/bg_intro.jpg">
     <swiper class="swiper-wrap" dots-class="intro-dot" dots-position="center" :style="{height: h + 'px', 'padding-top': pt + 'px'}">
       <swiper-item class="intro-item" style="background-color:#babcc9;" :style="{height: h + 'px'}">
@@ -88,14 +87,12 @@
 
 <script>
 import { Swiper, SwiperItem } from 'vux'
-import SideMenu from '@/components/common/SideMenu'
 
 export default {
   name: 'Introduce',
   components: {
     Swiper,
-    SwiperItem,
-    SideMenu
+    SwiperItem
   },
   data () {
     return {

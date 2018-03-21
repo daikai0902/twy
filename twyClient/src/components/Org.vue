@@ -1,40 +1,35 @@
 <template>
   <div>
-    <side-menu isGoback="true"></side-menu>
-      <div class="org-wrap">
-        <div class="org-card card card1">
-          <p class="p1">市教育局服务中心总部艺术团</p>
-          <p class="p2">鄞州中心区文苑路462号，宁波市教育服务管理<br/>中心三号楼3楼</p>
-        </div>
-        <div class="org-card card card2">
-          <p class="p1">鄞州区教育培训学校</p>
-          <p class="p2">鄞州中心区泰安中路508号，创意设计大厦三楼</p>
-        </div>
-        <div class="org-card card3" style="background-color: #fff;">
-          <router-link :to="{name: 'order'}" class="org-order-link">预约报名</router-link>
-          <div class="card-info">
-            <p>联系人：陈老师</p>
-            <p>咨询热线：13819837773</p>
-          </div>
-          <img src="../assets/help_qrcode.jpg" class="org-qrcode">
-        </div>
-        <div class="org-card card4">
-          <img src="../assets/funnel.png" class="org-funnel">
-          <p class="p1">待开设</p>
-          <p class="p2">海曙、江北、高新区、慈溪、奉化、余姚等</p>
-        </div>
+    <div class="org-wrap">
+      <div class="org-card card card1">
+        <p class="p1">市教育局服务中心总部艺术团</p>
+        <p class="p2">鄞州中心区文苑路462号，宁波市教育服务管理<br/>中心三号楼3楼</p>
       </div>
+      <div class="org-card card card2">
+        <p class="p1">鄞州区教育培训学校</p>
+        <p class="p2">鄞州中心区泰安中路508号，创意设计大厦三楼</p>
+      </div>
+      <div class="org-card card3" style="background-color: #fff;">
+        <router-link :to="{name: 'order'}" class="org-order-link">预约报名</router-link>
+        <div class="card-info">
+          <p>联系人：陈老师</p>
+          <p>咨询热线：13819837773</p>
+        </div>
+        <img src="../assets/help_qrcode.jpg" class="org-qrcode">
+      </div>
+      <div class="org-card card4">
+        <img src="../assets/funnel.png" class="org-funnel">
+        <p class="p1">待开设</p>
+        <p class="p2">海曙、江北、高新区、慈溪、奉化、余姚等</p>
+      </div>
+    </div>
     <img class="bg-black">
   </div>
 </template>
 
 <script>
-import SideMenu from '@/components/common/SideMenu'
 export default {
   name: 'Org',
-  components: {
-    SideMenu
-  },
   data () {
     return {
 

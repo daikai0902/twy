@@ -1,7 +1,5 @@
 <template>
   <div class="news-wrap">
-    <side-menu isGoback="true"></side-menu>
-
     <div class="teacher-wrap">
       <div class="t-item" v-for="(item, index) in teacherList" :key="index" @click="gotoTeacherDetail">
         <p class="t-team" v-if="item.img == 'TEAM'">{{item.img}}</p>
@@ -14,12 +12,8 @@
 </template>
 
 <script>
-import SideMenu from '@/components/common/SideMenu'
 export default {
   name: 'Teacher',
-  components: {
-    SideMenu
-  },
   data () {
     return {
       teacherList: [

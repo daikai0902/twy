@@ -1,7 +1,5 @@
 <template>
   <div class="news-wrap">
-    <side-menu isGoback="true"></side-menu>
-
     <div class="news-wrap">
       <p class="title">{{title}}</p>
       <div class="info">
@@ -13,18 +11,12 @@
         <img src="../assets/detail1.jpg" />
       </div>
     </div>
-
-    <!-- <img class="bg-black"> -->
   </div>
 </template>
 
 <script>
-import SideMenu from '@/components/common/SideMenu'
 export default {
   name: 'ActivityDetail',
-  components: {
-    SideMenu
-  },
   data () {
     return {
       title: '第二次体验课预约开始啦',

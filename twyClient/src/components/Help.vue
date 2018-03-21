@@ -1,6 +1,5 @@
 <template>
   <div class="">
-    <side-menu isGoback="true"></side-menu>
     <div class="help-wrap">
       <div class="step-item step1">
         <div class="st-num">第一步</div>
@@ -36,12 +35,8 @@
 </template>
 
 <script>
-import SideMenu from '@/components/common/SideMenu'
 export default {
   name: 'Help',
-  components: {
-    SideMenu
-  },
   data () {
     return {}
   }

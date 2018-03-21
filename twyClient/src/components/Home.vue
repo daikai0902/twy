@@ -142,6 +142,7 @@ export default {
 }
 .flex-item2 .m-img{
   height: 27px;
+  width: initial;
   margin-bottom: 10px;
   margin-top: 5px;
 }
@@ -151,5 +152,6 @@ export default {
 .flex-item2 .m-ename{
   font-size: 10px;
   opacity:0.5;
+  white-space: nowrap;
 }
 </style>

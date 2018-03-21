@@ -1,7 +1,5 @@
 <template>
   <div class="news-wrap">
-    <side-menu isGoback="true"></side-menu>
-
     <div class="tabs">
       <div class="tabs-news" @click="type = 'news'">
         <p class="p1">NEWS</p>
@@ -36,12 +34,8 @@
 </template>
 
 <script>
-import SideMenu from '@/components/common/SideMenu'
 export default {
   name: 'News',
-  components: {
-    SideMenu
-  },
   data () {
     return {
       type: 'news',

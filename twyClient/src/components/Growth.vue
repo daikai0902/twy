@@ -1,6 +1,5 @@
 <template>
   <div class="activity-wrap">
-    <side-menu isGoback="true"></side-menu>
     <div class="growth-wrap">
       <div class="gw-header">
         <img src="../assets/school2.png" class="gw-logo">
@@ -109,12 +108,8 @@
 </template>
 
 <script>
-import SideMenu from '@/components/common/SideMenu'
 export default {
   name: 'Growth',
-  components: {
-    SideMenu
-  },
   data () {
     return {
 

@@ -1,7 +1,5 @@
 <template>
   <div class="activity-wrap">
-    <side-menu isGoback="true"></side-menu>
-
     <div class="ac-wrap">
       <div class="ac-item" v-for="(item, index) in activityList" :key="index" :class="['ac-item'+index % 5, item.type == 'img' ? 'ac-item-img': '']" :style="{height: itemHeight +'px'}" @click="gotoActivityDetail">
         <div class="title" v-if="item.type != 'img'">{{item.title}}</div>
@@ -15,12 +13,8 @@
 </template>
 
 <script>
-import SideMenu from '@/components/common/SideMenu'
 export default {
   name: 'Activity',
-  components: {
-    SideMenu
-  },
   data () {
     return {
       itemHeight: 0,
@@ -544,20 +538,6 @@ export default {
     height: 100%;
     border-radius: 14px;
   }
-  /* .ac-item0{
-    background:#0074cd;
-  }
-  .ac-item1{
-    background:#0074cd;
-  } */
-  /* .ac-item2{
-    background:#ffd93d;
-    color: #000;
-  }
-  .ac-item3{
-    background:#fff;
-    color: #000;
-  } */
   .ac-item4{
     background:#989da5;
     width: 100%;

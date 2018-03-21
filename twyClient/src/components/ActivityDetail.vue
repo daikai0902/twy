@@ -1,7 +1,5 @@
 <template>
   <div class="activity-wrap">
-    <side-menu isGoback="true"></side-menu>
-
     <div class="ac-wrap">
       <p class="title">{{title}}</p>
       <p class="time">{{time}}</p>
@@ -17,12 +15,8 @@
 </template>
 
 <script>
-import SideMenu from '@/components/common/SideMenu'
 export default {
   name: 'ActivityDetail',
-  components: {
-    SideMenu
-  },
   data () {
     return {
       title: '第二次体验课预约开始啦',
