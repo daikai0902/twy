@@ -192,7 +192,8 @@ export default {
     width:301px;
     height:75px;
     bottom: 10px;
-    padding: 14px;
+    padding: 14px 0;
+    text-align: center;
     box-sizing: border-box;
   }
   .gw1-txt{
