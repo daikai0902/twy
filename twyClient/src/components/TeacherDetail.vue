@@ -131,12 +131,12 @@ export default {
     }
   },
   created () {
-    console.log(this.$vux)
-    this.$vux.loading.show({
-      text: 'Loading'
-    })
+    // console.log(this.$vux)
+    // this.$vux.loading.show({
+    //   text: 'Loading'
+    // })
     this.swiperItemIndex = parseInt(this.$route.query.id)
-    this.$vux.loading.hide()
+    // this.$vux.loading.hide()
     // this.$nextTick(() => {
     //   this.$refs.swiper.xheight = this.h[this.swiperItemIndex] + 'px'
     // })
