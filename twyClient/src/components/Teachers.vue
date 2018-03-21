@@ -102,9 +102,7 @@ export default {
   },
   methods: {
     gotoTeacherDetail (num) {
-      if (num !== 1) {
-        this.$router.push({name: 'teacherDetail', query: {id: num > 0 ? num - 1 : 0}})
-      }
+      this.$router.push({name: 'teacherDetail', query: {id: num}})
     }
   }
 }
@@ -168,6 +166,10 @@ export default {
     height: 100%;
     width: initial;
   }
+  .t-item:nth-child(1) .t-img{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
   .t-item:nth-child(2) .t-img{
     position: absolute;
     right: 0;
@@ -208,35 +210,4 @@ export default {
     bottom: 0;
     right: 30px;
   }
-
-  /* .t-item:nth-child(2),
-  .t-item:nth-child(3){
-    width: 42%;
-    margin-right: 0;
-  }  */
-  /* .t-item:nth-child(2){
-    margin-right: 0;
-    height: 80px;
-    background:#881c21;
-    font-size: 14px;
-    overflow: hidden;
-  }
-  .t-item:nth-child(2) .t-info{
-    right: 20px;
-    text-align: right;
-    bottom: 10px;
-  }
-  .t-item:nth-child(2) .t-team{
-    opacity:0.17;
-    font-size:36px;
-    color:#fff;
-    position: absolute;
-    top: -8px;
-    left: 12px;
-  }
-  .t-item:nth-child(2) .t-name{
-    font-size: 14px;
-    bottom: 10px;
-    left: 10px;
-  } */
 </style>

@@ -59,6 +59,10 @@ export default {
 </script>
 
 <style scoped>
+hmt{
+  background: url('../assets/bg_home.jpg') no-repeat center center;
+  background-size: cover;
+}
 .index-wrap .bg-home{
   position: absolute;
   bottom: 0;

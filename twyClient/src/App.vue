@@ -16,6 +16,7 @@ export default {
 html{
   position: relative;
   min-height: 100%;
+  height: 100%;
 }
 body {
   background-color: #fbf9fe;
