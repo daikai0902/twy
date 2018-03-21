@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-    <img class="bg-black bg-teacher">
+    <div class="bg-black bg-teacher"></div>
   </div>
 </template>
 

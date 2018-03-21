@@ -18,6 +18,8 @@ html{
   min-height: 100%;
   background: url('./assets/bg_home.jpg') no-repeat center center;
   background-size: cover;
+  overflow: hidden;
+  width: 100%;
 }
 // body {
 //   background-color: #fbf9fe;
@@ -31,6 +33,8 @@ html{
   position: absolute;
   bottom: 0;
   right: 0;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
   z-index: 1;

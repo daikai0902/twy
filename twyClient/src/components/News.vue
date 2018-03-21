@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <img class="bg-black">
+    <div class="bg-black"></div>
   </div>
 </template>
 

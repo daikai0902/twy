@@ -71,7 +71,7 @@
         </div>
       </div>  
     </div>
-    <img class="bg-black bg-gray">
+    <div class="bg-black bg-gray"></div>
   </div>
 </template>
 

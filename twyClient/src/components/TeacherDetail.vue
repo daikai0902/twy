@@ -14,7 +14,7 @@
 
     <div class="paging-wrap">{{curr}}/{{total}}</div>
 
-    <img class="bg-black">
+    <div class="bg-black"></div>
   </div>
 </template>
 

@@ -103,7 +103,7 @@
         <p class="p2">让艺术为孩子成长助航</p>
       </div>
     </div>
-     <img class="bg-black">
+     <div class="bg-black"></div>
   </div>
 </template>
 

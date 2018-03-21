@@ -9,8 +9,6 @@
         <img src="../assets/detail1.jpg" />
       </div>
     </div>
-
-    <!-- <img class="bg-black"> -->
   </div>
 </template>
 

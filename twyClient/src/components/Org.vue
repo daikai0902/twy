@@ -23,7 +23,7 @@
         <p class="p2">海曙、江北、高新区、慈溪、奉化、余姚等</p>
       </div>
     </div>
-    <img class="bg-black">
+    <div class="bg-black"></div>
   </div>
 </template>
 
