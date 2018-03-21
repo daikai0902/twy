@@ -29,11 +29,15 @@ export default {
 </script>
 
 <style scoped>
+  .activity-wrap{
+    background-color: #fbf9fe;
+  }
   .ac-wrap{
     position: relative;
     z-index: 10;
     width: 90%;
-    margin: 20px auto;
+    margin: auto;
+    padding: 20px 0;
   }
   .ac-wrap .title{
     font-size: 36px;

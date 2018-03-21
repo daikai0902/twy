@@ -1,5 +1,5 @@
 <template>
-  <div class="news-wrap">
+  <div class="news">
     <div class="news-wrap">
       <p class="title">{{title}}</p>
       <div class="info">
@@ -11,6 +11,8 @@
         <img src="../assets/detail1.jpg" />
       </div>
     </div>
+
+    <img class="bg-black bg-gray">
   </div>
 </template>
 
@@ -29,11 +31,15 @@ export default {
 </script>
 
 <style scoped>
+  .news{
+    background-color: #fbf9fe;
+  }
   .news-wrap{
     position: relative;
     z-index: 10;
     width: 90%;
-    margin: 20px auto;
+    margin: 0 auto;
+    padding: 20px 0;
   }
   .news-wrap .title{
     font-size: 18px;

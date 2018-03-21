@@ -40,7 +40,6 @@
         </flexbox-item>
       </flexbox>
     </div>
-    <img class="bg-home" src="../assets/bg_home.jpg">
   </div>
 </template>
 

@@ -16,11 +16,12 @@ export default {
 html{
   position: relative;
   min-height: 100%;
-  height: 100%;
+  background: url('./assets/bg_home.jpg') no-repeat center center;
+  background-size: cover;
 }
-body {
-  background-color: #fbf9fe;
-}
+// body {
+//   background-color: #fbf9fe;
+// }
 .vux-popup-dialog.popup-smenu{
   width: 100% !important;
   left: 0 !important;
