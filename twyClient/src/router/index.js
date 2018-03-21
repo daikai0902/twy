@@ -8,7 +8,7 @@ import Introduce from '@/components/Introduce'
 import Home from '@/components/Home'
 import News from '@/components/News'
 import NewsDetail from '@/components/NewsDetail'
-import Order from '@/components/Order'
+// import Order from '@/components/Order'
 import Activity from '@/components/Activity'
 import ActivityDetail from '@/components/ActivityDetail'
 import Teachers from '@/components/Teachers'
@@ -17,6 +17,7 @@ import Help from '@/components/Help'
 import Org from '@/components/Org'
 import School from '@/components/School'
 import Growth from '@/components/Growth'
+import Open from '@/components/Open'
 
 Vue.use(Router)
 
@@ -67,7 +68,7 @@ let router = new Router({
     {
       path: '/order',
       name: 'order',
-      component: Order
+      component: SignUp
     },
     {
       path: '/activity',
@@ -108,6 +109,11 @@ let router = new Router({
       path: '/growth',
       name: 'growth',
       component: Growth
+    },
+    {
+      path: '/open',
+      name: 'open',
+      component: Open
     }
   ]
 })

@@ -1,5 +1,12 @@
 <template>
   <div class="news-wrap">
+    <div class="t-header">
+      <img src="../assets/teacher_top.jpg" class="teacher-top">
+      <div class="t-info">
+        <p class="t-team">TEAM</p>
+        <p class="t-name">名师团队</p>
+      </div>
+    </div>
     <div class="teacher-wrap">
       <div class="t-item" v-for="(item, index) in teacherList" :key="index" @click="gotoTeacherDetail(index)">
         <p class="t-team" v-if="item.title == 'TEAM'">{{item.title}}</p>
@@ -22,17 +29,12 @@ export default {
       teacherList: [
         {
           name: '徐明德',
-          img: 'teachers/1.jpg',
+          img: 'teachers/t1.jpg',
           title: '宁波天唯艺星教育名誉校长'
         },
         {
-          name: '名师团队',
-          img: '',
-          title: 'TEAM'
-        },
-        {
           name: '严建红',
-          img: 'teachers/2.jpg',
+          img: 'teachers/t2.jpg',
           title: '宁波天唯艺星教育董事长'
         },
         {
@@ -113,7 +115,7 @@ export default {
     position: relative;
     z-index: 10;
     width: 94%;
-    margin: 25px auto;
+    margin: 158px auto 0;
   }
   .t-item{
     width: 32%;
@@ -123,12 +125,12 @@ export default {
     margin-right: 2%;
     margin-bottom: 10px;
   }
-  .t-item:nth-child(3n){
+  .t-item:nth-child(3n+5){
     margin-right: 0;
   }
   .t-item .t-img{
     width: 100%;
-    border-radius:12px;
+    border-radius:15px;
   }
   .t-item .t-info{
     position: absolute;
@@ -145,18 +147,74 @@ export default {
     color:#fff;
     line-height: 18px;
   }
-  .t-item:nth-child(1){
-    width: 56%;
+  .t-item:nth-child(1),
+  .t-item:nth-child(2){
+    width: 100%;
+    height: 162px;
+    background: #5d504c;
   }
-  .t-item:nth-child(1) .t-name{
+  .t-item:nth-child(1) .t-name,
+  .t-item:nth-child(2) .t-name{
     font-size: 24px;
   }
-  .t-item:nth-child(2),
+  .t-item:nth-child(1) .t-info{
+    left: 165px;
+  }
+  .t-item:nth-child(2) .t-info{
+    left: 15px;
+  }
+  .t-item:nth-child(1) .t-img,
+  .t-item:nth-child(2) .t-img{
+    height: 100%;
+    width: initial;
+  }
+  .t-item:nth-child(2) .t-img{
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .t-header{
+    width:100%;
+    height:148px;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+  }
+  .t-header img{
+    width: 100%;
+    height: 100%;
+  }
+  .t-header .t-team{
+    opacity:0.33;
+    font-size:24px;
+    color:#0b0b0b;;
+    position: absolute;
+    top: 0;
+    left: 12px;
+  }
+  .t-header .t-name{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size:20px;
+    color:#000;
+  }
+  .t-header .t-info{
+    background: rgba(255,255,255,0.41);
+    border-radius: 12px 12px 0 0;
+    width: 147px;
+    height: 90px;
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+  }
+
+  /* .t-item:nth-child(2),
   .t-item:nth-child(3){
     width: 42%;
     margin-right: 0;
-  } 
-  .t-item:nth-child(2){
+  }  */
+  /* .t-item:nth-child(2){
     margin-right: 0;
     height: 80px;
     background:#881c21;
@@ -180,5 +238,5 @@ export default {
     font-size: 14px;
     bottom: 10px;
     left: 10px;
-  }
+  } */
 </style>

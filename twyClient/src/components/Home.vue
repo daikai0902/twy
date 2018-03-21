@@ -71,7 +71,8 @@ export default {
   z-index: 10;
   position: relative;
   color: #fff;
-  width: 320px;
+  width: 94%;
+  /* max-width: 320px; */
   margin: 0 auto;
   padding-top: 75px;
   box-sizing: border-box;
@@ -93,9 +94,9 @@ export default {
 .home-menu-wrap{
   z-index: 10;
   position: relative;
-  width: 320px;
-  margin: 0 auto;
-  margin-top: 88px;
+  width: 94%;
+  /* max-width: 320px; */
+  margin: 88px auto 30px;
 }
 .flex-item1{
   background:rgba(255,255,255,0.40);
@@ -133,7 +134,7 @@ export default {
 .flex-item2{
   background:rgba(255,255,255,0.40);
   border-radius:12px;
-  width:102px;
+  width:100%;
   height:102px;
   font-size:13px;
   color:#000;
