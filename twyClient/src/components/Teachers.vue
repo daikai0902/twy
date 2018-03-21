@@ -10,7 +10,7 @@
         </div>
       </div>
     </div>
-    <img class="bg-black">
+    <img class="bg-black bg-teacher">
   </div>
 </template>
 
@@ -123,7 +123,7 @@ export default {
     margin-right: 2%;
     margin-bottom: 10px;
   }
-  .t-item:nth-child(3n+4){
+  .t-item:nth-child(3n){
     margin-right: 0;
   }
   .t-item .t-img{
@@ -138,7 +138,7 @@ export default {
   .t-item .t-name{
     color: #fff;
     font-size: 16px;
-    margin-top: 5px;
+    margin-bottom: 3px;
   }
   .t-item .t-title{
     font-size:14px;
@@ -146,15 +146,14 @@ export default {
     line-height: 18px;
   }
   .t-item:nth-child(1){
-    width: 71%;
+    width: 56%;
   }
   .t-item:nth-child(1) .t-name{
     font-size: 24px;
   }
   .t-item:nth-child(2),
-  .t-item:nth-child(3),
-  .t-item:nth-child(4){
-    width: 27%;
+  .t-item:nth-child(3){
+    width: 42%;
     margin-right: 0;
   } 
   .t-item:nth-child(2){
@@ -163,6 +162,11 @@ export default {
     background:#881c21;
     font-size: 14px;
     overflow: hidden;
+  }
+  .t-item:nth-child(2) .t-info{
+    right: 20px;
+    text-align: right;
+    bottom: 10px;
   }
   .t-item:nth-child(2) .t-team{
     opacity:0.17;

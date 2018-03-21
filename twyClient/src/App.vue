@@ -37,4 +37,7 @@ body {
 .bg-gray{
   background-color: #fff !important;
 }
+.bg-teacher{
+  background-color: #232c3c !important;
+}
 </style>
