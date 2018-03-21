@@ -1,7 +1,7 @@
 <template>
   <div class="sidemenu-wrap">
     <div class="topbar">
-      <div class="goback" @click="goback" v-if="isGoback"></div>
+      <!-- <div class="goback" @click="goback" v-if="isGoback"></div> -->
       <router-link :to="{name: 'order'}" class="order-link">预约报名</router-link>
       <div class="btn-sidemenu" @click="sideMenu = true">
         <img class="img-sidemenu" src="../../assets/btn_sidemenu.png" />
@@ -75,7 +75,7 @@ export default {
       ]
     }
   },
-  props: ['isGoback'],
+  // props: ['isGoback'],
   methods: {
     goback () {
       this.$router.go(-1)
@@ -118,6 +118,7 @@ export default {
     font-size:14px;
     background:#525759;
     border-radius:100px;
+    font-weight: 200;
   }
   .btn-sidemenu{
     width: 30px;

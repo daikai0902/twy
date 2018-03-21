@@ -36,10 +36,7 @@
 
 <script>
 export default {
-  name: 'Help',
-  data () {
-    return {}
-  }
+  name: 'Help'
 }
 </script>
 
@@ -49,7 +46,7 @@ export default {
     z-index: 10;
     color: #fff;
     width: 94%;
-    margin: 20px auto;
+    margin: 30px auto;
   }
   .step-item{
     text-align: center;

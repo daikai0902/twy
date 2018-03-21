@@ -1,29 +1,24 @@
 <template>
   <div class="news-wrap">
     <div class="tabs">
-      <div class="tabs-news" @click="type = 'news'">
+      <!-- <div class="tabs-news" @click="type = 'news'">
         <p class="p1">NEWS</p>
         <p class="p2">新闻</p>
         <img src="../assets/download_white.png" class="icon-tab icon-news" v-if="type == 'news'">
-      </div>
+      </div> -->
       <div class="news-top">
         <img class="img-news-top" src="../assets/news_top.jpg">
+        <p class="nt-title">新闻公告</p>
       </div>
-      <div class="tabs-notify" @click="type = 'notify'">
+      <!-- <div class="tabs-notify" @click="type = 'notify'">
         <p class="p1">公告</p>
         <img src="../assets/download_black.png" class="icon-tab icon-notify" v-if="type == 'notify'">
-      </div>
+      </div> -->
     </div> 
 
     <div class="cont-wrap">
-      <div class="news-list" v-if="type == 'news'">
+      <div class="news-list">
         <div class="nl-item" v-for="(item, index) in newsList" :key="index" @click="gotoNewsDetail">
-          <p class="nl-title">{{item.title}}</p>
-          <p class="nl-time">{{item.time}}</p>
-        </div>
-      </div>
-      <div class="notify-list" v-if="type == 'notify'">
-        <div class="nl-item" v-for="(item, index) in notifyList" :key="index" @click="gotoNewsDetail">
           <p class="nl-title">{{item.title}}</p>
           <p class="nl-time">{{item.time}}</p>
         </div>
@@ -38,7 +33,6 @@ export default {
   name: 'News',
   data () {
     return {
-      type: 'news',
       newsList: [
         {
           title: 'What Makes A Hotel Boutique',
@@ -72,24 +66,6 @@ export default {
           title: 'What Makes A Hotel Boutique',
           time: '20 May 2018'
         }
-      ],
-      notifyList: [
-        {
-          title: 'What Makes A Hotel Notify',
-          time: '20 May 2018'
-        },
-        {
-          title: 'Do A Sporting Stag Do In Hotel Boutiqu',
-          time: '20 May 2018'
-        },
-        {
-          title: 'What Makes A Hotel Boutique',
-          time: '20 May 2018'
-        },
-        {
-          title: 'What Makes A Hotel Boutique',
-          time: '20 May 2018'
-        }
       ]
     }
   },
@@ -107,10 +83,8 @@ export default {
   z-index: 10;
 }
 .tabs{
-  width: 94%;
-  margin: 15px auto 30px;
   position: relative;
-  height: 162px;
+  height: 135px;
 }
 .icon-tab{
   position: absolute;
@@ -147,8 +121,7 @@ export default {
   left: 10px;
 }
 .tabs .news-top{
-  width: 75%;
-  height: 108px;
+  height: 120px;
   position: absolute;
   right: 0;
   top: 0;
@@ -156,7 +129,6 @@ export default {
 .tabs .news-top .img-news-top{
   width: 100%;
   height: 100%;
-  border-radius: 13px;
 }
 .tabs .tabs-notify{
   width: 75%;
@@ -208,5 +180,13 @@ export default {
   font-size: 12px;
   right: 3px;
   top: 10px;
+}
+.nt-title{
+  position: absolute;
+  z-index: 12;
+  color: #fff;
+  right: 40px;
+  bottom: 14px;
+  font-size: 22px;
 }
 </style>

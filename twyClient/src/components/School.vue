@@ -1,6 +1,6 @@
 <template>
   <div class="sc-wrap">
-    <side-menu isGoback="true"></side-menu>
+    <side-menu></side-menu>
     <div class="school-wrap">
       <div class="sc-item sc-header">
         <p class="sc-name">天唯艺星</p>

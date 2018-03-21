@@ -109,12 +109,7 @@
 
 <script>
 export default {
-  name: 'Growth',
-  data () {
-    return {
-
-    }
-  }
+  name: 'Growth'
 }
 </script>
 
@@ -123,6 +118,7 @@ export default {
     position: relative;
     z-index: 10;
     overflow: hidden;
+    margin: 30px auto;
   }
   .gw-header .gw-logo{
     width:44px;

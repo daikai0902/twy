@@ -1,7 +1,7 @@
 <template>
   <div class="activity-wrap">
     <div class="ac-wrap">
-      <div class="ac-item" v-for="(item, index) in activityList" :key="index" :class="['ac-item'+index % 5, item.type == 'img' ? 'ac-item-img': '']" :style="{height: itemHeight +'px'}" @click="gotoActivityDetail">
+      <div class="ac-item" v-for="(item, index) in activityList" :key="index" :class="['ac-item'+index % 5, item.type == 'img' ? 'ac-item-img': '']" :style="{height: itemHeight +'px'}" @click="gotoActivityDetail(item.type)">
         <div class="title" v-if="item.type != 'img'">{{item.title}}</div>
         <div class="desc" v-if="item.type != 'img'">{{item.desc}}</div>
         <img class="img" v-if="item.type == 'img'" :src="item.imgName">
@@ -479,8 +479,10 @@ export default {
     this.setActivityImg()
   },
   methods: {
-    gotoActivityDetail () {
-      this.$router.push({name: 'activityDetail'})
+    gotoActivityDetail (type) {
+      if (!type) {
+        this.$router.push({name: 'activityDetail'})
+      }
     },
     setActivityImg () {
       let ids = [1, 7, 13, 15, 21, 27, 33, 35]
@@ -505,7 +507,7 @@ export default {
     z-index: 10;
     color: #fff;
     width: 94%;
-    margin: 20px auto;
+    margin: 30px auto;
   }
   .ac-item{
     width: 48%;

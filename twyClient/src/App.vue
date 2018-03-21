@@ -35,6 +35,6 @@ body {
   background-color: #000;
 }
 .bg-gray{
-  background-color: #efefef !important;
+  background-color: #fff !important;
 }
 </style>

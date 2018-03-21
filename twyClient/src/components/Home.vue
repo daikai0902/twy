@@ -21,7 +21,7 @@
           <router-link to="introduce" class="flex-demo flex-item2">
             <img class="m-img" src="../assets/m3.png">
             <p class="m-name">课程介绍</p>
-            <p class="m-ename">Course introduction</p>
+            <p class="m-ename">Course</p>
           </router-link>
         </flexbox-item>
         <flexbox-item>
@@ -79,11 +79,13 @@ export default {
 .index-intro .intro-title{
   font-size:24px;
   margin-bottom: 10px;
+  font-weight: 200;
 }
 .index-intro .intro-desc,
 .index-intro .intro-link{
   font-size: 12px;
   color: #fff;
+  font-weight: 200;
 }
 .index-intro .intro-link{
   margin-top: 10px;

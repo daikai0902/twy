@@ -2,7 +2,7 @@
   <div class="news-wrap">
 
     <div class="teacher-wrap">
-      <swiper ref="swiper" :show-dots="false" @on-index-change="swiperChange" height="1200px">
+      <swiper ref="swiper" :show-dots="false" @on-index-change="swiperChange" height="1200px" v-model="swiperItemIndex">
         <swiper-item class="black t-item" v-for="(item, index) in teacherList" :key="index">
           <img class="t-img" :src="'/static/'+item.img">
           <p class="t-name">{{item.name}}</p>
@@ -30,6 +30,7 @@ export default {
     return {
       curr: 1,
       total: 14,
+      swiperItemIndex: 1,
       teacherList: [
         {
           name: '徐明德',
@@ -118,6 +119,9 @@ export default {
       ]
     }
   },
+  created () {
+    this.swiperItemIndex = parseInt(this.$route.query.id)
+  },
   methods: {
     swiperChange (currentIndex) {
       this.curr = currentIndex + 1
@@ -135,11 +139,9 @@ export default {
     position: relative;
     z-index: 10;
     width: 100%;
-    margin: 25px auto;
   }
   .t-item{
     color: #fff;
-    /* height: 600px !important; */
   }
   .t-img{
     position: absolute;
