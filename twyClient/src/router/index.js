@@ -8,7 +8,7 @@ import Introduce from '@/components/Introduce'
 import Home from '@/components/Home'
 import News from '@/components/News'
 import NewsDetail from '@/components/NewsDetail'
-// import Order from '@/components/Order'
+import Order from '@/components/Order'
 import Activity from '@/components/Activity'
 import ActivityDetail from '@/components/ActivityDetail'
 import Teachers from '@/components/Teachers'
@@ -68,7 +68,7 @@ let router = new Router({
     {
       path: '/order',
       name: 'order',
-      component: SignUp
+      component: Order
     },
     {
       path: '/activity',

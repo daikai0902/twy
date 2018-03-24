@@ -1,14 +1,13 @@
 <template>
   <div class="signup-wrap">
     <div class="signup-header">
-      <img class="bg-top" src="../assets/bg_top.jpg">
-      <img class="bg-top-mask" src="../assets/bg_top_mask.png">
+      <img class="bg-top" src="../assets/sign_bg.jpg">
       <div class="sh-txt">
         <p class="p-name">宁波天唯艺星教育</p>
         <p class="p-slogan">让艺术为孩子成长助航</p>
         <p class="p-keyword">
-          <label class="p-zhaozheng">春季招生</label>
-          <label class="p-baoming">火热报名中</label>
+          <label class="p-zhaozheng">多个课程开放</label>
+          <label class="p-baoming">免费体验!</label>
         </p>
       </div>
     </div>
@@ -50,15 +49,18 @@
       </div>
       <x-input  v-model="dadname" placeholder="爸爸姓名"></x-input>
       <x-input  v-model="dadphone" placeholder="手机" type="tel" keyboard="number" is-type="china-mobile"></x-input>
-      <x-input  v-model="nursery" placeholder="现就读的幼儿园"></x-input>
-      <x-input  v-model="address" placeholder="家庭住址"></x-input>
-      <!-- <x-input  v-model="course" placeholder="选课程"></x-input> -->
       <div class="su-cell">
         <img class="star" src="../assets/star.png">
-        <popup-radio :options="courseOptions" v-model="course" placeholder="选课程" required></popup-radio>
+        <popup-radio :options="orgOptions" v-model="groupId" placeholder="选网点" required @on-hide="orgOptionChange"></popup-radio>
       </div>
+      <div class="su-cell">
+        <img class="star" src="../assets/star.png">
+        <popup-radio :options="courseOptions" v-model="courseId" placeholder="选课程" required></popup-radio>
+      </div>
+      <x-input  v-model="nursery" placeholder="现就读的幼儿园"></x-input>
+      <x-input  v-model="address" placeholder="家庭住址"></x-input>
       <x-textarea v-model="remark" :max="50" placeholder="备注"></x-textarea>
-      <x-button type="primary" class="btn-save" @click.native="bindSignup">填写完成，提交</x-button>
+      <x-button type="primary" class="btn-save" @click.native="bindSignup">填写完成，立即提交</x-button>
       <img class="bg-ft" src="../assets/bg_ft.png">
       <img class="bg-ft-mask" src="../assets/bg_ft_mask.png">
     </group>
@@ -67,6 +69,7 @@
 
 <script>
 import { Group, Cell, XInput, XTextarea, XButton, PopupRadio, AlertModule } from 'vux'
+import api from '../api/index.js'
 
 export default {
   components: {
@@ -81,7 +84,11 @@ export default {
   data () {
     return {
       sexOptions: ['男孩', '女孩'],
-      courseOptions: ['民族舞', '影视表演', '声乐歌舞', '涂鸦创想班', '素描班', '少儿合唱团', '钢琴课'],
+      groupId: null,
+      readonly: true,
+      orgOptions: [],
+      courseId: null,
+      courseOptions: [],
       name: '',
       age: '',
       sex: '男孩',
@@ -94,10 +101,32 @@ export default {
       nursery: '',
       address: '',
       course: '',
-      remark: ''
+      remark: '',
     }
   },
+  created () {
+    this.getOrgList()
+  },
   methods: {
+    getCourseList (groupId) {
+      api.orgCourse({groupId: groupId, isOrder: true}).then(res => {
+        if (res.data.array.length > 0) {
+          this.readonly = false
+        } else {
+          this.readonly = true
+        }
+        res.data.array.forEach((item, index) => {
+          this.courseOptions.push({value:item.name, key:item.id})
+        });
+      })
+    },
+    getOrgList () {
+      api.orgPubList().then(res => {
+        res.data.array.forEach((item, index) => {
+          this.orgOptions.push({value:item.name, key:item.groupId})
+        });
+      })
+    },
     bindSignup () {
       let that = this
       if (!this.name && !this.age && !this.clothsize && !this.shoessize && !this.momname && !this.momphone && !this.course) {
@@ -135,7 +164,12 @@ export default {
           content: '您好，请填写妈妈手机再提交付款！'
         })
         return false
-      } else if (!this.course) {
+      } else if (!this.groupId) {
+        AlertModule.show({
+          content: '您好，请填写选网点再提交付款！'
+        })
+        return false
+      } else if (!this.courseId) {
         AlertModule.show({
           content: '您好，请填写选课程再提交付款！'
         })
@@ -154,64 +188,39 @@ export default {
         dadphone: this.dadphone,
         nursery: this.nursery,
         address: this.address,
-        course: this.course,
+        courseId: this.courseId,
         remark: this.remark
       }
-      // this.$http.get('localapi/api/signup?' + this.serializeQuery(_data)).then((res) => {
-      this.$http.get('http://twyapi.joy-read.com/api/signup?' + this.serializeQuery(_data)).then((res) => {
+      api.order(_data).then((res) => {
         if (res.status === 'fail') {
           AlertModule.show({
             content: res.message
           })
         } else {
-          if (that.course === '钢琴课') {
-            that.$router.push({ name: 'pianoSucc', query: {type: 'signup'} })
-          } else if (that.course === '少儿合唱团') {
-            that.$router.push({ name: 'choirSucc' })
-          } else {
-            that.$router.push({ name: 'qrcode' })
-          }
+          that.$router.push({ name: 'choirSucc' })
         }
       })
     },
-
-    serializeQuery (params, prefix) {
-      const query = Object.keys(params).map((key) => {
-        const value = params[key]
-
-        if (params.constructor === Array) {
-          key = `${prefix}[${key}]`
-        } else if (params.constructor === Object) {
-          key = (prefix ? `${prefix}.${key}` : key)
-        }
-
-        if (typeof value === 'object') {
-          return this.serializeQuery(value, key)
-        } else {
-          return `${key}=${encodeURIComponent(value)}`
-        }
-      })
-
-      return [].concat.apply([], query).join('&')
-    }
+    orgOptionChange () {
+      this.getCourseList(this.groupId)
+    },
   }
 }
 </script>
 
 <style>
 .signup-wrap {
-  background-color: #bcbeca;
-  /* padding-bottom: 67px; */
+  background-color: #403431;
   position: relative;
 }
 .signup-header {
   background-image: linear-gradient(
     -180deg,
     rgba(238, 238, 238, 0) 32%,
-    #bcbeca 100%
+    #403431 100%
   );
   position: relative;
-  height: 191px;
+  height: 390px;
   overflow: hidden;
 }
 .bg-top {
@@ -230,7 +239,7 @@ export default {
   width: 315px;
   margin: 0 auto;
   position: relative;
-  top: -65px;
+  top: -165px;
 }
 .weui-cell{
   padding: 10px !important;
@@ -294,7 +303,7 @@ export default {
   background-color: #fff;
 }
 .btn-save{
-  background-color:#7b0614 !important;
+  background-color:#0086e4 !important;
   box-shadow:0 0 24px 0 rgba(0,0,0,0.13);
   border-radius:16px  !important;
   width:254px !important;
@@ -319,30 +328,30 @@ export default {
 .sh-txt{
   position: relative;
   width: 310px;
-  top: -161px;
+  top: -281px;
   margin: 0 auto;
 }
 .p-name{
-  font-size:14px;
-  color:#A4897E ;
+  font-size:24px;
+  color:#fff ;
   text-align: right;
   text-shadow:0 2px 4px rgba(0,0,0,0.25);
   font-weight: bold;
 }
 .p-slogan{
   font-size:24px;
-  color:#A4897E;
+  color:#fff;
   letter-spacing:0.69px;
   text-align: right;
 }
 .p-keyword{
   font-size:24px;
-  color:#A4897E;
+  color:#fff;
   text-align:right;
 }
 .p-baoming{
   font-size:24px;
-  color:#7b0614;
+  color:#ce1427;
   text-align:right;
   font-weight: bold;
 }

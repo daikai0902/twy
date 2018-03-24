@@ -12,7 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/localapi': {
-        target: 'http://twyapi.joy-read.com/',
+        // target: 'http://twyapi.joy-read.com/',
+        target: 'http://192.168.0.101:9000/',
         changeOrigin: true,
         pathRewrite: {
           '^/localapi': ''
