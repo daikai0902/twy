@@ -101,7 +101,7 @@ export default {
       nursery: '',
       address: '',
       course: '',
-      remark: '',
+      remark: ''
     }
   },
   created () {
@@ -116,15 +116,15 @@ export default {
           this.readonly = true
         }
         res.data.array.forEach((item, index) => {
-          this.courseOptions.push({value:item.name, key:item.id})
-        });
+          this.courseOptions.push({ value: item.name, key: item.id })
+        })
       })
     },
     getOrgList () {
       api.orgPubList().then(res => {
         res.data.array.forEach((item, index) => {
-          this.orgOptions.push({value:item.name, key:item.groupId})
-        });
+          this.orgOptions.push({ value: item.name, key: item.groupId })
+        })
       })
     },
     bindSignup () {
@@ -203,7 +203,7 @@ export default {
     },
     orgOptionChange () {
       this.getCourseList(this.groupId)
-    },
+    }
   }
 }
 </script>
