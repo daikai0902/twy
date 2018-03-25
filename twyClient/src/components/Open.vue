@@ -6,6 +6,7 @@
       <p class="op2">敬请期待</p>
     </div>
     <img class="bg-home" src="../assets/bg_home.jpg">
+    <div class="home-wrap"></div>
   </div>
 </template>
 

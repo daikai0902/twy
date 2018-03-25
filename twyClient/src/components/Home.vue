@@ -40,6 +40,8 @@
         </flexbox-item>
       </flexbox>
     </div>
+
+    <div class="home-wrap"></div>
   </div>
 </template>
 

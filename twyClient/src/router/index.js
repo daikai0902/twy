@@ -21,6 +21,8 @@ import Open from '@/components/Open'
 import OrderSucc from '@/components/OrderSucc'
 import WepaySucc from '@/components/WepaySucc'
 import OtherpaySucc from '@/components/OtherpaySucc'
+import ParentLogin from '@/components/ParentLogin'
+import SchoolReport from '@/components/SchoolReport'
 
 Vue.use(Router)
 
@@ -132,6 +134,16 @@ let router = new Router({
       path: '/open',
       name: 'open',
       component: Open
+    },
+    {
+      path: '/parentlogin',
+      name: 'parentLogin',
+      component: ParentLogin
+    },
+    {
+      path: '/schoolReport',
+      name: 'schoolReport',
+      component: SchoolReport
     }
   ]
 })

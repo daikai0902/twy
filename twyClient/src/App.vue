@@ -44,4 +44,13 @@ html{
 .bg-teacher-detail{
   background-color: #000 !important;
 }
+.home-wrap{
+  opacity:0.66;
+  background-image:linear-gradient(-141deg, #470c45 0%, rgba(34,5,33,0.00) 100%);
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
 </style>
