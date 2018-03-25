@@ -3,14 +3,13 @@
    
     <div class="choir-text">
       <p><img class="wepay-succ" src="../assets/wepay_succ.png"></p>
-      <p class="p1">报名成功</p>
-      <p class="p2">少儿合唱团</p>
-      <p class="p3">需要面试考核才能正式成为合唱团成员，具体细节请联系客服！</p>
-      <p class="p3 pt20">学校电话 0574-88269588</p>
+      <p class="p3">报名成功</p>
+      <p class="p3">您好, {{name}}小朋友</p>
+      <p class="p3">请在用支付宝，银行卡，现金时，把下方这串码告知老师。</p>
+      <div class="pay-num">389NK23</div>
+      <p class="p3 pt50">学校电话 0574-88269588</p>
       <p class="p3">官方微信 17367232260</p>
     </div>
-    <div class="chior-room"></div>
-    <img class="bg-choir" src="../assets/bg_choir.jpg">
     <div class="choir-box">
     </div>
   </div>
@@ -18,7 +17,15 @@
 
 <script>
 export default {
-  name: 'ChoirSucc'
+  name: 'WepaySucc',
+  data () {
+    return {
+      name: '张三'
+    }
+  },
+  created () {
+    this.name = this.$route.query.n
+  }
 }
 </script>
 
@@ -55,7 +62,7 @@ export default {
 .choir-text{
   color: #fff;
   width: 300px;
-  padding-top: 120px;
+  padding-top: 80px;
   margin: 0 auto;
   z-index: 10;
   position: relative;
@@ -69,10 +76,25 @@ export default {
 }
 .choir-text .p3{
   font-size:16px;
-  line-height:36px;
+  line-height:28px;
 }
 .pt20{
   margin-top: 20px;
+}
+.pt50{
+  margin-top: 50px;
+}
+.pay-num{
+  background:#aa8869;
+  box-shadow:0 2px 4px 0 rgba(0,0,0,0.50);
+  border-radius:4px;
+  width:296px;
+  height:84px;
+  line-height:84px;
+  font-size:36px;
+  color:#fff;
+  text-align: center;
+  margin-top: 30px
 }
 </style>
 

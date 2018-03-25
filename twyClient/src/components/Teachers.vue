@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-    <div class="bg-black bg-teacher"></div>
+    <div class="bg-black"></div>
   </div>
 </template>
 

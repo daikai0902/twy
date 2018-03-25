@@ -549,14 +549,13 @@ export default {
   .ac-item:nth-child(20n + 6),
   .ac-item:nth-child(20n + 12),
   .ac-item:nth-child(20n + 17){
-    background:#0074cd;
+    background:#644256;;
   }
   .ac-item:nth-child(20n + 3),
   .ac-item:nth-child(20n + 7),
   .ac-item:nth-child(20n + 13),
   .ac-item:nth-child(20n + 18){
-    background:#ffd93d;
-    color: #000;
+    background:#c09050;
   }
   .ac-item:nth-child(20n + 4),
   .ac-item:nth-child(20n + 9),

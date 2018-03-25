@@ -55,7 +55,7 @@
       </div>
       <div class="su-cell">
         <img class="star" src="../assets/star.png">
-        <popup-radio :options="courseOptions" v-model="courseId" placeholder="选课程" required></popup-radio>
+        <popup-radio :options="courseOptions" v-model="courseId" placeholder="选课程" required @on-hide="orgCourseChange"></popup-radio>
       </div>
       <x-input  v-model="nursery" placeholder="现就读的幼儿园"></x-input>
       <x-input  v-model="address" placeholder="家庭住址"></x-input>
@@ -110,11 +110,6 @@ export default {
   methods: {
     getCourseList (groupId) {
       api.orgCourse({groupId: groupId, isOrder: true}).then(res => {
-        if (res.data.array.length > 0) {
-          this.readonly = false
-        } else {
-          this.readonly = true
-        }
         res.data.array.forEach((item, index) => {
           this.courseOptions.push({ value: item.name, key: item.id })
         })
@@ -129,7 +124,7 @@ export default {
     },
     bindSignup () {
       let that = this
-      if (!this.name && !this.age && !this.clothsize && !this.shoessize && !this.momname && !this.momphone && !this.course) {
+      if (!this.name && !this.age && !this.clothsize && !this.shoessize && !this.momname && !this.momphone && !this.courseId) {
         AlertModule.show({
           content: '您好，带星号的信息是必填的哦，请务必认真填写！'
         })
@@ -197,12 +192,15 @@ export default {
             content: res.message
           })
         } else {
-          that.$router.push({ name: 'choirSucc' })
+          that.$router.push({ name: 'orderSucc', params: {query: {c: '民族舞', n: this.name}} })
         }
       })
     },
     orgOptionChange () {
       this.getCourseList(this.groupId)
+    },
+    orgCourseChange (val) {
+      console.log(val)
     }
   }
 }
@@ -239,7 +237,7 @@ export default {
   width: 315px;
   margin: 0 auto;
   position: relative;
-  top: -165px;
+  top: -115px;
 }
 .weui-cell{
   padding: 10px !important;
@@ -343,6 +341,7 @@ export default {
   color:#fff;
   letter-spacing:0.69px;
   text-align: right;
+  line-height: 56px;
 }
 .p-keyword{
   font-size:24px;

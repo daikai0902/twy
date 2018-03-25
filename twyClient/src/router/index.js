@@ -18,6 +18,9 @@ import Org from '@/components/Org'
 import School from '@/components/School'
 import Growth from '@/components/Growth'
 import Open from '@/components/Open'
+import OrderSucc from '@/components/OrderSucc'
+import WepaySucc from '@/components/WepaySucc'
+import OtherpaySucc from '@/components/OtherpaySucc'
 
 Vue.use(Router)
 
@@ -69,6 +72,21 @@ let router = new Router({
       path: '/order',
       name: 'order',
       component: Order
+    },
+    {
+      path: '/ordersucc',
+      name: 'orderSucc',
+      component: OrderSucc
+    },
+    {
+      path: '/wepaysucc',
+      name: 'wepaySucc',
+      component: WepaySucc
+    },
+    {
+      path: '/otherpaysucc',
+      name: 'otherpaySucc',
+      component: OtherpaySucc
     },
     {
       path: '/activity',

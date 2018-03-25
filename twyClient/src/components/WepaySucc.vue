@@ -3,14 +3,12 @@
    
     <div class="choir-text">
       <p><img class="wepay-succ" src="../assets/wepay_succ.png"></p>
-      <p class="p1">报名成功</p>
-      <p class="p2">少儿合唱团</p>
-      <p class="p3">需要面试考核才能正式成为合唱团成员，具体细节请联系客服！</p>
-      <p class="p3 pt20">学校电话 0574-88269588</p>
+      <p class="p3">报名成功</p>
+      <p class="p3">您好, {{name}}小朋友</p>
+      <p class="p3">报名成功后等待学校安排班级和上课时间，具体细节请联系客服！</p>
+      <p class="p3 pt50">学校电话 0574-88269588</p>
       <p class="p3">官方微信 17367232260</p>
     </div>
-    <div class="chior-room"></div>
-    <img class="bg-choir" src="../assets/bg_choir.jpg">
     <div class="choir-box">
     </div>
   </div>
@@ -18,7 +16,15 @@
 
 <script>
 export default {
-  name: 'ChoirSucc'
+  name: 'WepaySucc',
+  data () {
+    return {
+      name: '张三'
+    }
+  },
+  created () {
+    this.name = this.$route.query.n
+  }
 }
 </script>
 
@@ -73,6 +79,9 @@ export default {
 }
 .pt20{
   margin-top: 20px;
+}
+.pt50{
+  margin-top: 50px;
 }
 </style>
 

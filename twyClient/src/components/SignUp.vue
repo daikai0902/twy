@@ -199,13 +199,18 @@ export default {
             content: res.message
           })
         } else {
-          if (that.course === '钢琴课') {
-            that.$router.push({ name: 'pianoSucc', query: {type: 'signup'} })
-          } else if (that.course === '少儿合唱团') {
-            that.$router.push({ name: 'choirSucc' })
+          if (that.payMethod === '微信') {
+            that.$router.push({ name: 'wepaySucc', query: {n: that.name} })
           } else {
-            that.$router.push({ name: 'qrcode' })
+            that.$router.push({ name: 'otherpaySucc', query: {n: that.name} })
           }
+          // if (that.course === '钢琴课') {
+          //   that.$router.push({ name: 'pianoSucc', query: {type: 'signup'} })
+          // } else if (that.course === '少儿合唱团') {
+          //   that.$router.push({ name: 'choirSucc' })
+          // } else {
+          //   that.$router.push({ name: 'qrcode' })
+          // }
         }
       })
     },
@@ -247,7 +252,7 @@ export default {
   width: 315px;
   margin: 0 auto;
   position: relative;
-  top: -165px;
+  top: -115px;
 }
 .weui-cell{
   padding: 10px !important;
@@ -351,6 +356,7 @@ export default {
   color:#fff;
   letter-spacing:0.69px;
   text-align: right;
+  line-height: 56px;
 }
 .p-keyword{
   font-size:24px;

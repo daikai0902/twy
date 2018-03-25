@@ -36,7 +36,7 @@ html{
   width: 100%;
   height: 100%;
   z-index: 1;
-  background-color: #000;
+  background-color: #220521;
 }
 .bg-gray{
   background-color: #fff !important;
