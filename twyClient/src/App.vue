@@ -19,9 +19,6 @@ html{
   background: url('./assets/bg_home.jpg') no-repeat center center;
   background-size: cover;
 }
-// body {
-//   background-color: #fbf9fe;
-// }
 .vux-popup-dialog.popup-smenu{
   width: 100% !important;
   left: 0 !important;
@@ -43,5 +40,8 @@ html{
 }
 .bg-teacher{
   background-color: #232c3c !important;
+}
+.bg-teacher-detail{
+  background-color: #000 !important;
 }
 </style>

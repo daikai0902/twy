@@ -2,7 +2,7 @@
   <div class="news-wrap">
 
     <div class="teacher-wrap">
-      <swiper ref="swiper" :show-dots="false" @on-index-change="swiperChange" height="1300px" :duration=30 v-model="swiperItemIndex">
+      <swiper ref="swiper" :show-dots="false" @on-index-change="swiperChange" height="1300px" :duration=50 v-model="swiperItemIndex">
         <swiper-item class="black t-item" v-for="(item, index) in teacherList" :key="index">
           <img class="t-img" :src="'/static/'+item.img">
           <p class="t-name">{{item.name}}</p>
@@ -18,7 +18,7 @@
       <loading :show="show1" :text="text1"></loading>
     </div>
 
-    <div class="bg-black"></div>
+    <div class="bg-black bg-teacher-detail"></div>
   </div>
 </template>
 
@@ -127,26 +127,23 @@ export default {
           desc: '主要负责学校网络管理等工作。'
         }
       ],
-      h: [1050, 850, 1250, 1250, 1100, 1000, 1100, 1000, 1100, 1300, 750, 750, 750, 750]
+      h: [1100, 850, 1250, 1250, 1100, 1000, 1100, 1000, 1100, 1350, 750, 750, 750, 750]
     }
   },
   created () {
-    // console.log(this.$vux)
-    // this.$vux.loading.show({
-    //   text: 'Loading'
-    // })
     this.swiperItemIndex = parseInt(this.$route.query.id)
-    // this.$vux.loading.hide()
-    // this.$nextTick(() => {
-    //   this.$refs.swiper.xheight = this.h[this.swiperItemIndex] + 'px'
-    // })
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.$refs.swiper.xheight = this.h[this.swiperItemIndex] + 'px'
+    })
   },
   methods: {
     swiperChange (currentIndex) {
       this.curr = currentIndex + 1
-      // this.$nextTick(() => {
-      //   this.$refs.swiper.xheight = this.h[currentIndex] + 'px'
-      // })
+      this.$nextTick(() => {
+        this.$refs.swiper.xheight = this.h[currentIndex] + 'px'
+      })
     }
   }
 }
