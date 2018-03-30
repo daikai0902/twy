@@ -28,11 +28,11 @@
 									<p class='desc-sec'>我们承诺竭力推进宁波“一人一艺”全民艺术普及工程而不懈努力！</p>
 									<p class='line'></p>
 								</div>
-								<div class="pinao" :style="'background-image: url('+ pinao + ')'"></div>
+								<router-link :to="{path: '/summary'}"><div class="pinao" :style="'background-image: url('+ pinao + ')'"></div></router-link>
 							</div>
 							<div class="right">
 								<div class="recommand">
-									<div class="item" v-for="(item, index) in recommand">
+									<div class="item" v-for="(item, index) in recommand" @click="handleToMorePage(item.type)">
 										<div class="img" :style="'background-image: url('+ item.url +')'">
 											<div class="bgc"></div>
 											<div class="pic-desc">
@@ -110,7 +110,13 @@ import act from '@/assets/pc/act.png'
 import user from '@/assets/pc/user.png'
 import laba from '@/assets/pc/laba.png'
 import airboll from '@/assets/pc/airboll.png'
-import special from '@/assets/pc/special.png'
+import c001 from '@/assets/pc/index/c001.png'
+import c002 from '@/assets/pc/index/c002.png'
+import c003 from '@/assets/pc/index/c003.png'
+import c004 from '@/assets/pc/index/c004.png'
+import c005 from '@/assets/pc/index/c005.png'
+import c006 from '@/assets/pc/index/c006.png'
+import c007 from '@/assets/pc/index/c007.png'
 import pinao from '@/assets/pc/pinao.jpg'
 import apply from '@/assets/pc/class.jpg'
 export default{
@@ -118,6 +124,13 @@ export default{
   data: () => ({
     pinao: pinao,
     apply: apply,
+    c001: c001,
+    c002: c002,
+    c003: c003,
+    c004: c004,
+    c005: c005,
+    c006: c006,
+    c007: c007,
     recommand: [
       {
         id: 1,
@@ -161,49 +174,49 @@ export default{
         tips: '4-8周岁儿童',
         class_time: '150分钟/16周次/一学期每次150分钟',
         point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
-        bgc: special
+        bgc: c001
       }, {
         id: 2,
         title: '影视表演',
         tips: '4-12周岁儿童',
         class_time: '150分钟/16周次/一学期每次150分钟',
         point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
-        bgc: special
+        bgc: c002
       }, {
         id: 3,
         title: '民族舞',
         tips: '4-8周岁儿童',
         class_time: '150分钟/16周次/一学期每次150分钟',
         point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
-        bgc: special
+        bgc: c003
       }, {
         id: 4,
         title: '涂鸦创想课',
         tips: '4-8周岁儿童',
         class_time: '150分钟/16周次/一学期每次150分钟',
         point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
-        bgc: special
+        bgc: c004
       }, {
         id: 5,
         title: '素描课',
         tips: '4-8周岁儿童',
         class_time: '150分钟/16周次/一学期每次150分钟',
         point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
-        bgc: special
+        bgc: c005
       }, {
         id: 6,
         title: '少儿合唱团',
         tips: '4-8周岁儿童',
         class_time: '150分钟/16周次/一学期每次150分钟',
         point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
-        bgc: special
+        bgc: c006
       }, {
         id: 7,
         title: '钢琴课',
         tips: '4-8周岁儿童',
         class_time: '150分钟/16周次/一学期每次150分钟',
         point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
-        bgc: special
+        bgc: c007
       }
     ],
     activited: 1,
@@ -213,13 +226,17 @@ export default{
       tips: '4-8周岁儿童',
       class_time: '150分钟/16周次/一学期每次150分钟',
       point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
-      bgc: special
+      bgc: c001
     }
   }),
   mounted () {
 
   },
   methods: {
+    handleToMorePage (type) {
+      let url = type === 'Teacher' ? '/team' : type === 'News' ? '/news' : '/activity'
+      this.$router.push({path: url})
+    },
     changeSpecial (id) {
       let special = this.special
       if (id) {

@@ -5,8 +5,8 @@
         <div class="left">
           <div class="content">
             <div class="topbar">
-              <img class="back" src="../../assets/pc/news/back.png" alt="">
-              <div class="logo-info">
+              <img class="back" src="../../assets/pc/news/back.png" alt="" @click="goback">
+              <div class="logo-info" @click="goIndex">
                 <img src="../../assets/pc/news/top_logo.png" alt="">
                 <div class="name">
                   <p class='web-name-cn'>宁波天唯艺星教育</p>
@@ -18,7 +18,8 @@
             <p class="detail">{{activityItem.content}}</p>
           </div>
         </div>
-        <div class="right">
+      </div>
+        <div class="right" :style="'width: ' + bgcwidth + 'px'">
           <div class="shadow">
           </div>
             <div class="menu">
@@ -36,7 +37,6 @@
               </div>
             </div>
         </div>
-      </div>
     </div>
   </div>
 </template>
@@ -123,10 +123,29 @@ export default{
       title: '天唯艺星教育学习',
       time: '昨天',
       content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
-    }
+    },
+    right: 0,
+    bgcwidth: 0
   }),
   mounted () {
-
+    let _this = this
+    let width = window.innerWidth
+    let s = (width - 1000) - 555 - 45 + 490
+    if (s < 490) {
+      s = 490
+    }
+    this.bgcwidth = s
+    window.onresize = function () {
+      let w = document.body.clientWidth
+      let t = (w - 1000) - 555 - 45 + 490
+      if (w <= 1000) {
+        t = 490
+      }
+      if (t < 490) {
+        t = 490
+      }
+      _this.bgcwidth = t
+    }
   },
   methods: {
     showNewsDetail (id) {
@@ -141,13 +160,20 @@ export default{
         this.actNews = id
         this.activityItem = temp[0]
       }
+    },
+    goIndex () {
+      this.$router.push({path: '/'})
+    },
+    goback () {
+      this.$router.go(-1)
     }
   }
 }
 </script>
 <style lang='less' scoped>
 #news{
-  max-width: 1400px;
+  // max-width: 1000px;
+  width: 100%;
   min-height: calc(100vh);
   margin: 0 auto;
   .actNews span{
@@ -160,15 +186,16 @@ export default{
   }
   .wrap{
     position: relative;
-    width: 100%;
+    width: 1000px;
     min-height: calc(100vh);
     margin: 0 auto;
     background-color: #fff;
     .left{
       display: inline-block;
+      width: 555px;
       .content{
         .topbar{
-          width: 790px;
+          width: 100%;
           padding-top: 69px;
           display: inline-flex;
           align-items: center;
@@ -176,12 +203,14 @@ export default{
         }
         .back{
           display: inline-block;
+          cursor: pointer;
         }
         .logo-info{
           display: inline-flex;
           justify-content: center;
           align-items: center;
           float: right;
+          cursor: pointer;
           img{
             display: inline-block;
             vertical-align: middle;
@@ -204,16 +233,18 @@ export default{
         }
         .title{
           padding-top: 34px;
+          margin-left: 20px;
           font-family:PingFangSC-Semibold;
           font-size:20px;
           color:#000000;
           letter-spacing:-0.32px;
           text-align:center;
-          font-weight: bold;       
+          font-weight: bold;
         }
         .detail{
           font-family:PingFangSC-Regular;
           font-size:16px;
+          margin-left: 20px;
           color:#4e4e4e;
           letter-spacing:-0.26px;
           line-height:30px;
@@ -221,18 +252,19 @@ export default{
         }
       }
     }
+  }
     .right{
       display: inline-block;
-      position: absolute;
+      position: fixed;
       right: 0;
-      width: 490px;
+      top: 0;
       min-height: calc(100vh);
       background: url('../../assets/pc/news/bgc.png') no-repeat center center;
       background-size: cover;
       .shadow{
         opacity:0.51;
         background-image:linear-gradient(55deg, #5f3b53 0%, #240520 100%);
-        width:490px;
+        width:100%;
         min-height: calc(100vh);
       }
         .menu{
@@ -257,6 +289,9 @@ export default{
             z-index: 11;
             .menu-list{
               margin-top: 30px;
+              width: 290px;
+              height: 450px;
+              overflow-y: auto;
               ul{
                 list-style-type: none;
               }
@@ -290,9 +325,11 @@ export default{
                 font-size: 16px !important;
               }
             }
+            .menu-list::-webkit-scrollbar {width:2px; height:2px; background-color:transparent;} /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+            .menu-list::-webkit-scrollbar-track {background-color:#ccc; border-radius:10px; -webkit-box-shadow:inset 0 0 6px rgba(64,43,58,0.3);} /*定义滚动条轨道 内阴影+圆角*/
+            .menu-list::-webkit-scrollbar-thumb {background-color:#555; border-radius:10px; -webkit-box-shadow:inset 0 0 6px rgba(64,43,58,0.3);} /*定义滑块 内阴影+圆角*/
           }
         }
     }
-  }
 }
 </style>
