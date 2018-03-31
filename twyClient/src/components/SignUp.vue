@@ -60,6 +60,31 @@
       <x-input  v-model="nursery" placeholder="现就读的幼儿园"></x-input>
       <x-input  v-model="address" placeholder="家庭住址"></x-input>
       <x-textarea v-model="remark" :max="50" placeholder="备注"></x-textarea>
+
+      <p class="payment-tip">支付方式</p>
+      <ul class="payment-list">
+        <li :class="{'active': ptype == 1}" @click="ptype = 1">
+          <img src="../assets/icon_weixin.png" class="pimg">
+          <img src="../assets/icon_weixin_active.png" class="pimg-active">
+          <span>微信</span>
+        </li>
+        <li :class="{'active': ptype == 2}"  @click="ptype = 2">
+          <img src="../assets/icon_zhifubao.png" class="pimg">
+          <img src="../assets/icon_zhifubao_active.png" class="pimg-active">
+          <span>支付宝</span>
+        </li>
+        <li :class="{'active': ptype == 3}"  @click="ptype = 3">
+          <img src="../assets/icon_card.png" class="pimg">
+          <img src="../assets/icon_card_active.png" class="pimg-active">
+          <span>银行卡</span>
+        </li>
+        <li :class="{'active': ptype == 4}"  @click="ptype = 4">
+          <img src="../assets/icon_money.png" class="pimg">
+          <img src="../assets/icon_money_active.png" class="pimg-active">
+          <span>现金</span>
+        </li>
+      </ul>
+
       <x-button type="primary" class="btn-save" @click.native="bindSignup">填写完成，提交</x-button>
       <img class="bg-ft" src="../assets/bg_ft.png">
       <img class="bg-ft-mask" src="../assets/bg_ft_mask.png">
@@ -102,7 +127,9 @@ export default {
       address: '',
       course: '',
       remark: '',
-      payMethod: '微信'
+      payList: ['微信', '支付宝', '刷卡', '现金'],
+      payMethod: '微信',
+      ptype: 1
     }
   },
   created () {
@@ -177,6 +204,7 @@ export default {
         return false
       }
 
+      this.payMethod = this.payList[this.ptype - 1]
       let _data = {
         name: this.name,
         age: this.age,
@@ -415,5 +443,52 @@ export default {
 }
 .vux-radio-label{
   color: #000;
+}
+.payment-tip{
+  width: 270px;
+  margin: 10px auto;
+  font-size: 14px;
+  color:#6f5144;
+  position: relative;
+  z-index: 11;
+}
+.payment-list{
+  width: 270px;
+  margin: 10px auto;
+  position: relative;
+  z-index: 11;
+}
+.payment-list li{
+  width: 48px;
+  height: 48px;
+  margin-right: 18px;
+  list-style: none;
+  display: inline-block;
+}
+.payment-list li:last-child{
+  margin-right: 0;
+}
+.payment-list li img{
+  width: 100%;
+  height: 100%;
+}
+.payment-list li span{
+  font-size: 14px;
+  color:#6f5144;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+.payment-list li .pimg{
+  display: block;
+}
+.payment-list li .pimg-active{
+  display: none;
+}
+.payment-list li.active .pimg{
+  display: none;
+}
+.payment-list li.active .pimg-active{
+  display: block;
 }
 </style>
