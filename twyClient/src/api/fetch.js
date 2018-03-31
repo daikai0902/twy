@@ -1,6 +1,4 @@
 import axios from 'axios'
-// import store from '@/store'
-// import { getToken } from '@/utils/auth'
 
 let user = sessionStorage.getItem('user')
 if (user) {
@@ -19,12 +17,6 @@ const service = function (url, data, method = 'GET', headers = {}) {
     axios(options).then((response) => {
       resolve(response.data)
     }).catch((error) => {
-      // Message({
-      //   message: error.message,
-      //   type: 'error',
-      //   duration: 5 * 1000
-      // })
-      console.log(error.message)
       reject(error)
     })
   })

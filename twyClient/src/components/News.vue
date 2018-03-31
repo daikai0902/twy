@@ -19,8 +19,8 @@
     <div class="cont-wrap">
       <div class="news-list">
         <div class="nl-item" v-for="(item, index) in newsList" :key="index" @click="gotoNewsDetail">
-          <p class="nl-title">{{item.title}}</p>
-          <p class="nl-time">{{item.time}}</p>
+          <p class="nl-title">{{item.name}}</p>
+          <p class="nl-time">{{item.createTime}}</p>
         </div>
       </div>
     </div>
@@ -29,45 +29,20 @@
 </template>
 
 <script>
+import api from '../api/index.js'
 export default {
   name: 'News',
   data () {
     return {
-      newsList: [
-        {
-          title: 'What Makes A Hotel Boutique',
-          time: '20 May 2018'
-        },
-        {
-          title: 'Do A Sporting Stag Do In Hotel Boutiqu',
-          time: '20 May 2018'
-        },
-        {
-          title: 'What Makes A Hotel Boutique',
-          time: '20 May 2018'
-        },
-        {
-          title: 'What Makes A Hotel Boutique',
-          time: '20 May 2018'
-        },
-        {
-          title: 'What Makes A Hotel Boutique',
-          time: '20 May 2018'
-        },
-        {
-          title: 'What Makes A Hotel Boutique',
-          time: '20 May 2018'
-        },
-        {
-          title: 'What Makes A Hotel Boutique',
-          time: '20 May 2018'
-        },
-        {
-          title: 'What Makes A Hotel Boutique',
-          time: '20 May 2018'
-        }
-      ]
+      newsList: []
     }
+  },
+  created () {
+    api.newsList().then(res => {
+      if (res.status === 'succ') {
+        this.newsList = res.data.array
+      }
+    })
   },
   methods: {
     gotoNewsDetail () {
@@ -157,7 +132,7 @@ export default {
 .nl-item{
   position: relative;
   display: block;
-  padding: 6px 25% 6px 18px;
+  padding: 6px 30% 6px 18px;
 }
 .nl-item::before{
   content: '';

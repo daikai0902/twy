@@ -13,7 +13,7 @@ module.exports = {
     proxyTable: {
       '/localapi': {
         // target: 'http://twyapi.joy-read.com/',
-        target: 'http://192.168.0.101:9000/',
+        target: 'http://121.196.208.151:9000/',
         // target: 'http://192.168.199.233:9000/',
         changeOrigin: true,
         pathRewrite: {

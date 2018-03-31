@@ -15,5 +15,12 @@ export default {
   },
   orgPubList (params) {
     return service(`/api/org/pub/list`, params, 'GET')
+  },
+
+  activityList (params) {
+    return service(`/api/activity/list`, params, 'GET')
+  },
+  newsList (params) {
+    return service(`/api/news/list`, params, 'GET')
   }
 }
