@@ -17,12 +17,12 @@
           <swiper :options="swiperOption" ref="mySwiper" @someSwiperEvent="onTransitionStart">
               <!-- slides -->
           <template slot-scope="scope">
-              <swiper-slide v-for="(item, index) in teamlist">
+              <swiper-slide v-for="(item, index) in teamlist" :key="index">
                 <img :src="'/static/'+ item.url" alt="">
                 <div class="info" v-if="activited === index + 1">
                   <p class="name">{{item.name}}</p>
                   <div class="position">
-                    <p v-for="(it, id) in item.position">{{it}}</p>
+                    <p v-for="(it, id) in item.position" :key="id">{{it}}</p>
                   </div>
                 </div>
                 <div class="mouse" v-if="activited === index + 1"><img src="../../assets/pc/team/mouse.png" alt=""></div>
@@ -51,7 +51,7 @@
           <img class="next" @click="showNext" src="../../assets/pc/team/back.png" alt=""> -->
           <div class="detail" id="tDesc" :style="'transform: scale('+isShowDesc + ',' + isShowDesc+ ')'">
             <div class="box">
-              <p v-for="(item, index) in desc.desc">{{item}}</p>
+              <p v-for="(item, index) in desc.desc" :key="index">{{item}}</p>
            </div>
           </div>
         </div>
@@ -243,9 +243,9 @@ export default{
     }
   },
   methods: {
-      onTransitionStart (swiper) {
-        console.log(swiper)
-      },
+    onTransitionStart (swiper) {
+      console.log(swiper)
+    },
     goIndex () {
       this.$router.push({path: '/'})
     },
