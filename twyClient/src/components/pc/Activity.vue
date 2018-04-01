@@ -9,7 +9,7 @@
                 <div class="menu-list">
                 <img class="back" src="../../assets/pc/activity/back.png" alt="" @click="goback"> 
                   <ul>
-                    <li v-for="(item, index) in activityList" :class="{'actNews':actActivity === index}" @click="showActivityDetail(item.id, index)" :key="index">
+                    <li v-for="(item, index) in activityList" :class="{'actNews':actActivity === index}" @click="showActivityDetail(item, index)" :key="index">
                       <span class="news-title">{{item.name}}</span><span class="news-time">{{item.time}}</span>
                     </li>
                   </ul>
@@ -29,7 +29,11 @@
               </div>
             </div>
             <p class="title">{{activityItem.title}}</p>
-            <p class="detail">{{activityItem.content}}</p>
+
+            <div class="activity-detail">
+              <div class="video-box" v-if="activityItem.videoUrl"></div>
+              <div class="detail"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -46,7 +50,8 @@ export default{
     activityItem: {
       title: null,
       time: null,
-      content: null
+      content: null,
+      videoUrl: null
     },
     bgcwidth: 0
   }),
@@ -54,9 +59,9 @@ export default{
     api.activityList().then(res => {
       if (res.status === 'succ') {
         this.activityList = res.data.array
+        this.showActivityDetail(this.activityList[0], this.actActivity)
       }
     })
-    this.showActivityDetail(this.activityList[0].id, this.actActivity)
   },
   mounted () {
     let _this = this
@@ -79,18 +84,25 @@ export default{
     }
   },
   methods: {
-    showActivityDetail (id, idx) {
-      this.actActivity = idx
-      api.activityDetail({activityId: this.id}).then(res => {
-        if (res.status === 'succ') {
-          this.activityItem = {
-            title: res.data.name,
-            address: res.data.address,
-            time: res.data.time
+    showActivityDetail (item, idx) {
+      console.log(item, idx)
+      if (item.type === '2') {
+        window.open(item.link)
+      } else {
+        this.actActivity = idx
+        api.activityDetail({activityId: item.id}).then(res => {
+          if (res.status === 'succ') {
+            this.activityItem = {
+              title: res.data.name,
+              address: res.data.address,
+              time: res.data.time,
+              videoUrl: res.data.videoUrl
+            }
+            document.querySelector('.detail').innerHTML = res.data.content
+            document.querySelector('.video-box').innerHTML = res.data.c
           }
-          document.querySelector('.detail').innerHTML = res.data.content
-        }
-      })
+        })
+      }
     },
     goIndex () {
       this.$router.push({path: '/'})
@@ -181,8 +193,8 @@ export default{
                 }
                 .news-title{
                   display: inline-block;
-                  width: 196px;
-                  margin-right: 28px;
+                  width: 188px;
+                  margin-right: 15px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -190,10 +202,11 @@ export default{
                 .news-time{
                   display: inline-block;
                   vertical-align: top;
-                  width: 60px;
+                  width: 86px;
+                  font-size: 12px !important;
                 }
               }
-              li:hover span{
+              li:hover .news-title{
                 color: #fff !important;
                 font-size: 16px !important;
               }
@@ -266,6 +279,10 @@ export default{
         }
       }
     }
+  }
+  .video-box{
+    width: 100%;
+    margin: 30px auto 10px;
   }
 }
 </style>

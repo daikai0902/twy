@@ -9,9 +9,8 @@
 				<div class="wraps">
 					<img src="../../assets/pc/logo.png" alt="">
 					<p class="mainTitle">宁波天唯艺星教育</p>
-					<p class="mainDesc">宁波天唯艺星教育是上海小荧星核心战略合作伙伴，由上海戏剧学院徐明德教授和27年资深教育管理者带领，携手各艺术领域专家教师，志在做最专业的艺术基础教育。</p>
-					<p class="mainDesc">天唯艺星教育学校目前拥有市教育服务中心总部艺术团、鄞州区教育培训学校。</p>
-					<p class="mainDesc">即将开设在宁波海曙区、江北区、慈溪市、奉化市等地分校。</p>
+					<p class="mainDesc">“我们这一代人注定要在马背上从事军事与政治，为了让我们儿子一代人从事科学与技术，让我们孙子一代人从事文化与艺术。我们正是这一历史链条的传递者，也可以说是幸运儿。”</p>
+					<p class="main-author">托马斯·杰斐逊（1743年-1826年）<br />美利坚合众国第三任总统</p>
 
 					<div class="content">
 						<div class="left">
@@ -157,7 +156,7 @@ export default{
         title: '新闻公告标题新闻公告标题',
         desc: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内…',
         icon: laba,
-        cate: '新闻公告'
+        cate: '新闻活动'
       }, {
         id: 1,
         tips: '04-08 01:08PM',
@@ -168,7 +167,7 @@ export default{
         title: '精彩活动标题精彩活动标题',
         desc: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内…',
         icon: airboll,
-        cate: '精彩活动'
+        cate: '艺星之路'
       }
     ],
     special: [
@@ -315,17 +314,35 @@ export default{
 			text-align:left;	
 		}
 		.mainDesc{
-			width: 583px;
 			font-family:PingFangSC-Regular;
-			font-size:12px;
-			color:#909090;
+			font-size:18px;
+			color:#f0f0f0;
 			letter-spacing:0.1px;
-			line-height:23px;
-			text-align:left;			
+			line-height:32px;
+			text-align:left;
+			font-weight: 100;	
+		}
+		.main-author{
+			margin: 10px 0 0 auto;
+			text-align: left;
+			color:#f0f0f0;
+			width: 270px;
+			position: relative;
+			font-weight: 100;
+			font-size: 18px;
+		}
+		.main-author:after{
+			content: '';
+			position: absolute;
+			background-color: #f0f0f0;
+			height: 1px;
+			width: 50px;
+			left: -65px;
+			top: 13px;
 		}
 	}
 	.content{
-		margin-top: 132px;
+		margin-top: 120px;
 		.left{
 			position: relative;
 			display: inline-block;

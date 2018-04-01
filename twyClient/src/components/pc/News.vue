@@ -15,7 +15,10 @@
               </div>
             </div>
             <p class="title">{{title}}</p>
-            <div class="detail"></div>
+            <div class="activity-detail">
+              <div class="video-box" c></div>
+              <div class="detail"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -29,7 +32,7 @@
                 </div>
                 <div class="menu-list">
                   <ul>
-                    <li v-for="(item, index) in newsList" :class="{'actNews':actNews === item.id}" @click="showNewsDetail(item.id)" :key="index">
+                    <li v-for="(item, index) in newsList" :class="{'actNews':actNews === index}" @click="showNewsDetail(item, index)" :key="index">
                       <span class="news-title">{{item.name}}</span><span class="news-time">{{item.createTime.substring(5, 12)}}</span>
                     </li>
                   </ul>
@@ -115,8 +118,9 @@ export default{
         content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
       }
     ],
-    actNews: 1,
+    actNews: 0,
     title: null,
+    videoUrl: null,
     right: 0,
     bgcwidth: 0
   }),
@@ -124,9 +128,9 @@ export default{
     api.newsList().then(res => {
       if (res.status === 'succ') {
         this.newsList = res.data.array
+        this.showNewsDetail(this.newsList[0], 0)
       }
     })
-    this.showNewsDetail(this.newsList[0].id)
   },
   mounted () {
     let _this = this
@@ -149,15 +153,24 @@ export default{
     }
   },
   methods: {
-    showNewsDetail (id) {
-      api.newsDetail({newsId: this.id}).then(res => {
-        if (res.status === 'succ') {
-          this.title = res.data.name
-          this.address = res.data.address
-          this.time = res.data.createTime
-          document.querySelector('.detail').innerHTML = res.data.content
-        }
-      })
+    showNewsDetail (item, idx) {
+      if (item.type === '2') {
+        window.open(item.link)
+      } else {
+        this.actNews = idx
+        api.newsDetail({newsId: item.id}).then(res => {
+          if (res.status === 'succ') {
+            this.title = res.data.name
+            this.address = res.data.address
+            this.time = res.data.createTime
+            this.videoUrl = res.data.videoUrl
+            document.querySelector('.detail').innerHTML = res.data.content
+            if (res.data.videoUrl) {
+              document.querySelector('.video-box').innerHTML = res.data.videoUrl
+            }
+          }
+        })
+      }
     },
     goIndex () {
       this.$router.push({path: '/'})
@@ -251,84 +264,91 @@ export default{
       }
     }
   }
-    .right{
-      display: inline-block;
-      position: fixed;
-      right: 0;
-      top: 0;
+  .right{
+    display: inline-block;
+    position: fixed;
+    right: 0;
+    top: 0;
+    min-height: calc(100vh);
+    background: url('../../assets/pc/news/bgc.png') no-repeat center center;
+    background-size: cover;
+    .shadow{
+      opacity:0.51;
+      background-image:linear-gradient(55deg, #5f3b53 0%, #240520 100%);
+      width:100%;
       min-height: calc(100vh);
-      background: url('../../assets/pc/news/bgc.png') no-repeat center center;
-      background-size: cover;
-      .shadow{
-        opacity:0.51;
-        background-image:linear-gradient(55deg, #5f3b53 0%, #240520 100%);
-        width:100%;
+    }
+      .menu{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
         min-height: calc(100vh);
-      }
-        .menu{
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          min-height: calc(100vh);
-          .news-type{
-            span{
-              font-family:PingFangSC-Regular;
-              font-size:14px;
-              color:#9c9c9c;
-              letter-spacing:-0.22px;
-              text-align:left;
-              margin-right: 40px;
-            }
-          }
-          .box{
-            padding: 134px 140px 159px 65px;
-            position: relative;
-            z-index: 11;
-            .menu-list{
-              margin-top: 30px;
-              width: 290px;
-              height: 450px;
-              overflow-y: auto;
-              ul{
-                list-style-type: none;
-              }
-              li{
-                list-style-type: none;
-                cursor: pointer;
-                span{
-                  font-family:PingFangSC-Regular;
-                  font-size:14px;
-                  color:#6b6b6b;
-                  letter-spacing:0;
-                  line-height:31px;
-                  text-align:left;                
-                }
-                .news-title{
-                  display: inline-block;
-                  width: 196px;
-                  margin-right: 28px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-                .news-time{
-                  display: inline-block;
-                  vertical-align: top;
-                  width: 66px;
-                  font-size: 12px !important;
-                }
-              }
-              li:hover span{
-                color: #fff !important;
-                font-size: 16px !important;
-              }
-            }
-            .menu-list::-webkit-scrollbar {width:2px; height:2px; background-color:transparent;} /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
-            .menu-list::-webkit-scrollbar-track {background-color:#ccc; border-radius:10px; -webkit-box-shadow:inset 0 0 6px rgba(64,43,58,0.3);} /*定义滚动条轨道 内阴影+圆角*/
-            .menu-list::-webkit-scrollbar-thumb {background-color:#555; border-radius:10px; -webkit-box-shadow:inset 0 0 6px rgba(64,43,58,0.3);} /*定义滑块 内阴影+圆角*/
+        .news-type{
+          span{
+            font-family:PingFangSC-Regular;
+            font-size:14px;
+            color:#9c9c9c;
+            letter-spacing:-0.22px;
+            text-align:left;
+            margin-right: 40px;
           }
         }
-    }
+        .box{
+          padding: 134px 140px 159px 65px;
+          position: relative;
+          z-index: 11;
+          .menu-list{
+            margin-top: 30px;
+            width: 290px;
+            height: 450px;
+            overflow-y: auto;
+            ul{
+              list-style-type: none;
+            }
+            li{
+              list-style-type: none;
+              cursor: pointer;
+              span{
+                font-family:PingFangSC-Regular;
+                font-size:14px;
+                color:#6b6b6b;
+                letter-spacing:0;
+                line-height:31px;
+                text-align:left;                
+              }
+              .news-title{
+                display: inline-block;
+                width: 196px;
+                margin-right: 28px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              .news-time{
+                display: inline-block;
+                vertical-align: top;
+                width: 66px;
+                font-size: 12px !important;
+              }
+            }
+            li:hover .news-title{
+              color: #fff !important;
+              font-size: 16px !important;
+            }
+            li:hover .news-time{
+              color: #fff !important;
+            }
+          }
+          .menu-list::-webkit-scrollbar {width:2px; height:2px; background-color:transparent;} /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+          .menu-list::-webkit-scrollbar-track {background-color:#ccc; border-radius:10px; -webkit-box-shadow:inset 0 0 6px rgba(64,43,58,0.3);} /*定义滚动条轨道 内阴影+圆角*/
+          .menu-list::-webkit-scrollbar-thumb {background-color:#555; border-radius:10px; -webkit-box-shadow:inset 0 0 6px rgba(64,43,58,0.3);} /*定义滑块 内阴影+圆角*/
+        }
+      }
+  }
+  .video-box{
+    width: 100%;
+    margin: 30px auto 10px;
+  }
 }
 </style>
