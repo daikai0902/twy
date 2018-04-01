@@ -5,102 +5,106 @@
 				<div class="bg-start"></div>
 			</div>
 			<div class="bg-layout">
-					<p class="en-title">Tian  Wei Art School</p>
-					<div class="wraps">
-						<img src="../../assets/pc/logo.png" alt="">
-						<p class="mainTitle">宁波天唯艺星教育</p>
-						<p class="mainDesc">宁波天唯艺星教育是上海小荧星核心战略合作伙伴，由上海戏剧学院徐明德教授和27年资深教育管理者带领，携手各艺术领域专家教师，志在做最专业的艺术基础教育。</p>
-						<p class="mainDesc">天唯艺星教育学校目前拥有市教育服务中心总部艺术团、鄞州区教育培训学校。</p>
-						<p class="mainDesc">即将开设在宁波海曙区、江北区、慈溪市、奉化市等地分校。</p>
+				<p class="en-title">Tian  Wei Art School</p>
+				<div class="wraps">
+					<img src="../../assets/pc/logo.png" alt="">
+					<p class="mainTitle">宁波天唯艺星教育</p>
+					<p class="mainDesc">宁波天唯艺星教育是上海小荧星核心战略合作伙伴，由上海戏剧学院徐明德教授和27年资深教育管理者带领，携手各艺术领域专家教师，志在做最专业的艺术基础教育。</p>
+					<p class="mainDesc">天唯艺星教育学校目前拥有市教育服务中心总部艺术团、鄞州区教育培训学校。</p>
+					<p class="mainDesc">即将开设在宁波海曙区、江北区、慈溪市、奉化市等地分校。</p>
 
-						<div class="content">
+					<div class="content">
+						<div class="left">
+							<div class="best-box">
+								<img class="best-img" src="../../assets/pc/index_content_left.png" alt="">
+							</div>
+							<div class="best-text">
+								<p>做最专业的艺术基础教育</p>
+								<p class="second">让艺术为孩子成长助航</p>
+							</div>
+							<img class="bestart" src="../../assets/pc/bestatr.jpg" alt="">
+							<div class="school-desc">
+								<p>天唯艺星教育沿用上海小荧星32年沉淀的初、中、高级艺术专业教材，所有专职教师均通过上海小荧星教材教法上岗培训和不断进修，学校定期由上海专家来校指导，并将邀请宁波市著名歌、舞、演艺术家进班授课。</p>
+								<p class='desc-sec'>我们承诺竭力推进宁波“一人一艺”全民艺术普及工程而不懈努力！</p>
+								<p class='line'></p>
+							</div>
+							<router-link :to="{path: '/summary'}"><div class="pinao" :style="'background-image: url('+ pinao + ')'"></div></router-link>
+						</div>
+						<div class="right">
+							<div class="recommand">
+								<div class="item" v-for="(item, index) in recommand" @click="handleToMorePage(item.type)" :key="index">
+									<div class="img" :style="'background-image: url('+ item.url +')'">
+										<div class="bgc"></div>
+										<div class="pic-desc">
+											<p class="name" v-if="item.name">{{item.name}}</p>
+											<p class="nick" v-if="item.nick">{{item.nick}}</p>
+										</div>
+									</div>
+									<div class="info">
+										<p class="tips" :class="{'teachers':item.type === 'Teacher', 'news-tips': item.type === 'News', 'acts': item.type === 'Activity'}">{{item.tips}}</p>
+										<p class="title">{{item.title}}</p>
+										<p class="desc">{{item.desc}}</p>
+									</div>
+									<div class="navigate" >
+										<img class='icon' :src="item.icon" alt="">
+										<span class="cate">{{item.cate}}</span>
+										<span class="type">{{item.type}}</span>
+										<img class="arrow" src="../../assets/pc/arrow.png" alt="">
+									</div>
+								</div>
+							</div>
+
+							<!-- special -->
+							<div class="special">
+								<div class="content">
+									<div class="leftbar">
+										<ul class="menu">
+											<li class="menu-item" v-for="(item, index) in special" @click="changeSpecial(item.id)" :key="index">
+												<span class="activited" v-if="activited === item.id"></span>
+												<span class="menu-title">{{item.title}}</span>
+											</li>
+										</ul>
+									</div>
+									<div class="rightbar" :style="'background-image: url('+ selectItem.bgc + ')'">
+										<div class="desc">
+											<p>{{selectItem.tips}}</p>
+											<p>{{selectItem.class_time}}</p>
+											<p>{{selectItem.point}}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- apply -->
+					<div class="apply" :style="'background-image: url('+ apply + ')'"></div>
+				</div>
+
+				<div class="footer">
+					<div class="box">
+						<div class="flogo">
+							<img src="../../assets/pc/logo.png" alt="">
+						</div>
+						<div class="box">
 							<div class="left">
-								<div class="best-box">
-									<img class="best-img" src="../../assets/pc/index_content_left.png" alt="">
-								</div>
-								<div class="best-text">
-									<p>做最专业的艺术基础教育</p>
-									<p class="second">让艺术为孩子成长助航</p>
-								</div>
-								<img class="bestart" src="../../assets/pc/bestatr.jpg" alt="">
-								<div class="school-desc">
-									<p>天唯艺星教育沿用上海小荧星32年沉淀的初、中、高级艺术专业教材，所有专职教师均通过上海小荧星教材教法上岗培训和不断进修，学校定期由上海专家来校指导，并将邀请宁波市著名歌、舞、演艺术家进班授课。</p>
-									<p class='desc-sec'>我们承诺竭力推进宁波“一人一艺”全民艺术普及工程而不懈努力！</p>
-									<p class='line'></p>
-								</div>
-								<router-link :to="{path: '/summary'}"><div class="pinao" :style="'background-image: url('+ pinao + ')'"></div></router-link>
+								<p class="name">宁波天唯艺星教育</p>
+								<p class="name">备案号：fag939300r</p>
+								<p class="name">学校电话0574-88269588</p>
+								<p class="name">官方微信17367232260</p>
 							</div>
 							<div class="right">
-								<div class="recommand">
-									<div class="item" v-for="(item, index) in recommand" @click="handleToMorePage(item.type)" :key="index">
-										<div class="img" :style="'background-image: url('+ item.url +')'">
-											<div class="bgc"></div>
-											<div class="pic-desc">
-												<p class="name" v-if="item.name">{{item.name}}</p>
-												<p class="nick" v-if="item.nick">{{item.nick}}</p>
-											</div>
-										</div>
-										<div class="info">
-											<p class="tips" :class="{'teachers':item.type === 'Teacher', 'news-tips': item.type === 'News', 'acts': item.type === 'Activity'}">{{item.tips}}</p>
-											<p class="title">{{item.title}}</p>
-											<p class="desc">{{item.desc}}</p>
-										</div>
-										<div class="navigate" >
-											<img class='icon' :src="item.icon" alt="">
-											<span class="cate">{{item.cate}}</span>
-											<span class="type">{{item.type}}</span>
-											<img class="arrow" src="../../assets/pc/arrow.png" alt="">
-										</div>
-									</div>
-								</div>
-
-								<!-- special -->
-								<div class="special">
-									<div class="content">
-										<div class="leftbar">
-											<ul class="menu">
-												<li class="menu-item" v-for="(item, index) in special" @click="changeSpecial(item.id)" :key="index">
-													<span class="activited" v-if="activited === item.id"></span>
-													<span class="menu-title">{{item.title}}</span>
-												</li>
-											</ul>
-										</div>
-										<div class="rightbar" :style="'background-image: url('+ selectItem.bgc + ')'">
-											<div class="desc">
-												<p>{{selectItem.tips}}</p>
-												<p>{{selectItem.class_time}}</p>
-												<p>{{selectItem.point}}</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- apply -->
-						<div class="apply" :style="'background-image: url('+ apply + ')'"></div>
-					</div>
-
-					<div class="footer">
-						<div class="box">
-							<div class="flogo">
-								<img src="../../assets/pc/logo.png" alt="">
-							</div>
-							<div class="box">
-								<div class="left">
-									<p class="name">宁波天唯艺星教育</p>
-									<p class="name">备案号：fag939300r</p>
-									<p class="name">学校电话0574-88269588</p>
-									<p class="name">官方微信17367232260</p>
-								</div>
-								<div class="right">
-									<img src="../../assets/pc/footer_qrcode.png" alt="">
-								</div>
+								<img src="../../assets/pc/footer_qrcode.png" alt="">
 							</div>
 						</div>
 					</div>
+				</div>
+
+				<div class="bg-color"></div>
 			</div>
 		</div>
+
+		
 	</div>
 </template>
 <script>
@@ -254,8 +258,16 @@ export default{
 }
 </script>
 <style lang='less' scoped>
-.maincontent{
-	background-color: #2d2d2e;
+.bg-color{
+	// background-color: #2d2d2e;
+	background-image: linear-gradient(90deg, #141414 0%, #4d4d4f 100%);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	min-height: calc(100vh);
+	top:0;
+	left: 0;
 }
 #pc-index{
 	box-sizing: border-box;
