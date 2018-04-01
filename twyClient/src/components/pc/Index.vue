@@ -83,18 +83,18 @@
 				<div class="footer">
 					<div class="box">
 						<div class="flogo">
-							<img src="../../assets/pc/logo.png" alt="">
+							<img src="../../assets/pc/footer_qrcode.jpg">
 						</div>
 						<div class="box">
 							<div class="left">
 								<p class="name">宁波天唯艺星教育</p>
-								<p class="name">备案号：fag939300r</p>
-								<p class="name">学校电话0574-88269588</p>
-								<p class="name">官方微信17367232260</p>
+								<p class="name">备案号 fag939300r</p>
+								<p class="name">学校电话 0574-88269588</p>
+								<p class="name">官方微信 17367232260</p>
 							</div>
-							<div class="right">
+							<!-- <div class="right">
 								<img src="../../assets/pc/footer_qrcode.png" alt="">
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -181,44 +181,44 @@ export default{
       }, {
         id: 2,
         title: '影视表演',
-        tips: '4-12周岁儿童',
-        class_time: '150分钟/16周次/一学期每次150分钟',
-        point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
+        tips: '4-8周岁儿童',
+        class_time: '每学期16周次，每次150分钟',
+        point: ' 学在教室，用在生活，培养观察和理解力，提高表现能力与沟通能力',
         bgc: c002
       }, {
         id: 3,
         title: '民族舞',
         tips: '4-8周岁儿童',
-        class_time: '150分钟/16周次/一学期每次150分钟',
-        point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
+        class_time: '每学期16周次，每次150分钟',
+        point: '学习民族舞精髓，体验民族舞风情 ',
         bgc: c003
       }, {
         id: 4,
         title: '涂鸦创想课',
         tips: '4-8周岁儿童',
-        class_time: '150分钟/16周次/一学期每次150分钟',
-        point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
+        class_time: '滚动开班，每周一次，每次90分钟',
+        point: '培养美术兴趣，玩与学结合，发掘孩子艺术天赋 ',
         bgc: c004
       }, {
         id: 5,
         title: '素描课',
-        tips: '4-8周岁儿童',
-        class_time: '150分钟/16周次/一学期每次150分钟',
-        point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
+        tips: '9岁以上零基础孩子',
+        class_time: '滚动开班，每周一次，一次150分钟 ',
+        point: '感受艺术的美感，培养孩子的观察力、造型能力与表现能力 ',
         bgc: c005
       }, {
         id: 6,
         title: '少儿合唱团',
         tips: '4-8周岁儿童',
-        class_time: '150分钟/16周次/一学期每次150分钟',
-        point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
+        class_time: '每学期16周次，每次150分钟',
+        point: '开发儿童智力，培养专注力与团队合作能力',
         bgc: c006
       }, {
         id: 7,
         title: '钢琴课',
-        tips: '4-8周岁儿童',
-        class_time: '150分钟/16周次/一学期每次150分钟',
-        point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
+        tips: '4岁以上儿童',
+        class_time: '一对一教学，每周一次，每次45分钟',
+        point: '专业院校师资，感受古典音乐的魅力，打造孩子的贵族气质 ',
         bgc: c007
       }
     ],
@@ -267,14 +267,14 @@ export default{
 	min-height: calc(100vh);
 	top:0;
 	left: 0;
-}
+}	
 #pc-index{
 	box-sizing: border-box;
 	.bg-top{
 		width: 100%;
 		height: 720px;
-		background: url('./../../assets/pc/bg_top.png') no-repeat center center;
-		background-size: cover;
+		background: url('./../../assets/pc/bg_top.png') no-repeat 70% center;
+		background-size: contain;
 		.bg-start{
 			width: 100%;
 			height: calc(100vh);
@@ -326,7 +326,7 @@ export default{
 			margin: 10px 0 0 auto;
 			text-align: left;
 			color:#f0f0f0;
-			width: 270px;
+			width: 286px;
 			position: relative;
 			font-weight: 100;
 			font-size: 18px;
@@ -606,7 +606,7 @@ export default{
 	.apply{
 		width: 100%;
 		height: 461px;
-		margin-top: 19px;
+		margin-top: 23px;
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
@@ -615,30 +615,37 @@ export default{
 		position: relative;
 		width: 100%;
 		background:#5c4358;
-		height: 183px;
-		margin-top: 93px;
+		height: 250px;
+		margin-top: 170px;
 		display: inline-flex;
 		align-items: center;
 		justify-content: space-around;
 		.box{
-			padding: 5px 0 0 0;
+			padding: 38px 0 0 0;
 			width: 1020px;
 			margin: 0 auto;
 			.flogo{
 				position: absolute;
 				left: 50%;
-				top: -50px;
-				margin-left: -50px;
+				top: -95px;
+				margin-left: -95px;
+				width: 190px;
+				height: 190px;
+				img{
+					width: 100%;
+					height: 100%;
+				}
 			}
 			.left{
-        display: inline-block;
+        // display: inline-block;
 				p{
 					font-family:PingFangSC-Regular;
-					font-size:16px;
+					font-size:14px;
 					color:#ffffff;
 					letter-spacing:0.4px;
-					line-height:29px;
+					line-height:26px;
 					text-align:left;
+					text-align: center;
 				}
 			}
 			.right{
