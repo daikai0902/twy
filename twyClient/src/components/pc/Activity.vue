@@ -8,8 +8,8 @@
               <div class="box">
                 <div class="menu-list">
                 <img class="back" src="../../assets/pc/activity/back.png" alt="" @click="goback"> 
-                  <ul> 
-                    <li v-for="(item, index) in activity" :class="{'actNews':actActivity === item.id}" @click="showNewsDetail(item.id)">
+                  <ul>
+                    <li v-for="(item, index) in activity" :class="{'actNews':actActivity === item.id}" @click="showNewsDetail(item.id)" :key="index">
                       <span class="news-title">{{item.title}}</span><span class="news-time">{{item.time}}</span>
                     </li>
                   </ul>

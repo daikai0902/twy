@@ -1,6 +1,6 @@
 <template>
-	<div class="" id="team">
-		<div class="maincontent" :style="'background-image: url('+ bgc + ')'">
+  <div class="" id="team">
+    <div class="maincontent" :style="'background-image: url('+ bgc + ')'">
       <div class="wrap">
         <div class="topbar">
           <img class="back" @click="goback" src="../../assets/pc/team/back.png" alt="">
@@ -14,54 +14,34 @@
         </div>
         <!-- team list -->
         <div class="team-group">
-          <swiper :options="swiperOption" ref="mySwiper" @someSwiperEvent="onTransitionStart">
-              <!-- slides -->
-          <template slot-scope="scope">
-              <swiper-slide v-for="(item, index) in teamlist">
-                <img :src="'/static/'+ item.url" alt="">
-                <div class="info" v-if="activited === index + 1">
-                  <p class="name">{{item.name}}</p>
-                  <div class="position">
-                    <p v-for="(it, id) in item.position">{{it}}</p>
-                  </div>
-                </div>
-                <div class="mouse" v-if="activited === index + 1"><img src="../../assets/pc/team/mouse.png" alt=""></div>
-              </swiper-slide>
-              <!-- Optional controls -->
-              <div class="swiper-pagination"  slot="pagination"></div>
-              <div class="swiper-button-prev" slot="button-prev"></div>
-              <div class="swiper-button-next" slot="button-next"></div>
-              <div class="swiper-scrollbar"   slot="scrollbar"></div>
-          </template>
-          </swiper>
-<!--           <div class="teambox" :style="'transform: translate3d(' + sildis +'px, 0px, 0px)'">
-            <div class="team-item" @click="showDetail(item.id)" v-for="(item, index) in teamlist" :style="'transform: scale('+ item.scale +');margin-right:' + item.m + 'px;z-index:'+ item['p']">
+          <div ref="mySwiper" class="teambox" :style="'transform: translate3d(' + sildis +'px, 0px, 0px);width: '+ teamlist.length * 230 + 'px'">
+            <div class="team-item" @click="showDetail(item.id)" v-for="(item, index) in teamlist" :style="'transform: translateX('+ item['m']+'px) scale('+ item.scale +');z-index:'+ item['p'] + ';opacity: '+ item['op'] +';'">
               <img :src="'/static/'+ item.url" alt="">
-              <div class="info" v-if="activited === index + 1">
+              <div class="info" v-if="swiperActItem === index">
                 <p class="name">{{item.name}}</p>
                 <div class="position">
                   <p v-for="(it, id) in item.position">{{it}}</p>
                 </div>
               </div>
-              <div class="mouse" v-if="activited === index + 1"><img src="../../assets/pc/team/mouse.png" alt=""></div>
+              <div class="mouse" v-if="swiperActItem === index"><img src="../../assets/pc/team/mouse.png" alt=""></div>
+              <div class="shadow" :style="'background-color: rgba(255,255,255,'+ item['op'] +');'"></div>
             </div>
           </div>
 
-          <img class="pre" @click="showPre" src="../../assets/pc/team/back.png" alt="">
-          <img class="next" @click="showNext" src="../../assets/pc/team/back.png" alt=""> -->
           <div class="detail" id="tDesc" :style="'transform: scale('+isShowDesc + ',' + isShowDesc+ ')'">
             <div class="box">
-              <p v-for="(item, index) in desc.desc">{{item}}</p>
+              <p v-for="(item, index) in desc.desc" :key="index">{{item}}</p>
            </div>
           </div>
         </div>
+          <img class="pre" @click="showPre" src="../../assets/pc/team/back.png" alt="">
+          <img class="next" @click="showNext" src="../../assets/pc/team/back.png" alt="">
       </div>  
     </div>
   </div>
 </template>
 <script>
 import bgc from '@/assets/pc/team/bgc.png'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default{
   name: 'team',
   data: () => ({
@@ -157,95 +137,46 @@ export default{
     sildis: 0,
     activited: 0,
     isShowDesc: 0,
-    swiperOption: {
-      notNextTick: true,
-      // swiper configs 所有的配置同swiper官方api配置
-      autoplay: 3000,
-      watchSlidesProgress: true,
-      // slidesPerView: 'auto',
-      loop: true,
-      loopedSlides: 14,
-      centeredSlides: true,
-      // direction : 'vertical',
-      grabCursor: true,
-      setWrapperSize: true,
-      // autoHeight: true,
-      // paginationType:"bullets",
-      pagination: '.swiper-pagination',
-      paginationClickable: true,
-      prevButton: '.swiper-button-prev',
-      nextButton: '.swiper-button-next',
-      // scrollbar:'.swiper-scrollbar',
-      mousewheelControl: true,
-      observeParents: true,
-      onSlideChangeEnd: swiper => {
-        console.log(swiper)
-        // 这个位置放swiper的回调方法
-      }
-      // on: {
-      //   progress: function (progress) {
-      //     for (let i = 0; i < 14; i++) {
-      //       var slide = this.slides.eq(i)
-      //       var slideProgress = this.slides[i].progress
-      //       let modify = 1
-      //       if (Math.abs(slideProgress) > 1) {
-      //         modify = (Math.abs(slideProgress) - 1) * 0.3 + 1
-      //       }
-      //       let translate = slideProgress * modify * 260 + 'px'
-      //       let scale = 1 - Math.abs(slideProgress) / 5
-      //       let zIndex = 999 - Math.abs(Math.round(10 * slideProgress))
-      //       slide.transform('translateX(' + translate + ') scale(' + scale + ')')
-      //       slide.css('zIndex', zIndex)
-      //       slide.css('opacity', 1)
-      //       if (Math.abs(slideProgress) > 3) {
-      //         slide.css('opacity', 0)
-      //       }
-      //     }
-      //   },
-      //   setTransition: function (transition) {
-      //     for (var i = 0; i < this.slides.length; i++) {
-      //       var slide = this.slides.eq(i)
-      //       slide.transition(transition)
-      //     }
-      //   }
-      // }
-    }
+    // 中间部分
+    swiperActItem: 4,
+    slideIndex: 0
   }),
-  components: {
-    swiper,
-    swiperSlide
-  },
-  computed: {
-    swiper () {
-      return this.$refs.mySwiper.swiper
-    }
+  created () {
+    this.swipersetting()
   },
   mounted () {
-    let slides = this.swiper.slides
-    console.log(swiper.transition)
-    for (let i = 0; i < slides.length; i++) {
-      var slide = slides[i]
-      var slideProgress = slides[i].progress
-      let modify = 1
-      if (Math.abs(slideProgress) > 1) {
-        modify = (Math.abs(slideProgress) - 1) * 0.3 + 1
-      }
-      let translate = slideProgress * modify * 130 + 'px'
-      let scale = 1 - Math.abs(slideProgress) / 5
-      let zIndex = 999 - Math.abs(Math.round(10 * slideProgress))
-      let tran = 'translateX(' + translate + ') scale(' + scale + ')'
-      slide.style.transform = tran
-      slide.style.zIndex = zIndex
-      slide.style.opacity = 1
-      if (Math.abs(slideProgress) > 3) {
-        slide.style.opacity = 0
+    let _this = this
+    let swiperActItem = this.swiperActItem
+    this.sildis = -130 * swiperActItem - 50
+    document.body.onclick = function (e) {
+      let target = e.target.className
+      if (target !== 'detail' && target !== 'team-item' && target !== 'shadow') {
+        _this.isShowDesc = 0
       }
     }
   },
   methods: {
-      onTransitionStart (swiper) {
-        console.log(swiper)
-      },
+    swipersetting () {
+      let swiperActItem = this.swiperActItem
+      let teamlist = this.teamlist
+      let length = teamlist.length
+      // let swiper = this.$refs['mySwiper']
+      // let child = swiper.children
+      // let length = child.length / 2
+      teamlist.forEach((item, i) => {
+        let ids = swiperActItem - i
+        // let modify = 1
+        // if (Math.abs(ids) > 1) {
+        //   modify = (Math.abs(ids) - 1) * 0.3 + 1
+        // }
+        let translate = ids * 130
+        let scale = 1 - Math.abs(ids) / length
+        item['m'] = translate
+        item['scale'] = scale
+        item['p'] = 999 - Math.abs(Math.round(10 * ids))
+      })
+      this.teamlist = teamlist
+    },
     goIndex () {
       this.$router.push({path: '/'})
     },
@@ -264,6 +195,28 @@ export default{
         this.desc = temp[0]
         this.isShowDesc = 1
       }
+    },
+    showPre: function () {
+      let slideIndex = this.slideIndex
+      let sildis = this.sildis
+      let swiperActItem = this.swiperActItem
+      slideIndex = slideIndex + 1
+      swiperActItem = swiperActItem + 1
+      this.sildis = sildis - 230
+      this.slideIndex = slideIndex
+      this.swiperActItem = swiperActItem
+      this.swipersetting()
+    },
+    showNext: function () {
+      let slideIndex = this.slideIndex
+      let sildis = this.sildis
+      let swiperActItem = this.swiperActItem
+      slideIndex = slideIndex + 1
+      swiperActItem = swiperActItem - 1
+      this.sildis = sildis + 230
+      this.slideIndex = slideIndex
+      this.swiperActItem = swiperActItem
+      this.swipersetting()
     }
   }
 }
@@ -285,7 +238,7 @@ export default{
     background-size: cover;
   }
   .wrap{
-    width: 1020px;
+    width: 1200px;
     margin: 0 auto;
     position: relative;
     .topbar{
@@ -296,7 +249,8 @@ export default{
       align-items: center;
       margin-top: 57px;
       .back{
-        float: left;
+        position: absolute;
+        left: 50px;
       }
       .logo-info{
         display: inline-flex;
@@ -332,7 +286,8 @@ export default{
       position: relative;
       .teambox{
         position: relative;
-        width: 100%;
+        width: 1000px;
+        margin: 0 auto;
         transition: all .3s ease-in-out;
         .team-item{
           position: relative;
@@ -343,9 +298,16 @@ export default{
           transition: all .3s ease-in-out;
           vertical-align: top;
           cursor: pointer;
+          .shadow{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 325px;
+          }
           img{
             width: 100%;
-            // height: 325px;
+            height: 325px;
           }
           .info{
             margin-top: 25px;
@@ -370,35 +332,23 @@ export default{
             cursor: pointer;
             img{
               width: auto;
+              height: auto;
               margin-top: 24px;
             }
           }
         }
-      }
-      .pre{
-        position:absolute;
-        left: 0;
-        top: 50%;
-        margin-top: -90px;
-        cursor: pointer;
-      }
-      .next{
-        position:absolute;
-        right: 0;
-        top: 50%;
-        margin-top: -90px;
-        transform-origin: center;
-        transform: rotateZ(180deg);
-        cursor: pointer;
       }
     }
     .detail{
       position: absolute;
       width: 1000px;
       height: 325px;
-      top: 50%;
+      overflow-y: auto;
+      top: 0;
       left: 0;
-      margin-top: -125px;
+      // margin-top: -200px;
+      opacity:0.85;
+      background:#361834;
       .box{
         padding: 61px 252px;
         font-family:PingFangSC-Regular;
@@ -409,6 +359,27 @@ export default{
         text-align:left;
       }
     }
+      .detail::-webkit-scrollbar {width:2px; height:2px; background-color:transparent;} /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+      .detail::-webkit-scrollbar-track {background-color:#ccc; border-radius:10px; -webkit-box-shadow:inset 0 0 6px rgba(64,43,58,0.3);} /*定义滚动条轨道 内阴影+圆角*/
+      .detail::-webkit-scrollbar-thumb {background-color:#555; border-radius:10px; -webkit-box-shadow:inset 0 0 6px rgba(64,43,58,0.3);} /*定义滑块 内阴影+圆角*/
+      .pre{
+        position:absolute;
+        left: 50px;
+        top: 50%;
+        margin-top: -10px;
+        cursor: pointer;
+        z-index: 999;
+      }
+      .next{
+        position:absolute;
+        right: 50px;
+        top: 50%;
+        margin-top: -10px;
+        transform-origin: center;
+        transform: rotateZ(180deg);
+        cursor: pointer;
+        z-index: 999;
+      }
     // .mouse{
     //   position: absolute;
     //   bottom: 0;
