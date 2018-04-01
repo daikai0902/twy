@@ -15,6 +15,7 @@ const routes = [
   {
     path: '*',
     name: '404',
+    redirect: '/',
     component: NotFound
   },
   {
