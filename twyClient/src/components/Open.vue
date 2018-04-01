@@ -27,7 +27,8 @@ export default {
 }
 .open-wrap{
   width: 100%;
-  margin: 50% auto;
+  /*margin: 50% auto;*/
+  padding-top: 50%;
   text-align: center;
   color: #fff;
   position: relative;

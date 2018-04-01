@@ -6,9 +6,13 @@ import VueRouter from 'vue-router'
 import router from './router'
 import App from './App'
 import { AjaxPlugin } from 'vux'
+// vue滑块
+// import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.min.css'
 
 Vue.use(VueRouter)
 Vue.use(AjaxPlugin)
+// Vue.use(VueAwesomeSwiper)
 
 FastClick.attach(document.body)
 
