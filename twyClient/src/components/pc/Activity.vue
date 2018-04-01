@@ -9,8 +9,8 @@
                 <div class="menu-list">
                 <img class="back" src="../../assets/pc/activity/back.png" alt="" @click="goback"> 
                   <ul>
-                    <li v-for="(item, index) in activity" :class="{'actNews':actActivity === item.id}" @click="showNewsDetail(item.id)" :key="index">
-                      <span class="news-title">{{item.title}}</span><span class="news-time">{{item.time}}</span>
+                    <li v-for="(item, index) in activityList" :class="{'actNews':actActivity === index}" @click="showActivityDetail(item.id, index)" :key="index">
+                      <span class="news-title">{{item.name}}</span><span class="news-time">{{item.time}}</span>
                     </li>
                   </ul>
                 </div>
@@ -37,81 +37,27 @@
 	</div>
 </template>
 <script>
+import api from '../../api/index.js'
 export default{
   name: 'activity',
   data: () => ({
-    activity: [
-      {
-        id: 1,
-        title: '天唯艺星教育学习',
-        time: '昨天',
-        content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
-      }, {
-        id: 2,
-        title: '上海小荧星儿童艺术教育领跑者',
-        time: '03-15',
-        content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
-      }, {
-        id: 3,
-        title: '宁波天唯艺星少儿合唱团',
-        time: '3-12',
-        content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
-      }, {
-        id: 4,
-        title: '声乐教学',
-        time: '3-10',
-        content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
-      }, {
-        id: 5,
-        title: '天唯艺星网点布局',
-        time: '3-02',
-        content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
-      }, {
-        id: 6,
-        title: '小荧星高规格的舞台实践',
-        time: '3-01',
-        content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
-      }, {
-        id: 7,
-        title: '宁波天唯艺星教育开班...',
-        time: '3-10',
-        content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
-      }, {
-        id: 8,
-        title: '天唯艺星教育学习',
-        time: '3-12',
-        content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
-      }, {
-        id: 9,
-        title: '上海小荧星儿童艺术教育领跑者',
-        time: '3-10',
-        content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
-      }, {
-        id: 10,
-        title: '宁波天唯艺星少儿合唱团',
-        time: '03-02',
-        content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
-      }, {
-        id: 11,
-        title: '声乐教学',
-        time: '3-01',
-        content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
-      }, {
-        id: 12,
-        title: '天唯艺星网点布局',
-        time: '3-10',
-        content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
-      }
-    ],
-    actActivity: 1,
+    activityList: [],
+    actActivity: 0,
     activityItem: {
-      id: 1,
-      title: '天唯艺星教育学习',
-      time: '昨天',
-      content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
+      title: null,
+      time: null,
+      content: null
     },
     bgcwidth: 0
   }),
+  created () {
+    api.activityList().then(res => {
+      if (res.status === 'succ') {
+        this.activityList = res.data.array
+      }
+    })
+    this.showActivityDetail(this.activityList[0].id, this.actActivity)
+  },
   mounted () {
     let _this = this
     let width = window.innerWidth
@@ -133,18 +79,18 @@ export default{
     }
   },
   methods: {
-    showNewsDetail (id) {
-      let activity = this.activity
-      if (id) {
-        let temp = activity.filter(p => {
-          if (p.id === id) {
-            return p
+    showActivityDetail (id, idx) {
+      this.actActivity = idx
+      api.activityDetail({activityId: this.id}).then(res => {
+        if (res.status === 'succ') {
+          this.activityItem = {
+            title: res.data.name,
+            address: res.data.address,
+            time: res.data.time
           }
-          return false
-        })
-        this.actActivity = id
-        this.activityItem = temp[0]
-      }
+          document.querySelector('.detail').innerHTML = res.data.content
+        }
+      })
     },
     goIndex () {
       this.$router.push({path: '/'})

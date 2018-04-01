@@ -15,7 +15,6 @@
       </div>
 
       <swiper :options="swiperOption" ref="mySwiper" @someSwiperEvent="callback">
-        <!-- slides -->
         <swiper-slide v-for="(item, index) in teamlist" :key="index">
           <img :src="'/static/'+ item.url" alt="" class="teacher-img">
           <div class="info">

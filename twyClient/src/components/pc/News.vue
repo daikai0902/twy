@@ -14,8 +14,8 @@
                 </div>
               </div>
             </div>
-            <p class="title">{{activityItem.title}}</p>
-            <p class="detail">{{activityItem.content}}</p>
+            <p class="title">{{title}}</p>
+            <div class="detail"></div>
           </div>
         </div>
       </div>
@@ -29,8 +29,8 @@
                 </div>
                 <div class="menu-list">
                   <ul>
-                    <li v-for="(item, index) in news" :class="{'actNews':actNews === item.id}" @click="showNewsDetail(item.id)" :key="index">
-                      <span class="news-title">{{item.title}}</span><span class="news-time">{{item.time}}</span>
+                    <li v-for="(item, index) in newsList" :class="{'actNews':actNews === item.id}" @click="showNewsDetail(item.id)" :key="index">
+                      <span class="news-title">{{item.name}}</span><span class="news-time">{{item.createTime.substring(5, 12)}}</span>
                     </li>
                   </ul>
                 </div>
@@ -41,20 +41,18 @@
   </div>
 </template>
 <script>
+import api from '../../api/index.js'
 export default{
   name: 'news',
   data: () => ({
     tab: [
       {
         type: 1,
-        label: '新闻'
-      }, {
-        type: 2,
-        label: '公告'
+        label: '新闻公告'
       }
     ],
     actType: 1,
-    news: [
+    newsList: [
       {
         id: 1,
         title: '天唯艺星教育学习',
@@ -118,15 +116,18 @@ export default{
       }
     ],
     actNews: 1,
-    activityItem: {
-      id: 1,
-      title: '天唯艺星教育学习',
-      time: '昨天',
-      content: '内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容'
-    },
+    title: null,
     right: 0,
     bgcwidth: 0
   }),
+  created () {
+    api.newsList().then(res => {
+      if (res.status === 'succ') {
+        this.newsList = res.data.array
+      }
+    })
+    this.showNewsDetail(this.newsList[0].id)
+  },
   mounted () {
     let _this = this
     let width = window.innerWidth
@@ -149,17 +150,14 @@ export default{
   },
   methods: {
     showNewsDetail (id) {
-      let news = this.news
-      if (id) {
-        let temp = news.filter(p => {
-          if (p.id === id) {
-            return p
-          }
-          return false
-        })
-        this.actNews = id
-        this.activityItem = temp[0]
-      }
+      api.newsDetail({newsId: this.id}).then(res => {
+        if (res.status === 'succ') {
+          this.title = res.data.name
+          this.address = res.data.address
+          this.time = res.data.createTime
+          document.querySelector('.detail').innerHTML = res.data.content
+        }
+      })
     },
     goIndex () {
       this.$router.push({path: '/'})
@@ -317,7 +315,8 @@ export default{
                 .news-time{
                   display: inline-block;
                   vertical-align: top;
-                  width: 60px;
+                  width: 66px;
+                  font-size: 12px !important;
                 }
               }
               li:hover span{
