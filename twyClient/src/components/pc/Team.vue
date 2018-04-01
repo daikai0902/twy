@@ -12,38 +12,39 @@
             </div>
           </div>
         </div>
-        <!-- team list -->
-        <div class="team-group">
-          <div ref="mySwiper" class="teambox" :style="'transform: translate3d(' + sildis +'px, 0px, 0px);width: '+ teamlist.length * 230 + 'px'">
-            <div class="team-item" @click="showDetail(item.id)" v-for="(item, index) in teamlist" :style="'transform: translateX('+ item['m']+'px) scale('+ item.scale +');z-index:'+ item['p'] + ';opacity: '+ item['op'] +';'">
-              <img :src="'/static/'+ item.url" alt="">
-              <div class="info" v-if="swiperActItem === index">
-                <p class="name">{{item.name}}</p>
-                <div class="position">
-                  <p v-for="(it, id) in item.position">{{it}}</p>
-                </div>
-              </div>
-              <div class="mouse" v-if="swiperActItem === index"><img src="../../assets/pc/team/mouse.png" alt=""></div>
-              <div class="shadow" :style="'background-color: rgba(255,255,255,'+ item['op'] +');'"></div>
+      </div>
+
+      <swiper :options="swiperOption" ref="mySwiper" @someSwiperEvent="callback">
+        <!-- slides -->
+        <swiper-slide v-for="(item, index) in teamlist" :key="index">
+          <img :src="'/static/'+ item.url" alt="" class="teacher-img">
+          <div class="info">
+            <p class="name">{{item.name}}</p>
+            <div class="position">
+              <p v-for="(it, id) in item.position" :key="id">{{it}}</p>
             </div>
           </div>
+          <div class="mouse"><img src="../../assets/pc/team/mouse.png" alt=""></div>
+        </swiper-slide>
 
-          <div class="detail" id="tDesc" :style="'transform: scale('+isShowDesc + ',' + isShowDesc+ ')'">
-            <div class="box">
-              <p v-for="(item, index) in desc.desc" :key="index">{{item}}</p>
-           </div>
-          </div>
-        </div>
-          <img class="pre" @click="showPre" src="../../assets/pc/team/back.png" alt="">
-          <img class="next" @click="showNext" src="../../assets/pc/team/back.png" alt="">
-      </div>  
+        <div class="swiper-button-prev" slot="button-prev"></div>
+        <div class="swiper-button-next" slot="button-next"></div>
+      </swiper>
     </div>
   </div>
 </template>
+
 <script>
 import bgc from '@/assets/pc/team/bgc.png'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+
 export default{
   name: 'team',
+  components: {
+    swiper,
+    swiperSlide
+  },
   data: () => ({
     bgc: bgc,
     teamlist: [
@@ -77,7 +78,8 @@ export default{
         url: 'teachers/5.jpg',
         position: ['宁波天唯艺星教育名誉校长', '上海戏剧学院教授', '上海市美术协会会员'],
         desc: ['宁波天唯艺星教育教学主任，播音主持、影视表演主课教师。本科毕业于中央戏剧学院表演系戏剧影视专业，获学士学位。在校期间曾主演《雷雨》、《北京人》，《桃花扇》，《三姐妹》，《朱莉小姐》等多部中外经典戏剧作品。2010年跟随中国儿童艺术剧院新晋青年导演毛尔男主演音乐剧《屋里的大象》，《杀闪桃》，《屋里的大象》在第五届北京国际青年戏剧节中被评为优秀作品。2012年加入孟京辉戏剧工作室参演音乐剧《初恋》，在全国近二十个城市进行巡演；2013年参演中国国家话剧院及腾讯公司联合出品的大型儿童音乐剧《洛克王国大冒险》。2014年至今一直从事艺术教育工作，在艺考机构、少儿培训机构均有丰富的教学经验。']
-      }, {
+      },
+      {
         id: 6,
         name: '陆倩雯',
         url: 'teachers/6.jpg',
@@ -134,100 +136,49 @@ export default{
       }
     ],
     desc: {},
-    sildis: 0,
-    activited: 0,
-    isShowDesc: 0,
-    // 中间部分
-    swiperActItem: 4,
-    slideIndex: 0
-  }),
-  created () {
-    this.swipersetting()
-  },
-  mounted () {
-    let _this = this
-    let swiperActItem = this.swiperActItem
-    this.sildis = -130 * swiperActItem - 50
-    document.body.onclick = function (e) {
-      let target = e.target.className
-      if (target !== 'detail' && target !== 'team-item' && target !== 'shadow') {
-        _this.isShowDesc = 0
+    swiperOption: {
+      // loop: true,
+      direction: 'horizontal',
+      grabCursor: true,
+      centeredSlides: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      slidesPerView: 3,
+      spaceBetween: 50,
+      effect: 'coverflow',
+      coverflowEffect: {
+        rotate: 30,
+        stretch: 10,
+        depth: 60,
+        modifier: 2,
+        slideShadows: false
       }
+    },
+    curr: 3
+  }),
+  computed: {
+    swiper () {
+      return this.$refs.mySwiper.swiper
     }
   },
+  mounted () {
+    this.swiper.slideTo(this.curr, 1000, false)
+  },
   methods: {
-    swipersetting () {
-      let swiperActItem = this.swiperActItem
-      let teamlist = this.teamlist
-      let length = teamlist.length
-      // let swiper = this.$refs['mySwiper']
-      // let child = swiper.children
-      // let length = child.length / 2
-      teamlist.forEach((item, i) => {
-        let ids = swiperActItem - i
-        // let modify = 1
-        // if (Math.abs(ids) > 1) {
-        //   modify = (Math.abs(ids) - 1) * 0.3 + 1
-        // }
-        let translate = ids * 130
-        let scale = 1 - Math.abs(ids) / length
-        item['m'] = translate
-        item['scale'] = scale
-        item['p'] = 999 - Math.abs(Math.round(10 * ids))
-      })
-      this.teamlist = teamlist
+    callback () {
+
     },
     goIndex () {
       this.$router.push({path: '/'})
     },
     goback () {
       this.$router.go(-1)
-    },
-    showDetail (id) {
-      let teamlist = this.teamlist
-      if (id) {
-        let temp = teamlist.filter(p => {
-          if (p.id === id) {
-            return p
-          }
-          return false
-        })
-        this.desc = temp[0]
-        this.isShowDesc = 1
-      }
-    },
-    showPre: function () {
-      let slideIndex = this.slideIndex
-      let sildis = this.sildis
-      let swiperActItem = this.swiperActItem
-      slideIndex = slideIndex + 1
-      swiperActItem = swiperActItem + 1
-      this.sildis = sildis - 230
-      this.slideIndex = slideIndex
-      this.swiperActItem = swiperActItem
-      this.swipersetting()
-    },
-    showNext: function () {
-      let slideIndex = this.slideIndex
-      let sildis = this.sildis
-      let swiperActItem = this.swiperActItem
-      slideIndex = slideIndex + 1
-      swiperActItem = swiperActItem - 1
-      this.sildis = sildis + 230
-      this.slideIndex = slideIndex
-      this.swiperActItem = swiperActItem
-      this.swipersetting()
     }
   }
 }
 </script>
-<style lang="less">
-.team-group{
-  .swiper-slide{
-    width: 230px;
-  }
-}
-</style>
 <style lang="less" scoped>
 #team{
   .maincontent{
@@ -245,7 +196,6 @@ export default{
       width: 100%;
       text-align: center;
       display: inline-flex;
-      // justify-content: center;
       align-items: center;
       margin-top: 57px;
       .back{
@@ -269,126 +219,59 @@ export default{
           color:#fff;
           letter-spacing:0;
           text-align:left;
-          .web-name-en{
-            // font-weight: bold;
-          }
-          .web-name-en{
-            font-family:PingFangSC-Regular;
-          }
         }
       }
     }
-    .team-group{
-      width: 1000px;
-      margin: 0 auto;
-      overflow:hidden;
-      margin-top: 64px;
-      position: relative;
-      .teambox{
-        position: relative;
-        width: 1000px;
-        margin: 0 auto;
-        transition: all .3s ease-in-out;
-        .team-item{
-          position: relative;
-          width: 230px;
-          display: inline-block;
-          text-align: center;
-          transform-origin: center;;
-          transition: all .3s ease-in-out;
-          vertical-align: top;
-          cursor: pointer;
-          .shadow{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 325px;
-          }
-          img{
-            width: 100%;
-            height: 325px;
-          }
-          .info{
-            margin-top: 25px;
-            .name{
-              font-family:PingFangSC-Semibold;
-              font-size:18px;
-              color:#ffffff;
-              letter-spacing:0;
-              text-align: center;
-            }
-            .position{
-              margin-top: 12px;
-              font-family:PingFangSC-Regular;
-              font-size:12px;
-              color:#ffffff;
-              letter-spacing:0;
-              text-align:center;
-              line-height:20px;
-            }
-          }
-          .mouse{
-            cursor: pointer;
-            img{
-              width: auto;
-              height: auto;
-              margin-top: 24px;
-            }
-          }
-        }
-      }
-    }
-    .detail{
-      position: absolute;
-      width: 1000px;
-      height: 325px;
-      overflow-y: auto;
-      top: 0;
-      left: 0;
-      // margin-top: -200px;
-      opacity:0.85;
-      background:#361834;
-      .box{
-        padding: 61px 252px;
-        font-family:PingFangSC-Regular;
-        font-size:14px;
-        color:#ffffff;
-        letter-spacing:0;
-        line-height:29px;
-        text-align:left;
-      }
-    }
-      .detail::-webkit-scrollbar {width:2px; height:2px; background-color:transparent;} /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
-      .detail::-webkit-scrollbar-track {background-color:#ccc; border-radius:10px; -webkit-box-shadow:inset 0 0 6px rgba(64,43,58,0.3);} /*定义滚动条轨道 内阴影+圆角*/
-      .detail::-webkit-scrollbar-thumb {background-color:#555; border-radius:10px; -webkit-box-shadow:inset 0 0 6px rgba(64,43,58,0.3);} /*定义滑块 内阴影+圆角*/
-      .pre{
-        position:absolute;
-        left: 50px;
-        top: 50%;
-        margin-top: -10px;
-        cursor: pointer;
-        z-index: 999;
-      }
-      .next{
-        position:absolute;
-        right: 50px;
-        top: 50%;
-        margin-top: -10px;
-        transform-origin: center;
-        transform: rotateZ(180deg);
-        cursor: pointer;
-        z-index: 999;
-      }
-    // .mouse{
-    //   position: absolute;
-    //   bottom: 0;
-    //   width: 100%;
-    //   text-align: center;
-    //   img{
-    //     margin-left: -55px;
-    //   }
-    // }
   }
 }
+/* 滑动 */
+.swiper-container {  
+  width: 1000px;  
+  padding-top: 10%;
+}
+.swiper-wrapper{
+  width: 1000px !important;
+}
+.swiper-slide {  
+  background-position: center;
+  width: 230px !important;
+}  
+.swiper-slide .teacher-img{  
+  display: block;
+  width: 230px;
+  height:320px;
+}  
+.swiper-button-next, .swiper-button-prev {
+  top: 25%;
+  width: 50px;
+  height: 325px;
+}
+.name{
+  font-size:16px;
+  color:#ffffff;
+  text-align: center;
+  font-weight: bold;
+}
+.position{
+  font-size: 12px;
+  color:#fff;
+  text-align: center;
+}
+.shadow{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 325px;
+}
+.mouse{
+  text-align: center;
+  margin-top: 10px;
+}
+.swiper-button-next {  
+  // background: url("images/right.png") no-repeat 100% 2.5rem;  
+}
+.swiper-button-prev {  
+  // background: url("images/left.png") no-repeat 0 2.5rem;  
+} 
 </style>

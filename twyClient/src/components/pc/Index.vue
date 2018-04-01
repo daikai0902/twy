@@ -32,7 +32,7 @@
 							</div>
 							<div class="right">
 								<div class="recommand">
-									<div class="item" v-for="(item, index) in recommand" @click="handleToMorePage(item.type)">
+									<div class="item" v-for="(item, index) in recommand" @click="handleToMorePage(item.type)" :key="index">
 										<div class="img" :style="'background-image: url('+ item.url +')'">
 											<div class="bgc"></div>
 											<div class="pic-desc">
@@ -59,7 +59,7 @@
 									<div class="content">
 										<div class="leftbar">
 											<ul class="menu">
-												<li class="menu-item" v-for="(item, index) in special" @click="changeSpecial(item.id)">
+												<li class="menu-item" v-for="(item, index) in special" @click="changeSpecial(item.id)" :key="index">
 													<span class="activited" v-if="activited === item.id"></span>
 													<span class="menu-title">{{item.title}}</span>
 												</li>
@@ -254,6 +254,9 @@ export default{
 }
 </script>
 <style lang='less' scoped>
+.maincontent{
+	background-color: #2d2d2e;
+}
 #pc-index{
 	box-sizing: border-box;
 	.bg-top{
@@ -610,8 +613,8 @@ export default{
 				}
 			}
 			.right{
-         display: inline-block;
-         float: right;
+				display: inline-block;
+				float: right;
 			}
 		}
 	}

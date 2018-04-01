@@ -25,11 +25,11 @@
             <div class="menu">
               <div class="box">
                 <div class="news-type">
-                  <span class="type-item" :class="{'actType':actType === item.type}" v-for="(item ,index) in tab">{{item.label}}</span>
+                  <span class="type-item" :class="{'actType':actType === item.type}" v-for="(item ,index) in tab" :key="index">{{item.label}}</span>
                 </div>
                 <div class="menu-list">
                   <ul>
-                    <li v-for="(item, index) in news" :class="{'actNews':actNews === item.id}" @click="showNewsDetail(item.id)">
+                    <li v-for="(item, index) in news" :class="{'actNews':actNews === item.id}" @click="showNewsDetail(item.id)" :key="index">
                       <span class="news-title">{{item.title}}</span><span class="news-time">{{item.time}}</span>
                     </li>
                   </ul>
