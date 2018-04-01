@@ -41,6 +41,9 @@ html{
 .bg-teacher{
   background-color: #232c3c !important;
 }
+.bg-white {
+  background-color: #fff !important;
+}
 .bg-teacher-detail{
   background-color: #000 !important;
 }

@@ -18,7 +18,7 @@
 
     <div class="cont-wrap">
       <div class="news-list">
-        <div class="nl-item" v-for="(item, index) in newsList" :key="index" @click="gotoNewsDetail">
+        <div class="nl-item" v-for="(item, index) in newsList" :key="index" @click="gotoNewsDetail(item)">
           <p class="nl-title">{{item.name}}</p>
           <p class="nl-time">{{item.createTime}}</p>
         </div>
@@ -45,8 +45,12 @@ export default {
     })
   },
   methods: {
-    gotoNewsDetail () {
-      this.$router.push({name: 'newsDetail'})
+    gotoNewsDetail (item) {
+      if (item.type === '1') {
+        this.$router.push({name: 'newsDetail', query: {id: item.id}})
+      } else if (item.type === '2') {
+        window.open(item.link)
+      }
     }
   }
 }

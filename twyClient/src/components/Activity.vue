@@ -1,7 +1,7 @@
 <template>
   <div class="activity-wrap">
     <div class="ac-wrap">
-      <div class="ac-item" v-for="(item, index) in activityList" :key="index" :class="['ac-item'+index % 5, item.type == 'img' ? 'ac-item-img': '']" :style="{height: itemHeight +'px'}" @click="gotoActivityDetail(item.type)">
+      <div class="ac-item" v-for="(item, index) in activityList" :key="index" :class="['ac-item'+index % 5, item.type == 'img' ? 'ac-item-img': '']" :style="{height: itemHeight +'px'}" @click="gotoActivityDetail(item)">
         <div class="title" v-if="item.type != 'img'">{{item.name}}</div>
         <div class="desc" v-if="item.type != 'img'">{{item.content}}</div>
         <img class="img" v-if="item.type == 'img'" :src="item.imgName">
@@ -32,9 +32,11 @@ export default {
     })
   },
   methods: {
-    gotoActivityDetail (type) {
-      if (!type) {
-        this.$router.push({name: 'activityDetail'})
+    gotoActivityDetail (item) {
+      if (item.type === '1') {
+        this.$router.push({name: 'activityDetail', query: {id: item.id}})
+      } else if (item.type === '2') {
+        window.open(item.link)
       }
     },
     setActivityImg () {

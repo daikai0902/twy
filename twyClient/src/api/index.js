@@ -20,7 +20,13 @@ export default {
   activityList (params) {
     return service(`/api/activity/list`, params, 'GET')
   },
+  activityDetail (params) {
+    return service(`/api/activity/detail`, params, 'GET')
+  },
   newsList (params) {
     return service(`/api/news/list`, params, 'GET')
+  },
+  newsDetail (params) {
+    return service(`/api/news/detail`, params, 'GET')
   }
 }
