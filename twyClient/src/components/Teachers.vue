@@ -2,10 +2,11 @@
   <div class="news-wrap">
     <div class="t-header">
       <img src="../assets/teacher_top.jpg" class="teacher-top">
-      <div class="t-info">
+      <!-- <div class="t-info">
         <p class="t-team">TEAM</p>
         <p class="t-name">名师团队</p>
-      </div>
+      </div> -->
+      <div class="t-txt">天唯：打造一个全优的明星教师团队</div>
     </div>
     <div class="teacher-wrap">
       <div class="t-item" v-for="(item, index) in teacherList" :key="index" @click="gotoTeacherDetail(index)">
@@ -128,7 +129,7 @@ export default {
   }
   .t-item .t-img{
     width: 100%;
-    border-radius:15px;
+    border-radius:12px;
   }
   .t-item .t-info{
     position: absolute;
@@ -209,5 +210,14 @@ export default {
     position: absolute;
     bottom: 0;
     right: 30px;
+  }
+  .t-txt{
+    position: absolute;
+    bottom: 10px;
+    color:#fff;
+    font-size:16px;
+    letter-spacing:0.42px;
+    text-align: center;
+    width: 100%;
   }
 </style>

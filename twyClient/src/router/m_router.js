@@ -25,7 +25,7 @@ let routes = [
   {
     path: '/',
     name: 'mhome',
-    redirect: '/signUp',
+    redirect: '/home',
     component: MLayout,
     children: [
       {
