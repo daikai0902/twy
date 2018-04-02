@@ -1,26 +1,47 @@
 <template>
   <div class="news-wrap">
     <div class="tabs">
-      <!-- <div class="tabs-news" @click="type = 'news'">
-        <p class="p1">NEWS</p>
-        <p class="p2">新闻</p>
-        <img src="../assets/download_white.png" class="icon-tab icon-news" v-if="type == 'news'">
-      </div> -->
       <div class="news-top">
         <img class="img-news-top" src="../assets/news_top.jpg">
-        <p class="nt-title">新闻公告</p>
+        <div class="nt-desc">
+          <p class="nt-title">做最专业的艺术基础教育</p>
+          <p class="nt-sub">让艺术为孩子成长助航</p>
+        </div>
       </div>
-      <!-- <div class="tabs-notify" @click="type = 'notify'">
-        <p class="p1">公告</p>
-        <img src="../assets/download_black.png" class="icon-tab icon-notify" v-if="type == 'notify'">
-      </div> -->
-    </div> 
+    </div>
 
-    <div class="cont-wrap">
-      <div class="news-list">
+    <tab class="v-tabs">
+      <tab-item selected @on-item-click="onItemClick(0)">新闻公告</tab-item>
+      <tab-item @on-item-click="onItemClick(1)">艺星之路</tab-item>
+    </tab>
+
+    <div class="v-tabs">
+      <div class="tab-cont" v-if="tabIndex == 0">
         <div class="nl-item" v-for="(item, index) in newsList" :key="index" @click="gotoNewsDetail(item)">
-          <p class="nl-title">{{item.name}}</p>
-          <p class="nl-time">{{item.createTime}}</p>
+          <div class="ns-panel">
+            <div class="ns-img-wrap">
+              <img :src="item.imgUrl" class="ns-img">
+            </div>
+            <div class="ns-info">
+              <h4 class="ns-title">{{item.name}}</h4>
+              <p class="ns-desc">{{item.remark}}</p>
+              <p class="ns-time">{{item.createTime}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-cont" v-else-if="tabIndex == 1">
+        <div class="nl-item" v-for="(item, index) in activityList" :key="index" @click="gotoActivityDetail(item)">
+          <div class="ns-panel">
+            <div class="ns-img-wrap">
+              <img :src="item.imgUrl" class="ns-img">
+            </div>
+            <div class="ns-info">
+              <h4 class="ns-title">{{item.name}}</h4>
+              <p class="ns-desc">{{item.remark}}</p>
+              <p class="ns-time">{{item.time}}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -29,18 +50,33 @@
 </template>
 
 <script>
+import { Tab, TabItem, Swiper, SwiperItem, Panel } from 'vux'
 import api from '../api/index.js'
 export default {
   name: 'News',
+  components: {
+    Tab,
+    TabItem,
+    Swiper,
+    SwiperItem,
+    Panel
+  },
   data () {
     return {
-      newsList: []
+      newsList: [],
+      tabIndex: 0,
+      activityList: []
     }
   },
   created () {
     api.newsList().then(res => {
       if (res.status === 'succ') {
         this.newsList = res.data.array
+      }
+    })
+    api.activityList().then(res => {
+      if (res.status === 'succ') {
+        this.activityList = res.data.array
       }
     })
   },
@@ -51,6 +87,16 @@ export default {
       } else if (item.type === '2') {
         window.open(item.link)
       }
+    },
+    gotoActivityDetail (item) {
+      if (item.type === '1') {
+        this.$router.push({name: 'activityDetail', query: {id: item.id}})
+      } else if (item.type === '2') {
+        window.open(item.link)
+      }
+    },
+    onItemClick (idx) {
+      this.tabIndex = idx
     }
   }
 }
@@ -63,7 +109,7 @@ export default {
 }
 .tabs{
   position: relative;
-  height: 135px;
+  height: 156px;
 }
 .icon-tab{
   position: absolute;
@@ -100,7 +146,7 @@ export default {
   left: 10px;
 }
 .tabs .news-top{
-  height: 120px;
+  height: 156px;
   position: absolute;
   right: 0;
   top: 0;
@@ -136,7 +182,9 @@ export default {
 .nl-item{
   position: relative;
   display: block;
-  padding: 6px 30% 6px 18px;
+  padding: 15px 0;
+  margin: 0 10px;
+  border-bottom: 1px solid #ddd;
 }
 .nl-item::before{
   content: '';
@@ -161,11 +209,87 @@ export default {
   top: 10px;
 }
 .nt-title{
+  font-size:22px;
+  color:#fff;
+  text-align:center;
+  line-height:28px;
+}
+.nt-desc{
+  width: 100%;
+  height: 100%;
   position: absolute;
-  z-index: 12;
+  top: 0;
+  left: 0;
   color: #fff;
-  right: 40px;
-  bottom: 14px;
-  font-size: 22px;
+  padding-top: 60px;
+  box-sizing: border-box;
+}
+.nt-sub{
+  font-size:14px;
+  color:#fff;
+  text-align:center;
+  line-height:28px;
+}
+.v-tabs{
+  position: relative;
+  z-index: 10;
+}
+.vux-tab{
+  background:#ecf0f1;
+}
+.vux-tab .vux-tab-item.vux-tab-selected{
+  color:#c09050;
+  position: relative;
+}
+.vux-tab .vux-tab-item.vux-tab-selected:before{
+  content: '';
+  background:#c09050;
+  width:5px;
+  height:5px;
+  border-radius:100%;
+  position: absolute;
+  left: 28%;
+  top: 45%;
+}
+.vux-tab .vux-tab-item{
+  color: #000;
+}
+.ns-panel{position: relative;padding-left: 140px;height: 85px;}
+.ns-img-wrap{position: absolute;left:0;}
+.ns-info{position: relative;height: 100%;}
+.ns-title{
+  font-size:16px; 
+  color:#000000;
+  text-align:left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 400;
+}
+.ns-desc{
+  font-size:14px;
+  color:#8a8a8f;
+  line-height: 18px;
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  margin: 4px auto;
+}
+.ns-time{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size:12px;
+  color:#8a8a8f;
+  line-height: 18px;
 }
 </style>
+<style>
+.vux-tab-ink-bar{
+  height: 0 !important;
+  display: none !important;
+}
+</style>
+
