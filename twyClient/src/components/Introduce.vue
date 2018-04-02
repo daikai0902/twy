@@ -136,13 +136,18 @@ export default {
 .swiper-wrap > .vux-indicator > a > .vux-icon-dot{
   background:rgba(255,255,255,.18) !important;;
   box-shadow:0 2px 3px 0 rgba(0,0,0,0.08) !important;
-  width:9px !important;
-  height:9px !important;
+  width:7px !important;
+  height:7px !important;
   border-radius:100% !important;
-  margin-right: 8px !important;
+  margin-right: 6px !important;
 }
 .swiper-wrap > .vux-indicator > a > .vux-icon-dot.active{
   background:#fff !important;
+}
+
+.vux-slider > .vux-indicator-center{
+  -webkit-transform: translateX(74%) !important;
+  transform: translateX(74%) !important;
 }
 </style>
 
@@ -222,7 +227,7 @@ export default {
   color:#fff;
   display: block;
   border-radius:100px;
-  background-image: linear-gradient(38deg, rgba(131,33,87,.68) 0%, rgba(200,40,127,.68) 100%);
+  background-color: #B78F59;
   margin:45px auto 0;
   width: 170px;
   height: 40px;
