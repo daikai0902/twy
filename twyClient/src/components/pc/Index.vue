@@ -44,7 +44,7 @@
 										<p class="title">{{item.title}}</p>
 										<p class="desc">{{item.desc}}</p>
 									</div>
-									<div class="navigate" >
+									<div class="navigate" :class="{'teacher-re': index == 0}">
 										<img class='icon' :src="item.icon" alt="">
 										<span class="cate">{{item.cate}}</span>
 										<span class="type">{{item.type}}</span>
@@ -58,19 +58,24 @@
 								<div class="content">
 									<div class="leftbar">
 										<ul class="menu">
-											<li class="menu-item" v-for="(item, index) in special" @click="changeSpecial(item.id)" :key="index">
+											<li class="menu-item" v-for="(item, index) in special" @click="changeSpecial(item.id, index)" :key="index">
 												<span class="activited" v-if="activited === item.id"></span>
 												<span class="menu-title">{{item.title}}</span>
 											</li>
 										</ul>
 									</div>
-									<div class="rightbar" :style="'background-image: url('+ selectItem.bgc + ')'">
-										<div class="desc">
-											<p>{{selectItem.tips}}</p>
-											<p>{{selectItem.class_time}}</p>
-											<p>{{selectItem.point}}</p>
-										</div>
-									</div>
+									<swiper class="rightbar" :options="courseSwiperOption" ref="courseSwiper">
+										<swiper-slide v-for="(item, index) in special" :key="index">
+											{{item}}
+											<div :style="'background-image: url('+ item.bgc + ')'">
+												<div class="desc">
+													<p>{{item.tips}}</p>
+													<p>{{item.class_time}}</p>
+													<p>{{item.point}}</p>
+												</div>
+											</div>
+										</swiper-slide>
+									</swiper>
 								</div>
 							</div>
 						</div>
@@ -122,8 +127,14 @@ import c006 from '@/assets/pc/index/c006.png'
 import c007 from '@/assets/pc/index/c007.png'
 import pinao from '@/assets/pc/pinao.jpg'
 import apply from '@/assets/pc/class.jpg'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
 export default{
-  name: 'PcPndex',
+  name: 'PcIndex',
+  components: {
+    swiper,
+    swiperSlide
+  },
   data: () => ({
     pinao: pinao,
     apply: apply,
@@ -228,19 +239,26 @@ export default{
       title: '声乐歌舞',
       tips: '4-8周岁儿童',
       class_time: '150分钟/16周次/一学期每次150分钟',
-      point: ' 发挥儿童歌舞表演天性，全面塑造舞台艺术表现力',
-      bgc: c001
+      point: '发挥儿童歌舞表演天性，全面塑造舞台艺术表现力'
+    },
+    courseSwiperOption: {
+			loop: true,
+			direction : 'vertical',
+			delay: 5000,
+			autoplay:true
     }
   }),
-  mounted () {
-
+	computed: {
+    swiper () {
+      return this.$refs.courseSwiper.swiper
+    }
   },
   methods: {
     handleToMorePage (type) {
       let url = type === 'Teacher' ? '/team' : type === 'News' ? '/news' : '/activity'
       this.$router.push({path: url})
     },
-    changeSpecial (id) {
+    changeSpecial (id, index) {
       let special = this.special
       if (id) {
         let temp = special.filter(p => {
@@ -251,7 +269,8 @@ export default{
         })
         this.selectItem = temp[0]
         this.activited = id
-      }
+			}
+      this.swiper.slideTo(index, 1000, false)
     }
   }
 }
@@ -532,6 +551,9 @@ export default{
 							margin: 0 11px 0 35px;
 						}
 					}
+					.teacher-re{
+						background-image:linear-gradient(-145deg, rgba(108,20,114,.68) 0%, rgba(225,44,141,.68) 100%);
+					}
 				}
 				.item:last-child{
 					margin-right: 0;
@@ -545,7 +567,7 @@ export default{
 				font-size: 0;
 				.content{
 					margin-top: 22px;
-					border: 1px solid rgba(225,44,141,.68);
+					border: 1px solid rgba(225,44,141,.48);
 				}
 				.leftbar{
 					display: inline-block;
