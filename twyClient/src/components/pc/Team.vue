@@ -3,7 +3,9 @@
     <div class="maincontent" :style="'background-image: url('+ bgc + ')'">
       <div class="wrap">
         <div class="topbar">
-          <img class="back" @click="goback" src="../../assets/pc/team/back.png" alt="">
+          <div class="back" @click="goback">
+            <img src="../../assets/pc/team/back.png" alt="">
+          </div>
           <div class="logo-info" @click="goIndex">
             <img src="../../assets/pc/news/top_logo.png" alt="">
             <div class="name">
@@ -14,46 +16,55 @@
         </div>
       </div>
 
-      <swiper :options="swiperOption" ref="mySwiper" @someSwiperEvent="callback">
+      <swiper class="swiper-no-swiping" :options="swiperOption" ref="mySwiper" @someSwiperEvent="callback">
         <swiper-slide v-for="(item, index) in teamlist" :key="index">
-          <img :src="'/static/'+ item.url" alt="" class="teacher-img">
-          <div class="info">
+          <div :style="'background-image: url(/static/'+ item.url +')'" alt="" class="teacher-img"></div>
+          <div class="info" v-if="activited == index" @mouseover="showDialogStyle = true">
             <p class="name">{{item.name}}</p>
             <div class="position">
               <p v-for="(it, id) in item.position" :key="id">{{it}}</p>
             </div>
+            <div class="mouse"><img src="../../assets/pc/team/mouse.png" alt=""></div>
           </div>
-          <div class="mouse"><img src="../../assets/pc/team/mouse.png" alt=""></div>
         </swiper-slide>
-
+        <!-- <div class="swiper-pagination" slot="pagination"></div> -->
         <div class="swiper-button-prev" slot="button-prev"></div>
         <div class="swiper-button-next" slot="button-next"></div>
       </swiper>
     </div>
+
+    <div v-transfer-dom>
+      <x-dialog v-model="showDialogStyle" hide-on-blur :dialog-style="{'max-width': '100%', width: '100%', height: '50%', 'background-color': 'transparent'}">
+        <div style="color:#fff;text-align:center; width: 1000px;height: 325px;margin:0 auto; position: relative;" @click="showDialogStyle = false">
+          <x-icon type="ios-close-outline" style="fill:#fff;position: absolute; right: 200px; top: -50px;cursor: pointer;"></x-icon>
+          <div style="font-size:14px;width: 550px;height:200px;margin:50px auto; text-align: left;">
+            <p style="margin-bottom: 10px;text-align: justify; text-indent: 2em;"  v-for="(item, index) in teamlist[activited].desc" :key="index">{{item}}</p>
+          </div>
+        </div>
+      </x-dialog>
+    </div>
+
   </div>
 </template>
 
 <script>
 import bgc from '@/assets/pc/team/bgc.png'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import { XDialog } from 'vux'
+import { swiper, swiperSlide, TransferDomDirective as TransferDom } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
-
+var myVue = {}
 export default{
   name: 'team',
   components: {
     swiper,
-    swiperSlide
+    swiperSlide,
+    XDialog,
+    TransferDom
   },
   data: () => ({
     bgc: bgc,
     teamlist: [
       {
-        id: 1,
-        name: '徐明德',
-        url: 'teachers/1.jpg',
-        position: ['宁波天唯艺星教育名誉校长', '上海戏剧学院教授', '上海市美术协会会员'],
-        desc: ['宁波天唯艺星教育名誉校长，上海戏剧学院教授，上海市美术家协会会员。 徐明德毕业于中国美术学院，执教于上海戏剧学院舞台美术系。三十多年来徐明德教授绘画、色彩以及与舞台美术相关的多门影视、表演课程，为上戏艺术教育培养了众多著名的艺术家。 徐明德还多次参加国家及上海市的美术展览、出版的作品集有《中国美术家丛书——徐明德画集》、《上海美术家画库——徐明德》，《徐明德画集》，连续三年徐明德德油画创作入选中国美术家协会举办的“风景、风情全国油画展”，油画作品《师生、岁月》获中国美术家协会“时代精神——全国油画肖像画”优秀作品奖。']
-      }, {
         id: 2,
         name: '严建红',
         url: 'teachers/2.jpg',
@@ -77,8 +88,7 @@ export default{
         url: 'teachers/5.jpg',
         position: ['宁波天唯艺星教育名誉校长', '上海戏剧学院教授', '上海市美术协会会员'],
         desc: ['宁波天唯艺星教育教学主任，播音主持、影视表演主课教师。本科毕业于中央戏剧学院表演系戏剧影视专业，获学士学位。在校期间曾主演《雷雨》、《北京人》，《桃花扇》，《三姐妹》，《朱莉小姐》等多部中外经典戏剧作品。2010年跟随中国儿童艺术剧院新晋青年导演毛尔男主演音乐剧《屋里的大象》，《杀闪桃》，《屋里的大象》在第五届北京国际青年戏剧节中被评为优秀作品。2012年加入孟京辉戏剧工作室参演音乐剧《初恋》，在全国近二十个城市进行巡演；2013年参演中国国家话剧院及腾讯公司联合出品的大型儿童音乐剧《洛克王国大冒险》。2014年至今一直从事艺术教育工作，在艺考机构、少儿培训机构均有丰富的教学经验。']
-      },
-      {
+      }, {
         id: 6,
         name: '陆倩雯',
         url: 'teachers/6.jpg',
@@ -96,6 +106,12 @@ export default{
         url: 'teachers/8.jpg',
         position: ['宁波天唯艺星教育名誉校长', '上海戏剧学院教授', '上海市美术协会会员'],
         desc: ['宁波天唯艺星教育舞蹈教师。毕业于06届浙江省艺术学院舞蹈编导专业。曾多次参加浙江省音舞节、浙江省排舞比赛并取得优异成绩，主要包括：2010年民间原创舞蹈大赛《画船》获一等奖； 2011年评为首届宁波文艺之星；2012年在浙江省排舞大赛中，编排的舞蹈作品《妈咪恰恰》获区一等奖，并获优秀辅导员称号；2013年被评为“千名群众文艺骨干”荣誉称号。毕业至今一直从事幼儿教育和舞蹈教育工作，曾获得爵士舞、芭蕾舞、中国舞优秀教师称号，拥有丰富的少儿艺术教育经验。']
+      }, {
+        id: 1,
+        name: '徐明德',
+        url: 'teachers/1.jpg',
+        position: ['宁波天唯艺星教育名誉校长', '上海戏剧学院教授', '上海市美术协会会员'],
+        desc: ['宁波天唯艺星教育名誉校长，上海戏剧学院教授，上海市美术家协会会员。 徐明德毕业于中国美术学院，执教于上海戏剧学院舞台美术系。三十多年来徐明德教授绘画、色彩以及与舞台美术相关的多门影视、表演课程，为上戏艺术教育培养了众多著名的艺术家。 徐明德还多次参加国家及上海市的美术展览、出版的作品集有《中国美术家丛书——徐明德画集》、《上海美术家画库——徐明德》，《徐明德画集》，连续三年徐明德德油画创作入选中国美术家协会举办的“风景、风情全国油画展”，油画作品《师生、岁月》获中国美术家协会“时代精神——全国油画肖像画”优秀作品奖。']
       }, {
         id: 9,
         name: '罗明',
@@ -135,35 +151,42 @@ export default{
       }
     ],
     desc: {},
+    showDialogStyle: false,
+    activited: 7,
     swiperOption: {
-      // loop: true,
-      direction: 'horizontal',
-      grabCursor: true,
+      effect: 'coverflow',
       centeredSlides: true,
+      slidesPerView: 5,
+      spaceBetween: 30,
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 30,
+        depth: 150,
+        modifier: 1,
+        slideShadows: false
+      },
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
       },
-      slidesPerView: 3,
-      spaceBetween: 50,
-      effect: 'coverflow',
-      coverflowEffect: {
-        rotate: 30,
-        stretch: 10,
-        depth: 60,
-        modifier: 2,
-        slideShadows: false
+      on: {
+        slideChangeTransitionEnd: function () {
+          let _active = this.activeIndex % 14
+          myVue.activited = _active === -1 ? 13 : _active
+        }
       }
-    },
-    curr: 3
+    }
   }),
   computed: {
     swiper () {
       return this.$refs.mySwiper.swiper
     }
   },
+  beforeCreate () {
+    myVue = this
+  },
   mounted () {
-    this.swiper.slideTo(this.curr, 1000, false)
+    this.swiper.slideTo(this.activited, 1000, false)
   },
   methods: {
     callback () {
@@ -200,12 +223,15 @@ export default{
       .back{
         position: absolute;
         left: 50px;
+        cursor: pointer;
+        width: 30px;
       }
       .logo-info{
         display: inline-flex;
         justify-content: center;
         align-items: center;
         margin: 0 auto;
+        cursor: pointer;
         img{
           display: inline-block;
           vertical-align: middle;
@@ -231,19 +257,18 @@ export default{
 .swiper-wrapper{
   width: 1000px !important;
 }
-.swiper-slide {  
-  background-position: center;
-  width: 230px !important;
-}  
+
 .swiper-slide .teacher-img{  
   display: block;
   width: 230px;
   height:320px;
-}  
-.swiper-button-next, .swiper-button-prev {
-  top: 25%;
-  width: 50px;
-  height: 325px;
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+} 
+.swiper-slide .info{
+  width: 230px;
+  margin-top: 20px;
 }
 .name{
   font-size:16px;
@@ -255,13 +280,6 @@ export default{
   font-size: 12px;
   color:#fff;
   text-align: center;
-}
-.shadow{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 325px;
 }
 .mouse{
   text-align: center;

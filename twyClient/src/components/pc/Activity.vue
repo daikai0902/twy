@@ -284,5 +284,8 @@ export default{
     width: 100%;
     margin: 30px auto 10px;
   }
+  .activity-detail{
+    margin-bottom: 50px;
+  }
 }
 </style>

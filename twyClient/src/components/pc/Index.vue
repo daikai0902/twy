@@ -123,6 +123,7 @@ import pinao from '@/assets/pc/pinao.jpg'
 import apply from '@/assets/pc/class.jpg'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+import api from '../../api/index.js'
 var myVue = {}
 export default{
   name: 'PcIndex',
@@ -145,7 +146,8 @@ export default{
         desc: '由上海戏剧学院徐明德教授和27年资深教育管理者带领，携手各艺术领域专家教师，志在做最专业的艺术基础教育。',
         icon: user,
         cate: '名师团队'
-      }, {
+			}
+			, {
         id: 2,
         tips: '04-08 04:50AM',
         url: news,
@@ -236,12 +238,28 @@ export default{
       autoplay: true,
       on: {
         slideChangeTransitionEnd: function () {
-					let _active = this.activeIndex % 7 - 1
-					myVue.activited = _active === -1 ? 6 : _active
+          let _active = this.activeIndex % 7 - 1
+          myVue.activited = _active === -1 ? 6 : _active
         }
       }
-    }
-  }),
+		},
+		activityList: [],
+		newsList: []
+	}),
+	created () {
+		api.activityList().then(res => {
+      if (res.status === 'succ') {
+				this.activityList = res.data.array
+				// this.recommand.push(this.activityList[0])
+      }
+		})
+		api.newsList().then(res => {
+      if (res.status === 'succ') {
+				this.newsList = res.data.array
+				// this.recommand.push(this.newsList[0])
+      }
+    })
+  },
   beforeCreate () {
     myVue = this
   },
