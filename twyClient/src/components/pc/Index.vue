@@ -290,6 +290,7 @@ export default{
 		min-height: calc(100vh);
 		background: url('./../../assets/pc/bg_index.png') no-repeat center center;
 		background-size: cover;
+		overflow: hidden;
 	}
 	.en-title{
 		width: 1187px;
@@ -299,10 +300,11 @@ export default{
 		font-size:122px;
 		color:#676869;
 		letter-spacing:0;
-		text-align:left;			
+		text-align:left;	
+		white-space: nowrap;		
 	}
 	.wraps{
-		max-width: 1020px;
+		width: 1020px;
 		margin: 0 auto;
 		// padding-top: 204px;
 		.mainTitle{
@@ -508,7 +510,8 @@ export default{
 						height: 63px;
 						display: inline-flex;
 						align-items: center;
-						background-image:linear-gradient(-235deg, #613060 0%, #9c4775 100%);
+						// background-image:linear-gradient(-235deg, #613060 0%, #9c4775 100%);
+						background-image:linear-gradient(-235deg, rgba(108,20,114,.68) 0%, rgba(225,44,141,.68) 100%);
 						.cate{
 							font-family:PingFangSC-Semibold;
 							font-size:14px;
@@ -542,15 +545,15 @@ export default{
 				font-size: 0;
 				.content{
 					margin-top: 22px;
+					border: 1px solid rgba(225,44,141,.68);
 				}
 				.leftbar{
 					display: inline-block;
-					width: 162px;
+					width: 160px;
 					height: 392px;
-					opacity:0.68;
-					background-image:linear-gradient(-138deg, #6c1472 0%, #e12c8d 100%);
+					background-image:linear-gradient(0deg, rgba(108,20,114,.68) 0%, rgba(225,44,141,.68) 100%);
 					box-sizing: border-box;
-					padding: 77px 41px 63px 41px;
+					padding: 77px 32px 63px 40px;
 					ul{
 						li{
 							position: relative;
@@ -589,8 +592,12 @@ export default{
 					vertical-align: top;
 					.desc{
 						position: absolute;
-						right: 33px;
-						bottom: 63px;
+						width: 100%;
+						height: 157px;
+						bottom: 0;
+						padding-right: 63px;
+						box-sizing: border-box;
+						background-image: linear-gradient(-179deg, rgba(0,0,0,0.00) 0%, #000000 100%);
 						p{
 							font-family:PingFangSC-Regular;
 							font-size:18px;
@@ -610,6 +617,7 @@ export default{
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
+		box-shadow: 3px 4px 11px 0 rgba(0,0,0,0.50);
 	}
 	.footer{
 		position: relative;
@@ -643,8 +651,7 @@ export default{
 					font-size:14px;
 					color:#ffffff;
 					letter-spacing:0.4px;
-					line-height:26px;
-					text-align:left;
+					line-height:24px;
 					text-align: center;
 				}
 			}
