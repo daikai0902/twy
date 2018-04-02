@@ -2,10 +2,10 @@
   <div class="intro-wrap">
     <img class="intro-bg" src="../assets/bg_intro.jpg">
     <swiper class="swiper-wrap" dots-class="intro-dot" dots-position="center" :style="{height: h + 'px', 'padding-top': pt + 'px'}">
-      <swiper-item class="intro-item" style="background-color:#babcc9;" :style="{height: h + 'px'}">
-        <img class="item-bg" src="../assets/bg_intro1.jpg" style="top:0;">
-        <p class="intro-title fadeInUp animated txt-center c-white" style="font-size:20px;margin-bottom:20px;margin-bottom: 20px;margin-top: 220px;font-weight: lighter;">培训学校课程</p>
-        <div class="intro-desc txt-center c-white">
+      <swiper-item class="intro-item" style="background-color:#fff;" :style="{height: h + 'px'}">
+        <img class="item-bg item-bg1" src="../assets/bg_intro21.jpg" style="top:0;">
+        <p class="intro-title fadeInUp animated txt-center" style="font-size:20px;margin-bottom:20px;margin-bottom: 20px;margin-top: 220px;color: #220521;">培训学校课程</p>
+        <div class="intro-desc txt-center ">
           针对零基础以上儿童<br/>分为初级、中级、高级课程<br/>每班 <span style="font-size:20px;">2</span> 位专业教师 <span style="font-size:20px;">1</span> 位生活教师
         </div>
       </swiper-item>
@@ -129,12 +129,12 @@ export default {
   width: 90% !important;
   max-width: 320px !important;
   max-height: 564px !important;
-  border-radius: 28px;
+  border-radius: 30px;
   left: calc((100% - 320px) / 2) !important;
   overflow: hidden;
 }
 .swiper-wrap > .vux-indicator > a > .vux-icon-dot{
-  background:#c6b3aa !important;;
+  background:rgba(255,255,255,.18) !important;;
   box-shadow:0 2px 3px 0 rgba(0,0,0,0.08) !important;
   width:9px !important;
   height:9px !important;
@@ -142,7 +142,7 @@ export default {
   margin-right: 8px !important;
 }
 .swiper-wrap > .vux-indicator > a > .vux-icon-dot.active{
-  background:#6f5144 !important;
+  background:#fff !important;
 }
 </style>
 
@@ -218,17 +218,20 @@ export default {
   text-decoration: underline;
 }
 .signUp-link{
-  font-size:14px;
+  font-size:16px;
   color:#fff;
   display: block;
   border-radius:100px;
-  background:#634c49;
+  background-image: linear-gradient(38deg, rgba(131,33,87,.68) 0%, rgba(200,40,127,.68) 100%);
   margin:45px auto 0;
-  width: 90px;
-  height: 32px;
+  width: 170px;
+  height: 40px;
   position: relative;
   z-index: 1;
   text-align: center;
-  line-height: 32px;
+  line-height: 40px;
+}
+.item-bg1{
+  border-radius: 0;
 }
 </style>
