@@ -3,7 +3,8 @@
     <div class="ac-wrap">
       <p class="title">{{title}}</p>
       <p class="time">{{time}}</p>
-      <p class="address">{{address}}</p>
+      
+      <div class="vdo-cont"></div>
       <div class="ac-cont"></div>
     </div>
 
@@ -36,6 +37,11 @@ export default {
           this.address = res.data.address
           this.time = res.data.time
           document.querySelector('.ac-cont').innerHTML = res.data.content
+          if (res.data.videoUrl) {
+            document.querySelector('.vdo-cont').innerHTML = res.data.videoUrl
+            document.querySelector('.vdo-cont iframe').width = '100%'
+            document.querySelector('.vdo-cont iframe').height = 'auto'
+          }
         }
       })
     }
@@ -55,23 +61,26 @@ export default {
     padding: 20px 0;
   }
   .ac-wrap .title{
-    font-size: 36px;
+    font-size: 18px;
     margin-bottom:10px;
+    text-align: center;
   }
   .ac-wrap .time,
   .ac-wrap .address{
-    font-size: 18px;
-    color:#4a4a4a;
+    font-size: 12px;
+    color:#8a8a8f;
   }
   .ac-wrap .ac-cont{
     font-size:14px;
     color:#4a4a4a;
-    margin-top: 50px;
   }
   .ac-wrap .ac-cont p{
     margin: 5px 0;
   }
   .ac-wrap .ac-cont img{
     width: 100%;
+  }
+  .vdo-cont{
+    margin: 20px auto;
   }
 </style>

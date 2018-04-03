@@ -3,9 +3,10 @@
     <div class="news-wrap">
       <p class="title">{{title}}</p>
       <div class="info">
-        <p class="time">{{time}}</p>
         <p class="org">{{org}}</p>
+        <p class="time">{{time}}</p>
       </div>
+      <div class="vdo-cont"></div>
       <div class="news-cont"></div>
     </div>
 
@@ -38,6 +39,11 @@ export default {
           this.address = res.data.address
           this.time = res.data.createTime
           document.querySelector('.news-cont').innerHTML = res.data.content
+          if (res.data.videoUrl) {
+            document.querySelector('.vdo-cont').innerHTML = res.data.videoUrl
+            document.querySelector('.vdo-cont iframe').width = '100%'
+            document.querySelector('.vdo-cont iframe').height = 'auto'
+          }
         }
       })
     }
@@ -62,13 +68,12 @@ export default {
     text-align: center;
   }
   .news-wrap .info{
-    text-align: center;
+    text-align: left;
   }
   .news-wrap .time,
   .news-wrap .org{
     font-size: 12px;
     color:#8a8a8f;
-    display: inline-block;
   }
   .news-wrap .time{
     margin-right: 10px;
@@ -76,12 +81,14 @@ export default {
   .news-wrap .news-cont{
     font-size:14px;
     color:#4a4a4a;
-    margin-top: 30px;
   }
   .news-wrap .news-cont p{
     margin: 5px 0;
   }
   .news-wrap .news-cont img{
     width: 100%;
+  }
+  .vdo-cont{
+    margin: 20px auto;
   }
 </style>

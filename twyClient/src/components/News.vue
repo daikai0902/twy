@@ -19,9 +19,7 @@
       <div class="tab-cont" v-if="tabIndex == 0">
         <div class="nl-item" v-for="(item, index) in newsList" :key="index" @click="gotoNewsDetail(item)">
           <div class="ns-panel">
-            <div class="ns-img-wrap">
-              <img :src="item.imgUrl" class="ns-img">
-            </div>
+            <div class="ns-img-wrap" :style="'background-image: url(' + item.imgUrl + ')'"> </div>
             <div class="ns-info">
               <h4 class="ns-title">{{item.name}}</h4>
               <p class="ns-desc">{{item.remark}}</p>
@@ -33,9 +31,7 @@
       <div class="tab-cont" v-else-if="tabIndex == 1">
         <div class="nl-item" v-for="(item, index) in activityList" :key="index" @click="gotoActivityDetail(item)">
           <div class="ns-panel">
-            <div class="ns-img-wrap">
-              <img :src="item.imgUrl" class="ns-img">
-            </div>
+            <div class="ns-img-wrap" :style="'background-image: url(' + item.imgUrl + ')'"> </div>
             <div class="ns-info">
               <h4 class="ns-title">{{item.name}}</h4>
               <p class="ns-desc">{{item.remark}}</p>
@@ -255,7 +251,13 @@ export default {
   color: #000;
 }
 .ns-panel{position: relative;padding-left: 140px;height: 85px;}
-.ns-img-wrap{position: absolute;left:0;}
+.ns-img-wrap{
+  position: absolute;
+  left:0;
+  background-size: 128px 85px;
+  width: 128px;
+  height: 85px;
+}
 .ns-info{position: relative;height: 100%;}
 .ns-title{
   font-size:16px; 
