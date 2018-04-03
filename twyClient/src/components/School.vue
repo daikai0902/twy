@@ -1,7 +1,7 @@
 <template>
   <div class="sc-wrap">
     <!-- <side-menu></side-menu> -->
-    <div class="school-wrap">
+    <!-- <div class="school-wrap">
       <div class="sc-item sc-header">
         <p class="sc-name">天唯艺星</p>
         <p class="sc-ename">TIAN WEI</p>
@@ -70,6 +70,12 @@
           <p class="sc72">让艺术为孩子成长助航</p>
         </div>
       </div>  
+    </div> -->
+    <div class="school-room">
+      <img src="../assets/intro1.jpg">
+      <img src="../assets/intro2.jpg">
+      <img src="../assets/intro3.jpg">
+      <img src="../assets/intro4.jpg">
     </div>
     <div class="bg-black bg-gray"></div>
   </div>
@@ -405,5 +411,13 @@ export default {
 }
 .sc7-dot::after{
   right: 20px;
+}
+
+.school-room{
+  position: relative;
+  z-index: 10;
+}
+.school-room img{
+  width: 100%;
 }
 </style>

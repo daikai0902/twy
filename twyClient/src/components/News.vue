@@ -1,7 +1,7 @@
 <template>
   <div class="news-wrap">
     <div class="tabs">
-      <div class="news-top">
+      <div class="news-top" @click="goSchool">
         <img class="img-news-top" src="../assets/news_top.jpg">
         <div class="nt-desc">
           <p class="nt-title">做最专业的艺术基础教育</p>
@@ -93,6 +93,9 @@ export default {
     },
     onItemClick (idx) {
       this.tabIndex = idx
+    },
+    goSchool () {
+      this.$router.push({name: 'school'})
     }
   }
 }
@@ -278,6 +281,7 @@ export default {
   -webkit-box-orient:vertical;
   -webkit-line-clamp:2;
   margin: 4px auto;
+  height: 36px;
 }
 .ns-time{
   position: absolute;

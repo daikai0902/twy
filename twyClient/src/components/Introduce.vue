@@ -227,7 +227,7 @@ export default {
   color:#fff;
   display: block;
   border-radius:100px;
-  background-color: #B78F59;
+  background-color: #5BBFD7;
   margin:45px auto 0;
   width: 170px;
   height: 40px;

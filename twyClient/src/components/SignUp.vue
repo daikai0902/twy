@@ -344,7 +344,7 @@ export default {
   background-color: #fff;
 }
 .btn-save{
-  background-color:#0086e4 !important;
+  background-color:#5BBFD7 !important;
   box-shadow:0 0 24px 0 rgba(0,0,0,0.13);
   border-radius:16px  !important;
   width:254px !important;
