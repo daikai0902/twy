@@ -31,14 +31,14 @@
         <img class="star" src="../assets/star.png">
         <popup-radio :options="sexOptions" v-model="sex"></popup-radio>
       </div>
-      <div class="su-cell">
+      <!-- <div class="su-cell">
         <img class="star" src="../assets/star.png">
         <x-input  v-model="clothsize" placeholder="衣尺码" type="number"></x-input>
       </div>
       <div class="su-cell">
         <img class="star" src="../assets/star.png">
         <x-input  v-model="shoessize" placeholder="鞋尺码" type="number" ></x-input>
-      </div>
+      </div> -->
       <div class="su-cell">
         <img class="star" src="../assets/star.png">
         <x-input  v-model="momname" placeholder="妈妈姓名"></x-input>
@@ -47,8 +47,8 @@
         <img class="star" src="../assets/star.png">
         <x-input  v-model="momphone" placeholder="手机" type="tel" keyboard="number" is-type="china-mobile"></x-input>
       </div>
-      <x-input  v-model="dadname" placeholder="爸爸姓名"></x-input>
-      <x-input  v-model="dadphone" placeholder="手机" type="tel" keyboard="number" is-type="china-mobile"></x-input>
+      <!-- <x-input  v-model="dadname" placeholder="爸爸姓名"></x-input> -->
+      <!-- <x-input  v-model="dadphone" placeholder="手机" type="tel" keyboard="number" is-type="china-mobile"></x-input> -->
       <div class="su-cell">
         <img class="star" src="../assets/star.png">
         <popup-radio :options="orgOptions" v-model="groupId" placeholder="选网点" required @on-hide="orgOptionChange"></popup-radio>
@@ -59,7 +59,7 @@
       </div>
       <x-input  v-model="nursery" placeholder="现就读的幼儿园"></x-input>
       <x-input  v-model="address" placeholder="家庭住址"></x-input>
-      <x-textarea v-model="remark" :max="50" placeholder="备注"></x-textarea>
+      <!-- <x-textarea v-model="remark" :max="50" placeholder="备注"></x-textarea> -->
       <x-button type="primary" class="btn-save" @click.native="bindSignup">填写完成，立即提交</x-button>
       <img class="bg-ft" src="../assets/bg_ft.png">
       <img class="bg-ft-mask" src="../assets/bg_ft_mask.png">
@@ -110,6 +110,7 @@ export default {
   methods: {
     getCourseList (groupId) {
       api.orgCourse({groupId: groupId, isOrder: true}).then(res => {
+        this.courseList = res.data.array
         res.data.array.forEach((item, index) => {
           this.courseOptions.push({ value: item.name, key: item.id })
         })
@@ -139,16 +140,16 @@ export default {
           content: '您好，请填写年龄再提交付款！'
         })
         return false
-      } else if (!this.clothsize) {
-        AlertModule.show({
-          content: '您好，请填写衣尺码再提交付款！'
-        })
-        return false
-      } else if (!this.shoessize) {
-        AlertModule.show({
-          content: '您好，请填写鞋尺码再提交付款！'
-        })
-        return false
+      // } else if (!this.clothsize) {
+      //   AlertModule.show({
+      //     content: '您好，请填写衣尺码再提交付款！'
+      //   })
+      //   return false
+      // } else if (!this.shoessize) {
+      //   AlertModule.show({
+      //     content: '您好，请填写鞋尺码再提交付款！'
+      //   })
+      //   return false
       } else if (!this.momname) {
         AlertModule.show({
           content: '您好，请填写妈妈姓名再提交付款！'
@@ -192,7 +193,7 @@ export default {
             content: res.message
           })
         } else {
-          that.$router.push({ name: 'orderSucc', params: {query: {c: '民族舞', n: this.name}} })
+          that.$router.push({ name: 'orderSucc', params: {query: {c: this.courseItem.name, n: this.name}} })
         }
       })
     },
@@ -200,7 +201,11 @@ export default {
       this.getCourseList(this.groupId)
     },
     orgCourseChange (val) {
-      console.log(val)
+      this.courseList.forEach((item, index) => {
+        if (item.id === this.courseId) {
+          this.courseItem = item
+        }
+      })
     }
   }
 }
@@ -301,7 +306,7 @@ export default {
   background-color: #fff;
 }
 .btn-save{
-  background-color:#0086e4 !important;
+  background-color:#5BBFD7 !important;
   box-shadow:0 0 24px 0 rgba(0,0,0,0.13);
   border-radius:16px  !important;
   width:254px !important;
@@ -400,5 +405,9 @@ export default {
 }
 .vux-radio-label{
   color: #000;
+}
+.vux-x-input{
+  position: relative;
+  z-index: 10;
 }
 </style>

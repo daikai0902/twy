@@ -55,14 +55,14 @@
       </div>
       <div class="su-cell">
         <img class="star" src="../assets/star.png">
-        <popup-radio :options="courseOptions" v-model="courseId" placeholder="选课程" required></popup-radio>
+        <popup-radio :options="courseOptions" v-model="courseId" placeholder="选课程" required @on-hide="courseOptionChange"></popup-radio>
       </div>
       <x-input  v-model="nursery" placeholder="现就读的幼儿园"></x-input>
       <x-input  v-model="address" placeholder="家庭住址"></x-input>
       <x-textarea v-model="remark" :max="50" placeholder="备注"></x-textarea>
 
-      <p class="payment-tip">支付方式</p>
-      <ul class="payment-list">
+      <p class="payment-tip" v-if="freeType == 1">支付方式</p>
+      <ul class="payment-list" v-if="freeType == 1">
         <li :class="{'active': ptype == 1}" @click="ptype = 1">
           <img src="../assets/icon_weixin.png" class="pimg">
           <img src="../assets/icon_weixin_active.png" class="pimg-active">
@@ -95,6 +95,7 @@
 <script>
 import { Group, Cell, XInput, XTextarea, XButton, PopupRadio, AlertModule } from 'vux'
 import api from '../api/index.js'
+// import { constants } from 'http2';
 
 export default {
   components: {
@@ -129,7 +130,10 @@ export default {
       remark: '',
       payList: ['微信', '支付宝', '刷卡', '现金'],
       payMethod: '微信',
-      ptype: 1
+      ptype: 1,
+      freeType: 1,
+      courseList: [],
+      courseItem: null
     }
   },
   created () {
@@ -143,6 +147,7 @@ export default {
         } else {
           this.readonly = true
         }
+        this.courseList = res.data.array
         res.data.array.forEach((item, index) => {
           this.courseOptions.push({ value: item.name, key: item.id })
         })
@@ -227,7 +232,11 @@ export default {
             content: res.message
           })
         } else {
-          if (that.payMethod === '微信') {
+          if (that.courseId === 7) {
+            that.$router.push({ name: 'pianoSucc', query: {type: 'signup'} })
+          } else if (that.courseId === 6) {
+            that.$router.push({ name: 'choirSucc' })
+          } else if (that.payMethod === '微信') {
             that.$router.push({ name: 'wepaySucc', query: {n: that.name} })
           } else {
             that.$router.push({ name: 'otherpaySucc', query: {n: that.name} })
@@ -244,6 +253,14 @@ export default {
     },
     orgOptionChange () {
       this.getCourseList(this.groupId)
+    },
+    courseOptionChange () {
+      this.courseList.forEach((item, index) => {
+        if (item.id === this.courseId) {
+          this.courseItem = item
+          this.freeType = item.feeType
+        }
+      })
     }
   }
 }
