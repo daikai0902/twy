@@ -2,7 +2,7 @@
   <div class="piano-room">
     <div class="piano-box">
       <div class="piano-wrap">
-        <p v-if="type == 'signup'"><img class="wepay-succ" src="../assets/wepay_succ_black.png"></p>
+        <p v-if="type == 'signup'"><img class="wepay-succ" src="../assets/wepay_succ.png"></p>
         <p v-if="type == 'signup'" class="p1">报名成功</p>
         <p class="p2">钢琴课程（一对一）</p>
         <p class="p3">请家长联系客服，预约试听课程</p>
