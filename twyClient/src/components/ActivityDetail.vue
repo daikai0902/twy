@@ -83,4 +83,7 @@ export default {
   .vdo-cont{
     margin: 20px auto;
   }
+  .ac-cont img{
+    width: 100%;
+  }
 </style>
