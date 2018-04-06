@@ -267,12 +267,22 @@ export default {
           } else if (that.courseId === 6) {
             that.$router.push({ name: 'choirSucc' })
           } else if (that.payMethod === '微信') {
-            api.getOpenId({code: this.code}).then(wxres => {
+            api.getOpenId({code: that.code}).then(wxres => {
               console.log(wxres)
               if (wxres.status === 'succ') {
                 that.openId = wxres.data.openId
-                api.getUnifieOrder({courseStudentId: res.data.id, currentUrl: 'http://www.twyxedu.com/signup'}).then(res2 => {
+                api.getUnifieOrder({courseStudentId: res.data.id, currentUrl: 'http://www.twyxedu.com/signup', openId: wxres.data.openId}).then(res2 => {
                   console.log(res2)
+                  // that.$wechat.chooseWXPay({
+                  //   timestamp: res2.data.timestatm, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+                  //   nonceStr: '', // 支付签名随机串，不长于 32 位
+                  //   package: '', // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
+                  //   signType: '', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+                  //   paySign: res2.data.paySign, // 支付签名
+                  //   success: function (res) {
+                  //     that.$router.push({ name: 'wepaySucc', query: {n: that.name} })
+                  //   }
+                  // })
                 })
               }
             })
