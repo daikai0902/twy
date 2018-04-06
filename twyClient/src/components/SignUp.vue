@@ -137,7 +137,7 @@ export default {
     }
   },
   created () {
-    let _querystring = this.parseQueryString(window.location)
+    let _querystring = this.parseQueryString(window.location.href)
 
     if (!_querystring.code) {
       window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fwww.twyxedu.com%2Fsignup&response_type=code&scope=snsapi_base&state=123#wechat_redirect'
@@ -170,7 +170,7 @@ export default {
     },
 
     parseQueryString (url) {
-      var arr
+      var arr = []
       var res = {}
       url = url.split('#')[0]
       arr = url.split('?')
@@ -190,12 +190,9 @@ export default {
       return res
     },
     bindSignup () {
-      // api.getWxCode().then(res => {
-      //   console.log(res)
-      //   // api.getOpenId({code: ''}).then(res => {
-      //   //   console.log(res)
-      //   // })
-      // })
+      api.getOpenId({code: this.code}).then(res => {
+        console.log(res)
+      })
       // let that = this
 
       // if (!this.name && !this.age && !this.clothsize && !this.shoessize && !this.momname && !this.momphone && !this.course) {
