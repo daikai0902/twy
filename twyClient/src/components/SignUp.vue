@@ -95,7 +95,6 @@
 <script>
 import { Group, Cell, XInput, XTextarea, XButton, PopupRadio, AlertModule } from 'vux'
 import api from '../api/index.js'
-// import { constants } from 'http2';
 
 export default {
   components: {
@@ -161,95 +160,105 @@ export default {
       })
     },
     bindSignup () {
-      let that = this
-      if (!this.name && !this.age && !this.clothsize && !this.shoessize && !this.momname && !this.momphone && !this.course) {
-        AlertModule.show({
-          content: '您好，带星号的信息是必填的哦，请务必认真填写！'
-        })
-        return false
-      } else if (!this.name) {
-        AlertModule.show({
-          content: '您好，请填写孩子姓名再提交付款！'
-        })
-        return false
-      } else if (!this.age) {
-        AlertModule.show({
-          content: '您好，请填写年龄再提交付款！'
-        })
-        return false
-      } else if (!this.clothsize) {
-        AlertModule.show({
-          content: '您好，请填写衣尺码再提交付款！'
-        })
-        return false
-      } else if (!this.shoessize) {
-        AlertModule.show({
-          content: '您好，请填写鞋尺码再提交付款！'
-        })
-        return false
-      } else if (!this.momname) {
-        AlertModule.show({
-          content: '您好，请填写妈妈姓名再提交付款！'
-        })
-        return false
-      } else if (!this.momphone) {
-        AlertModule.show({
-          content: '您好，请填写妈妈手机再提交付款！'
-        })
-        return false
-      } else if (!this.groupId) {
-        AlertModule.show({
-          content: '您好，请填写选网点再提交付款！'
-        })
-        return false
-      } else if (!this.courseId) {
-        AlertModule.show({
-          content: '您好，请填写选课程再提交付款！'
-        })
-        return false
-      }
+      console.log('aaaa')
+      console.log(this.$wechat)
 
-      this.payMethod = this.payList[this.ptype - 1]
-      let _data = {
-        name: this.name,
-        age: this.age,
-        sex: this.sex,
-        clothsize: this.clothsize,
-        shoessize: this.shoessize,
-        momname: this.momname,
-        momphone: this.momphone,
-        dadname: this.dadname,
-        dadphone: this.dadphone,
-        nursery: this.nursery,
-        address: this.address,
-        courseId: this.courseId,
-        remark: this.remark,
-        payMethod: this.payMethod
-      }
-      api.siginUp(_data).then((res) => {
-        if (res.status === 'fail') {
-          AlertModule.show({
-            content: res.message
-          })
-        } else {
-          if (that.courseId === 7) {
-            that.$router.push({ name: 'pianoSucc', query: {type: 'signup'} })
-          } else if (that.courseId === 6) {
-            that.$router.push({ name: 'choirSucc' })
-          } else if (that.payMethod === '微信') {
-            that.$router.push({ name: 'wepaySucc', query: {n: that.name} })
-          } else {
-            that.$router.push({ name: 'otherpaySucc', query: {n: that.name} })
-          }
-          // if (that.course === '钢琴课') {
-          //   that.$router.push({ name: 'pianoSucc', query: {type: 'signup'} })
-          // } else if (that.course === '少儿合唱团') {
-          //   that.$router.push({ name: 'choirSucc' })
-          // } else {
-          //   that.$router.push({ name: 'qrcode' })
-          // }
-        }
+      api.getWxCode().then(res => {
+        console.log(res)
+        // api.getOpenId({code: ''}).then(res => {
+        //   console.log(res)
+        // })
       })
+      // let that = this
+
+      // if (!this.name && !this.age && !this.clothsize && !this.shoessize && !this.momname && !this.momphone && !this.course) {
+      //   AlertModule.show({
+      //     content: '您好，带星号的信息是必填的哦，请务必认真填写！'
+      //   })
+      //   return false
+      // } else if (!this.name) {
+      //   AlertModule.show({
+      //     content: '您好，请填写孩子姓名再提交付款！'
+      //   })
+      //   return false
+      // } else if (!this.age) {
+      //   AlertModule.show({
+      //     content: '您好，请填写年龄再提交付款！'
+      //   })
+      //   return false
+      // } else if (!this.clothsize) {
+      //   AlertModule.show({
+      //     content: '您好，请填写衣尺码再提交付款！'
+      //   })
+      //   return false
+      // } else if (!this.shoessize) {
+      //   AlertModule.show({
+      //     content: '您好，请填写鞋尺码再提交付款！'
+      //   })
+      //   return false
+      // } else if (!this.momname) {
+      //   AlertModule.show({
+      //     content: '您好，请填写妈妈姓名再提交付款！'
+      //   })
+      //   return false
+      // } else if (!this.momphone) {
+      //   AlertModule.show({
+      //     content: '您好，请填写妈妈手机再提交付款！'
+      //   })
+      //   return false
+      // } else if (!this.groupId) {
+      //   AlertModule.show({
+      //     content: '您好，请填写选网点再提交付款！'
+      //   })
+      //   return false
+      // } else if (!this.courseId) {
+      //   AlertModule.show({
+      //     content: '您好，请填写选课程再提交付款！'
+      //   })
+      //   return false
+      // }
+
+      // this.payMethod = this.payList[this.ptype - 1]
+      // let _data = {
+      //   name: this.name,
+      //   age: this.age,
+      //   sex: this.sex,
+      //   clothsize: this.clothsize,
+      //   shoessize: this.shoessize,
+      //   momname: this.momname,
+      //   momphone: this.momphone,
+      //   dadname: this.dadname,
+      //   dadphone: this.dadphone,
+      //   nursery: this.nursery,
+      //   address: this.address,
+      //   courseId: this.courseId,
+      //   remark: this.remark,
+      //   payMethod: this.payMethod
+      // }
+      // api.siginUp(_data).then((res) => {
+      //   if (res.status === 'fail') {
+      //     AlertModule.show({
+      //       content: res.message
+      //     })
+      //   } else {
+      //     if (that.courseId === 7) {
+      //       that.$router.push({ name: 'pianoSucc', query: {type: 'signup'} })
+      //     } else if (that.courseId === 6) {
+      //       that.$router.push({ name: 'choirSucc' })
+      //     } else if (that.payMethod === '微信') {
+      //       that.$router.push({ name: 'wepaySucc', query: {n: that.name} })
+      //     } else {
+      //       that.$router.push({ name: 'otherpaySucc', query: {n: that.name} })
+      //     }
+      //     // if (that.course === '钢琴课') {
+      //     //   that.$router.push({ name: 'pianoSucc', query: {type: 'signup'} })
+      //     // } else if (that.course === '少儿合唱团') {
+      //     //   that.$router.push({ name: 'choirSucc' })
+      //     // } else {
+      //     //   that.$router.push({ name: 'qrcode' })
+      //     // }
+      //   }
+      // })
     },
     orgOptionChange () {
       this.getCourseList(this.groupId)
