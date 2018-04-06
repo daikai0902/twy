@@ -163,12 +163,14 @@ export default {
       console.log('aaaa')
       console.log(this.$wechat)
 
-      api.getWxCode().then(res => {
-        console.log(res)
-        // api.getOpenId({code: ''}).then(res => {
-        //   console.log(res)
-        // })
-      })
+      window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fwww.twyxedu.com%2Fsignup&response_type=code&scope=snsapi_base&state=123#wechat_redirect'
+
+      // api.getWxCode().then(res => {
+      //   console.log(res)
+      //   // api.getOpenId({code: ''}).then(res => {
+      //   //   console.log(res)
+      //   // })
+      // })
       // let that = this
 
       // if (!this.name && !this.age && !this.clothsize && !this.shoessize && !this.momname && !this.momphone && !this.course) {
