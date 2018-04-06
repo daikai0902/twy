@@ -277,7 +277,7 @@ export default {
                   WeixinJSBridge.invoke(
                     'getBrandWCPayRequest', {
                       appId: res2.data.appid,
-                      timestamp: res2.data.timestatm,
+                      timeStamp: res2.data.timestatm,
                       nonceStr: res2.data.noceStr,
                       package: 'prepay_id=' + res2.data.prepay_id,
                       signType: 'MD5',
