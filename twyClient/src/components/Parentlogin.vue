@@ -4,8 +4,8 @@
       <p class="op1">宁波天唯艺星教育</p>
       <p class="op2">让艺术为孩子成长助航</p>
       <p class="op3">输入学号就可查询小朋友课程课时和成绩</p>
-      <input type="text" placeholder="请输入小朋友的学号" class="ipt-login">
-      <a href="javascript:;" class="btn-parent-login">查询</a>
+      <input type="text" v-model="number" placeholder="请输入小朋友的学号" class="ipt-login">
+      <a href="javascript:;" class="btn-parent-login" @click="bindParentLogin">查询</a>
     </div>
     <img class="bg-home" src="../assets/bg_home.jpg">
     <div class="home-wrap"></div>
@@ -13,8 +13,59 @@
 </template>
 
 <script>
+import api from '../api/index.js'
 export default {
-  name: 'Open'
+  name: 'Open',
+  data () {
+    return {
+      code: null,
+      number: null,
+      openId: null
+    }
+  },
+  created () {
+    let _querystring = this.parseQueryString(window.location.href)
+
+    if (!_querystring.code) {
+      window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fwww.twyxedu.com%2Fsignup&response_type=code&scope=snsapi_base&state=123#wechat_redirect'
+    } else {
+      this.code = _querystring.code
+    }
+  },
+  methods: {
+    bindParentLogin () {
+      let that = this
+      api.getOpenId({code: that.code}).then(wxres => {
+        console.log(wxres)
+        if (wxres.status === 'succ') {
+          that.openId = wxres.data.openId
+          api.bindStudent({openId: that.openId, number: this.number}).then(res => {
+            console.log(res)
+          })
+        }
+      })
+    },
+    parseQueryString (url) {
+      var arr = []
+      var res = {}
+      url = url.split('#')[0]
+      arr = url.split('?')
+      arr.shift()
+      var queryStr = arr.join('?')
+      if (queryStr.trim().length === 0) {
+        return res
+      }
+
+      arr = queryStr.split('&')
+      for (var i = 0; i < arr.length; i++) {
+        var itemArr = arr[i].split('=')
+        var name = itemArr.shift()
+        var value = itemArr.join('=')
+        res[name] = value
+      }
+      return res
+    }
+  }
 }
 </script>
 

@@ -29,16 +29,13 @@ export default {
   newsDetail (params) {
     return service(`/api/news/detail`, params, 'GET')
   },
-
-  getWxCode (params) {
-    return service(`https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fwww.twyxedu.com%2Fsignup&response_type=code&scope=snsapi_base&state=123#wechat_redirect`, params, 'GET')
-  },
-
   getOpenId (params) {
     return service(`/wx/openid`, params, 'GET')
   },
-
   getUnifieOrder (params) {
     return service(`/wx/unifieOrder`, params, 'GET')
+  },
+  bindStudent (params) {
+    return service(`/wx/bind/student`, qs.stringify(params), 'POST', { 'Content-Type': typewww })
   }
 }
