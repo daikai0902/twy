@@ -132,10 +132,19 @@ export default {
       ptype: 1,
       freeType: 1,
       courseList: [],
-      courseItem: null
+      courseItem: null,
+      code: null
     }
   },
   created () {
+    let _querystring = this.parseQueryString(window.location)
+
+    if (!_querystring.code) {
+      window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fwww.twyxedu.com%2Fsignup&response_type=code&scope=snsapi_base&state=123#wechat_redirect'
+    } else {
+      this.code = _querystring.code
+    }
+
     this.getOrgList()
   },
   methods: {
@@ -159,12 +168,28 @@ export default {
         })
       })
     },
+
+    parseQueryString (url) {
+      var arr
+      var res = {}
+      url = url.split('#')[0]
+      arr = url.split('?')
+      arr.shift()
+      var queryStr = arr.join('?')
+      if (queryStr.trim().length === 0) {
+        return res
+      }
+
+      arr = queryStr.split('&')
+      for (var i = 0; i < arr.length; i++) {
+        var itemArr = arr[i].split('=')
+        var name = itemArr.shift()
+        var value = itemArr.join('=')
+        res[name] = value
+      }
+      return res
+    },
     bindSignup () {
-      console.log('aaaa')
-      console.log(this.$wechat)
-
-      window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fwww.twyxedu.com%2Fsignup&response_type=code&scope=snsapi_base&state=123#wechat_redirect'
-
       // api.getWxCode().then(res => {
       //   console.log(res)
       //   // api.getOpenId({code: ''}).then(res => {
