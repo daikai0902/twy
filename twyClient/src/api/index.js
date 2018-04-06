@@ -37,5 +37,8 @@ export default {
   },
   bindStudent (params) {
     return service(`/wx/bind/student`, qs.stringify(params), 'POST', { 'Content-Type': typewww })
+  },
+  studentReport (params) {
+    return service(`/api/student/report`, qs.stringify(params), 'POST', { 'Content-Type': typewww })
   }
 }

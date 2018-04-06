@@ -191,7 +191,6 @@ export default {
     },
     bindSignup () {
       let that = this
-      console.log(that.$wechat)
 
       if (!this.name && !this.age && !this.clothsize && !this.shoessize && !this.momname && !this.momphone && !this.course) {
         AlertModule.show({
@@ -269,11 +268,9 @@ export default {
             that.$router.push({ name: 'choirSucc' })
           } else if (that.payMethod === '微信') {
             api.getOpenId({code: that.code}).then(wxres => {
-              console.log(wxres)
               if (wxres.status === 'succ') {
                 that.openId = wxres.data.openId
                 api.getUnifieOrder({courseStudentId: res.data.id, currentUrl: 'http://www.twyxedu.com/signup', openId: wxres.data.openId}).then(res2 => {
-                  console.log(res2)
                   that.$wechat.config({
                     'appId': res2.data.appid
                   })
@@ -290,7 +287,6 @@ export default {
                 })
               }
             })
-            // that.$router.push({ name: 'wepaySucc', query: {n: that.name} })
           } else {
             that.$router.push({ name: 'otherpaySucc', query: {n: that.name} })
           }

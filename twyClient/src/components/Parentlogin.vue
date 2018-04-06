@@ -36,11 +36,15 @@ export default {
     bindParentLogin () {
       let that = this
       api.getOpenId({code: that.code}).then(wxres => {
-        console.log(wxres)
         if (wxres.status === 'succ') {
           that.openId = wxres.data.openId
           api.bindStudent({openId: that.openId, number: this.number}).then(res => {
-            console.log(res)
+            api.studentReport({studentId: '11'}).then(res3 => {
+              console.log(res3)
+            })
+            if (res.status) {
+              that.$router.push({ name: 'schoolReport', query: {sid: res.data.studentId} })
+            }
           })
         }
       })
