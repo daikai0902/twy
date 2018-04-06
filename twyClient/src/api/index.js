@@ -35,6 +35,10 @@ export default {
   },
 
   getOpenId (params) {
-    return service(`/api/org/pub/list`, params, 'GET')
+    return service(`/wx/openid`, params, 'GET')
+  },
+
+  getUnifieOrder (params) {
+    return service(`/wx/unifieOrder`, params, 'GET')
   }
 }
