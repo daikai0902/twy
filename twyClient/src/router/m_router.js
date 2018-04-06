@@ -1,4 +1,3 @@
-import MLayout from '@/components/common/MLayout'
 import SignUp from '@/components/SignUp'
 import Qrcode from '@/components/Qrcode'
 import PianoSucc from '@/components/PianoSucc'
@@ -20,121 +19,124 @@ import Open from '@/components/Open'
 import OrderSucc from '@/components/OrderSucc'
 import WepaySucc from '@/components/WepaySucc'
 import OtherpaySucc from '@/components/OtherpaySucc'
+import ParentLogin from '@/components/ParentLogin'
+import SchoolReport from '@/components/SchoolReport'
 
 let routes = [
   {
     path: '/',
-    name: 'mhome',
-    redirect: '/home',
-    component: MLayout,
-    children: [
-      {
-        path: '/signUp',
-        name: 'signUp',
-        component: SignUp
-      },
-      {
-        path: '/home',
-        name: 'home',
-        component: Home
-      },
-      {
-        path: '/qrcode',
-        name: 'qrcode',
-        component: Qrcode
-      },
-      {
-        path: '/choirSucc',
-        name: 'choirSucc',
-        component: ChoirSucc
-      },
-      {
-        path: '/pianoSucc',
-        name: 'pianoSucc',
-        component: PianoSucc
-      },
-      {
-        path: '/introduce',
-        name: 'introduce',
-        component: Introduce
-      },
-      {
-        path: '/news',
-        name: 'news',
-        component: News
-      },
-      {
-        path: '/news/detail',
-        name: 'newsDetail',
-        component: NewsDetail
-      },
-      {
-        path: '/order',
-        name: 'order',
-        component: Order
-      },
-      {
-        path: '/ordersucc',
-        name: 'orderSucc',
-        component: OrderSucc
-      },
-      {
-        path: '/wepaysucc',
-        name: 'wepaySucc',
-        component: WepaySucc
-      },
-      {
-        path: '/otherpaysucc',
-        name: 'otherpaySucc',
-        component: OtherpaySucc
-      },
-      {
-        path: '/activity',
-        name: 'activity',
-        component: Activity
-      },
-      {
-        path: '/activity/detail',
-        name: 'activityDetail',
-        component: ActivityDetail
-      },
-      {
-        path: '/teachers',
-        name: 'teachers',
-        component: Teachers
-      },
-      {
-        path: '/teachers/detail',
-        name: 'teacherDetail',
-        component: TeacherDetail
-      },
-      {
-        path: '/help',
-        name: 'help',
-        component: Help
-      },
-      {
-        path: '/org',
-        name: 'org',
-        component: Org
-      },
-      {
-        path: '/school',
-        name: 'school',
-        component: School
-      },
-      {
-        path: '/growth',
-        name: 'growth',
-        component: Growth
-      },
-      {
-        path: '/open',
-        name: 'open',
-        component: Open
-      }
-    ]
+    name: 'signUp',
+    component: SignUp
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: Home
+  },
+  {
+    path: '/qrcode',
+    name: 'qrcode',
+    component: Qrcode
+  },
+  {
+    path: '/choirSucc',
+    name: 'choirSucc',
+    component: ChoirSucc
+  },
+  {
+    path: '/pianoSucc',
+    name: 'pianoSucc',
+    component: PianoSucc
+  },
+  {
+    path: '/introduce',
+    name: 'introduce',
+    component: Introduce
+  },
+  {
+    path: '/news',
+    name: 'news',
+    component: News
+  },
+  {
+    path: '/news/detail',
+    name: 'newsDetail',
+    component: NewsDetail
+  },
+  {
+    path: '/order',
+    name: 'order',
+    component: Order
+  },
+  {
+    path: '/ordersucc',
+    name: 'orderSucc',
+    component: OrderSucc
+  },
+  {
+    path: '/wepaysucc',
+    name: 'wepaySucc',
+    component: WepaySucc
+  },
+  {
+    path: '/otherpaysucc',
+    name: 'otherpaySucc',
+    component: OtherpaySucc
+  },
+  {
+    path: '/activity',
+    name: 'activity',
+    component: Activity
+  },
+  {
+    path: '/activity/detail',
+    name: 'activityDetail',
+    component: ActivityDetail
+  },
+  {
+    path: '/teachers',
+    name: 'teachers',
+    component: Teachers
+  },
+  {
+    path: '/teachers/detail',
+    name: 'teacherDetail',
+    component: TeacherDetail
+  },
+  {
+    path: '/help',
+    name: 'help',
+    component: Help
+  },
+  {
+    path: '/org',
+    name: 'org',
+    component: Org
+  },
+  {
+    path: '/school',
+    name: 'school',
+    component: School
+  },
+  {
+    path: '/growth',
+    name: 'growth',
+    component: Growth
+  },
+  {
+    path: '/open',
+    name: 'open',
+    component: Open
+  },
+  {
+    path: '/parentlogin',
+    name: 'parentLogin',
+    component: ParentLogin
+  },
+  {
+    path: '/schoolReport',
+    name: 'schoolReport',
+    component: SchoolReport
   }
 ]
-
 export default routes
