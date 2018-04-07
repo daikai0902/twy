@@ -41,11 +41,45 @@
 </template>
 
 <script>
+import api from '../api/index.js'
 export default {
   name: 'Report',
   data () {
     return {
-      reportList: [1, 0, 1, 1, , , , ,]
+      reportList: [1, 0, 1, 1, , , , ,],
+      studentId: null
+    }
+  },
+  created () {
+    let _querystring = this.parseQueryString(window.location.href)
+    this.studentId = _querystring.sid
+    this.getStudentArriveInfo()
+  },
+  methods: {
+    getStudentArriveInfo () {
+      api.studentArriveInfo({studentId: this.studentId}).then(res => {
+        console.log(res)
+      })
+    },
+    parseQueryString (url) {
+      var arr = []
+      var res = {}
+      url = url.split('#')[0]
+      arr = url.split('?')
+      arr.shift()
+      var queryStr = arr.join('?')
+      if (queryStr.trim().length === 0) {
+        return res
+      }
+
+      arr = queryStr.split('&')
+      for (var i = 0; i < arr.length; i++) {
+        var itemArr = arr[i].split('=')
+        var name = itemArr.shift()
+        var value = itemArr.join('=')
+        res[name] = value
+      }
+      return res
     }
   }
 }
