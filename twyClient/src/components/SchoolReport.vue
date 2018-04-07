@@ -32,7 +32,8 @@ export default {
     return {
       reportList: [1, 0, 1, 1],
       studentId: null,
-      clazzStudentVOS: []
+      clazzStudentVOS: [],
+      code: null
     }
   },
   created () {
