@@ -5,34 +5,18 @@
         <span>小朋友的课程课时与成绩单</span>
         <router-link :to="{name: 'parentLogin'}" class="parent-login-link">+</router-link>
       </div>
-      <div class="report-item">
+      <div class="report-item" v-for="(item, index) in clazzStudentVOS" :key="index">
         <div class="report-info">
-          <p class="p1">民族舞  太阳班</p>
-          <p class="p1 p2">19031400005</p>
-          <p class="p1 p2">张小溪</p>
+          <p class="p1">{{item.courseName}} {{item.clazzName}}</p>
+          <p class="p1 p2">{{item.number}}</p>
+          <p class="p1 p2">{{item.name}}</p>
         </div>
         <div class="report-course clearfix">
-          <div class="rc-item" v-for="(item, index) in reportList" :key="index" :class="[item == 1 ? 'succ': '', item == 0 ? 'err': '']">{{index + 1}}</div>
+          <div class="rc-item" v-for="(item2, idx) in item.arriveDetail.split(',')" :key="idx" :class="[item2 == 1 ? 'succ': '', item2 == 0 ? 'err': '']">{{idx + 1}}</div>
         </div>
         <div class="report-view">
           <img src="../assets/icon_report.jpg">
           <router-link :to="{name: 'parentLogin'}" class="view-link">查看成绩单</router-link>
-          <p class="report-time">开学日期：2019年3月14日</p>
-        </div>
-      </div>
-      <div class="report-item over">
-        <div class="report-info">
-          <p class="p1">民族舞  太阳班</p>
-          <p class="p1 p2">19031400005</p>
-          <p class="p1 p2">张小溪</p>
-        </div>
-        <div class="report-course clearfix">
-          <div class="rc-item" v-for="(item, index) in reportList" :key="index" :class="[item == 1 ? 'succ': '', item == 0 ? 'err': '']">{{index + 1}}</div>
-        </div>
-        <div class="report-view">
-          <img src="../assets/icon_report.jpg">
-          <router-link :to="{name: 'parentLogin'}" class="view-link">查看成绩单</router-link>
-          <p class="report-time">开学日期：2019年3月14日</p>
         </div>
       </div>
     </div>
@@ -47,18 +31,31 @@ export default {
   data () {
     return {
       reportList: [1, 0, 1, 1],
-      studentId: null
+      studentId: null,
+      clazzStudentVOS: []
     }
   },
   created () {
     let _querystring = this.parseQueryString(window.location.href)
-    this.studentId = _querystring.sid
+    if (!_querystring.code) {
+      window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fwww.twyxedu.com%2Fsignup&response_type=code&scope=snsapi_base&state=123#wechat_redirect'
+    } else {
+      this.code = _querystring.code
+    }
+
     this.getStudentArriveInfo()
   },
   methods: {
     getStudentArriveInfo () {
-      api.studentArriveInfo({studentId: this.studentId}).then(res => {
-        console.log(res)
+      let that = this
+      api.getOpenId({code: that.code}).then(wxres => {
+        if (wxres.status === 'succ') {
+          api.wxStudents({openId: wxres.openId}).then(res => {
+            if (res.status === 'succ') {
+              this.clazzStudentVOS = res.data.clazzStudentVOS
+            }
+          })
+        }
       })
     },
     parseQueryString (url) {
