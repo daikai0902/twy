@@ -24,12 +24,12 @@ import SchoolReport from '@/components/SchoolReport'
 
 let routes = [
   {
-    path: '/',
+    path: '/signUp',
     name: 'signUp',
     component: SignUp
   },
   {
-    path: '/home',
+    path: '/',
     name: 'home',
     component: Home
   },

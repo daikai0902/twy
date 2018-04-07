@@ -46,7 +46,7 @@ export default {
   name: 'Report',
   data () {
     return {
-      reportList: [1, 0, 1, 1, , , , ,],
+      reportList: [1, 0, 1, 1],
       studentId: null
     }
   },
