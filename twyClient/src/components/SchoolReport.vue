@@ -52,8 +52,10 @@ export default {
       console.log(this.code)
       let that = this
       api.getOpenId({code: that.code}).then(wxres => {
+        console.log(wxres)
         if (wxres.status === 'succ') {
           api.wxStudents({openId: wxres.openId}).then(res => {
+            console.log(res)
             if (res.status === 'succ') {
               that.clazzStudentVOS = res.data.clazzStudentVOS
             }
