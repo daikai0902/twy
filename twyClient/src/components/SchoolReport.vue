@@ -3,7 +3,7 @@
     <div class="report-wrap">
       <div class="report-title">
         <span>小朋友的课程课时与成绩单</span>
-        <router-link :to="{name: 'parentLogin'}" class="parent-login-link">+</router-link>
+        <router-link :to="{name: 'studentReport'}" class="parent-login-link">+</router-link>
       </div>
       <div class="report-item" v-for="(item, index) in clazzStudentVOS" :key="index">
         <div class="report-info">
@@ -16,7 +16,7 @@
         </div>
         <div class="report-view">
           <img src="../assets/icon_report.jpg">
-          <router-link :to="{name: 'parentLogin'}" class="view-link">查看成绩单</router-link>
+          <router-link :to="{name: 'studentReport'}" class="view-link">查看成绩单</router-link>
         </div>
       </div>
     </div>
@@ -49,17 +49,10 @@ export default {
   },
   methods: {
     getStudentArriveInfo () {
-      console.log(this.code)
       let that = this
       api.getOpenId({code: that.code}).then(wxres => {
-        console.log(wxres)
         if (wxres.status === 'succ') {
-          api.wxStudents({openId: wxres.openId}).then(res => {
-            console.log(res)
-            if (res.status === 'succ') {
-              that.clazzStudentVOS = res.data.clazzStudentVOS
-            }
-          })
+          that.clazzStudentVOS = wxres.data.clazzStudentVOS
         }
       })
     },

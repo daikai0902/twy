@@ -21,6 +21,7 @@ import WepaySucc from '@/components/WepaySucc'
 import OtherpaySucc from '@/components/OtherpaySucc'
 import ParentLogin from '@/components/ParentLogin'
 import SchoolReport from '@/components/SchoolReport'
+import StudentReport from '@/components/StudentReport'
 
 let routes = [
   {
@@ -137,6 +138,11 @@ let routes = [
     path: '/schoolReport',
     name: 'schoolReport',
     component: SchoolReport
+  },
+  {
+    path: '/StudentReport',
+    name: 'studentReport',
+    component: StudentReport
   }
 ]
 export default routes
