@@ -38,7 +38,6 @@ export default {
   },
   created () {
     let _querystring = this.parseQueryString(window.location.href)
-    console.log(_querystring)
     if (!_querystring.code) {
       window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fm.twyxedu.com%2FschoolReport&response_type=code&scope=snsapi_base&state=123#wechat_redirect'
     } else {
