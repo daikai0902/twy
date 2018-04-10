@@ -134,7 +134,7 @@ export default {
   overflow: hidden;
 }
 .swiper-wrap > .vux-indicator > a > .vux-icon-dot{
-  background:rgba(255,255,255,.18) !important;;
+  /* background:rgba(255,255,255,.18) !important;; */
   box-shadow:0 2px 3px 0 rgba(0,0,0,0.08) !important;
   width:7px !important;
   height:7px !important;
@@ -227,7 +227,8 @@ export default {
   color:#fff;
   display: block;
   border-radius:100px;
-  background-color: #5BBFD7;
+  background:#fccf74;
+  box-shadow:0 4px 10px 0 rgba(0,0,0,0.10);
   margin:45px auto 0;
   width: 170px;
   height: 40px;

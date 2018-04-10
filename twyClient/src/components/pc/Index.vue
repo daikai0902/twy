@@ -108,8 +108,6 @@
         <div class="bg-color"></div>
       </div>
     </div>
-
-    
   </div>
 </template>
 <script>
