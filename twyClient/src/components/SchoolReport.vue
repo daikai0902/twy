@@ -2,22 +2,34 @@
   <div class="index-wrap">
     <div class="report-wrap">
       <div class="report-title">
-        <span>小朋友的课程课时与成绩单</span>
-        <router-link :to="{name: 'studentReport'}" class="parent-login-link">+</router-link>
+        <img src="../assets/teacher_top.jpg" class="teacher-top">
+        <div class="rt-text">
+          <div class="t-txt">小朋友的课程课时与成绩单</div>
+          <router-link :to="{name: 'parentLogin'}" class="parent-login-link">添加学号</router-link>
+          <img v-if="clazzStudentVOS.length == 0" src="../assets/commet.png" class="commet-img">
+        </div>
       </div>
-      <div class="report-item" v-for="(item, index) in clazzStudentVOS" :key="index">
-        <div class="report-info">
-          <p class="p1">{{item.courseName}} {{item.clazzName}}</p>
-          <p class="p1 p2">{{item.number}}</p>
-          <p class="p1 p2">{{item.name}}</p>
+      <div class="" v-if="clazzStudentVOS.length > 0">
+        <div class="report-item" v-for="(item, index) in clazzStudentVOS" :key="index">
+          <div class="report-info">
+            <p class="p1">{{item.courseName}} {{item.clazzName}}</p>
+            <p class="p1 p2">{{item.number}}</p>
+            <p class="p1 p2">{{item.name}}</p>
+          </div>
+          <div class="report-course clearfix">
+            <div class="rc-item" v-for="(item2, idx) in item.arriveDetail.split(',')" :key="idx" :class="[item2 == 1 ? 'succ': '', item2 == 0 ? 'err': '']">{{idx + 1}}</div>
+          </div>
+          <div class="report-view">
+            <img src="../assets/icon_report.jpg">
+            <router-link :to="{name: 'studentReport'}" class="view-link">查看成绩单</router-link>
+          </div>
         </div>
-        <div class="report-course clearfix">
-          <div class="rc-item" v-for="(item2, idx) in item.arriveDetail.split(',')" :key="idx" :class="[item2 == 1 ? 'succ': '', item2 == 0 ? 'err': '']">{{idx + 1}}</div>
-        </div>
-        <div class="report-view">
-          <img src="../assets/icon_report.jpg">
-          <router-link :to="{name: 'studentReport'}" class="view-link">查看成绩单</router-link>
-        </div>
+      </div>
+      <div class="no-report" v-else>
+        <p>您好，目前暂无课时</p>
+        <p>如报名成功获取到学号</p>
+        <p>可点击 <router-link :to="{name: 'parentLogin'}" class="parent-login-link2">添加学号</router-link></p>
+        <p>查看孩子的点到情况和成绩单</p>
       </div>
     </div>
     <div class="bg-black"></div>
@@ -30,8 +42,6 @@ export default {
   name: 'Report',
   data () {
     return {
-      reportList: [1, 0, 1, 1],
-      studentId: null,
       clazzStudentVOS: [],
       code: null
     }
@@ -50,6 +60,7 @@ export default {
     getStudentArriveInfo () {
       let that = this
       api.getOpenId({code: that.code}).then(wxres => {
+        console.log(wxres)
         if (wxres.status === 'succ') {
           that.clazzStudentVOS = wxres.data.clazzStudentVOS
         }
@@ -90,24 +101,49 @@ export default {
 }
 .report-wrap{
   width: 100%;
-  margin: 20px auto;
+  margin: auto;
   text-align: center;
   color: #fff;
   position: relative;
   z-index: 10;
 }
 .report-title{
-  width:320px;
-  margin: 0 auto;
-  text-align: left;
+  width: 100%;
+  height: 148px;
   position: relative;
+  top: 0;
+  z-index: 10;
+}
+.report-title .teacher-top{
+  width: 100%;
+  height: 100%;
+}
+.report-title .rt-text{
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
+}
+.report-title .commet-img{
+  position: absolute;
+  width: 98px;
+  height: 105px;
+  bottom: -120px;
+  right: 20%;
+}
+.report-title .t-txt{
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: .42px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  display: inline-block;
 }
 .report-title .parent-login-link{
-  font-size:20px;
+  font-size:14px;
   color:#fff;
-  position: absolute;
-  right: 0;
-  top: -5px;
+  background-color: rgba(255,255,255, .5);
+  padding: 5px 15px;
+  border-radius: 100px;
 }
 .report-item{
   background:#ffffff;
@@ -207,5 +243,16 @@ export default {
   font-size:12px;
   color:#8a8a8f;
   margin-top: 10px;
+}
+.no-report{
+  width: 100%;
+  text-align: center;
+  color: #000;
+  line-height: 1.5em;
+  margin-top: 80px;
+}
+.parent-login-link2{
+  color:#5bbfd7;
+  text-decoration: underline;
 }
 </style>
