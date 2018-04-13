@@ -16,9 +16,10 @@
             <p class="p1 p2">{{item.number}}</p>
             <p class="p1 p2">{{item.name}}</p>
           </div>
-          <div class="report-course clearfix">
+          <div class="report-course clearfix" v-if="item.arriveDetail">
             <div class="rc-item" v-for="(item2, idx) in item.arriveDetail.split(',')" :key="idx" :class="[item2 == 1 ? 'succ': '', item2 == 0 ? 'err': '']">{{idx + 1}}</div>
           </div>
+          <div class="report-nodata" v-else>未开课</div>
           <div class="report-view">
             <img src="../assets/icon_report.jpg">
             <router-link :to="{name: 'studentReport'}" class="view-link">查看成绩单</router-link>
@@ -32,7 +33,7 @@
         <p>查看孩子的点到情况和成绩单</p>
       </div>
     </div>
-    <div class="bg-black"></div>
+    <div class="bg-black  bg-sreport"></div>
   </div>
 </template>
 
@@ -58,11 +59,10 @@ export default {
   },
   methods: {
     getStudentArriveInfo () {
-      let that = this
-      api.getOpenId({code: that.code}).then(wxres => {
+      api.getOpenId({code: this.code}).then(wxres => {
         console.log(wxres)
         if (wxres.status === 'succ') {
-          that.clazzStudentVOS = wxres.data.clazzStudentVOS
+          this.clazzStudentVOS = wxres.data.clazzStudentVOS
         }
       })
     },
@@ -91,6 +91,9 @@ export default {
 </script>
 
 <style scoped>
+.bg-sreport{
+  background-color: #f0f0f0;
+}
 .index-wrap .bg-home{
   position: absolute;
   bottom: 0;
@@ -147,9 +150,9 @@ export default {
 }
 .report-item{
   background:#ffffff;
-  box-shadow:0 0 24px 0 rgba(0,0,0,0.08);
+  box-shadow:0 0 8px 0 rgba(0,0,0,0.08);
   border-radius:19px;
-  width:320px;
+  width:90%;
   margin: 30px auto;
 }
 .report-item.over{
@@ -205,7 +208,7 @@ export default {
 }
 .report-view{
   background:#e3dee1;
-  box-shadow:0 0 24px 0 rgba(0,0,0,0.08);
+  box-shadow:0 0 8px 0 rgba(0,0,0,0.08);
   border-radius:0 0 19px 19px;
   width:100%;
   text-align: center;
@@ -215,22 +218,22 @@ export default {
 }
 .report-view::before{
   content: '';
-  width:10px;
+  width:20px;
   height:20px;
-  border-radius: 0 10px 10px 0;
-  background:#220521;
+  border-radius: 50%;
+  background:#f0f0f0;
   position: absolute;
-  left: 0;
+  left: -10px;
   top: -10px;
 }
 .report-view::after{
   content: '';
-  width:10px;
+  width:20px;
   height:20px;
-  border-radius:10px 0 0 10px;
-  background:#220521;
+  border-radius:50%;
+  background:#f0f0f0;
   position: absolute;
-  right: 0;
+  right: -10px;
   top: -10px;
 }
 .view-link{
@@ -254,5 +257,9 @@ export default {
 .parent-login-link2{
   color:#5bbfd7;
   text-decoration: underline;
+}
+.report-nodata{
+  color:#000;
+  margin: 0 auto 30px;
 }
 </style>
