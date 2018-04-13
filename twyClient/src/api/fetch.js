@@ -8,8 +8,8 @@ const service = function (url, data, method = 'GET', headers = {}) {
   return new Promise((resolve, reject) => {
     let options = {
       'method': method,
-      'url': url.indexOf('weixin') > 0 ? url : 'http://api.twyxedu.com' + process.env.BASE_API + url,
-      // 'url': process.env.BASE_API + url,
+      // 'url': url.indexOf('weixin') > 0 ? url : 'http://api.twyxedu.com' + process.env.BASE_API + url,
+      'url': process.env.BASE_API + url,
       'headers': headers && typeof headers === 'object' ? headers : {}
     }
     options.headers['X-Requested-Page'] = 'json'

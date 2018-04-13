@@ -9,6 +9,7 @@ import NewsDetail from '@/components/NewsDetail'
 import Order from '@/components/Order'
 import Activity from '@/components/Activity'
 import ActivityDetail from '@/components/ActivityDetail'
+import OpenDetail from '@/components/OpenDetail'
 import Teachers from '@/components/Teachers'
 import TeacherDetail from '@/components/TeacherDetail'
 import Help from '@/components/Help'
@@ -93,6 +94,11 @@ let routes = [
     path: '/activity/detail',
     name: 'activityDetail',
     component: ActivityDetail
+  },
+  {
+    path: '/open/detail',
+    name: 'openDetail',
+    component: OpenDetail
   },
   {
     path: '/teachers',

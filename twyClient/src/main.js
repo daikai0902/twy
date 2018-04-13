@@ -9,10 +9,12 @@ import { AjaxPlugin, WechatPlugin } from 'vux'
 // vue滑块
 // import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import 'swiper/dist/css/swiper.min.css'
+import VueScroller from 'vue-scroller'
 
 Vue.use(VueRouter)
 Vue.use(AjaxPlugin)
 Vue.use(WechatPlugin)
+Vue.use(VueScroller)
 // Vue.use(VueAwesomeSwiper)
 
 FastClick.attach(document.body)

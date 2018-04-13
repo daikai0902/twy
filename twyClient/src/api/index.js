@@ -29,6 +29,12 @@ export default {
   newsDetail (params) {
     return service(`/api/news/detail`, params, 'GET')
   },
+  openList (params) {
+    return service(`/api/show/clazz/list`, params, 'GET')
+  },
+  openDetail (params) {
+    return service(`/api/show/clazz/detail`, params, 'GET')
+  },
   getOpenId (params) {
     return service(`/wx/openid`, params, 'GET')
   },
