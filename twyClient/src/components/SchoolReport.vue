@@ -22,7 +22,7 @@
           <div class="report-nodata" v-else>未开课</div>
           <div class="report-view">
             <img src="../assets/icon_report.jpg">
-            <router-link :to="{name: 'studentReport'}" class="view-link">查看成绩单</router-link>
+            <router-link :to="{name: 'studentReport', query:{sid: item.studentId}}" class="view-link">查看成绩单</router-link>
           </div>
         </div>
       </div>
