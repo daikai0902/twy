@@ -18,23 +18,30 @@
       
       <div class="sr-comment">
         <div class="tname">老师评语</div>
-        <div class="sr-cont">{{sReport.comment}}</div>
+        <div class="sr-cont" v-if="sReport.comment">{{sReport.comment}}</div>
+        <div class="sr-cont no-data" v-else> 未填写 </div>
       </div>
       <div class="sr-evaluate">
         <div class="tname">评价</div>
-        <div class="">
+        <div class="" v-if="sReport.starComment">
           {{sReport.starComment}}
+        </div>
+        <div class="no-data" v-else>
+          未填写
         </div>
       </div>
 
       <div class="sr-imgs">
         <div class="tname">成长印记</div>
-        <div class="img-wrap">
+        <div class="img-wrap" v-if="sReport.imgUrls && sReport.imgUrls.length > 0">
           <div class="img-item" v-for="(item, idx) in sReport.imgUrls" :key="idx" >
             <div class="sr-img" >
               <img :src="item">
             </div>
           </div>
+        </div>
+        <div class="no-data" v-else>
+          未填写
         </div>
       </div>
     </div>
@@ -54,15 +61,9 @@ export default {
         clazzName: null,
         studentName: null,
         studentNum: null,
-        comment:
-          '该生性格外向，喜欢微笑，身为班级英语科代表不仅自己学习态度端正，还能想办法让大家提高英语成绩，为班级英语成绩的提高做出了很大贡献。此外，还能与老师，同学相处的十分融洽，积极参加班集体活动和学校组织的各项活动，展示自己的各方面才能，希望能再接再厉，继续努力，做一个更优秀的自己！',
+        comment: null,
         starComment: null,
-        imgUrls: [
-          'http://p1.img.cctvpic.com/uploadimg/2018/04/08/1523166444950856.gif',
-          'http://p1.img.cctvpic.com/uploadimg/2018/04/08/1523166444950856.gif',
-          'http://p1.img.cctvpic.com/uploadimg/2018/04/08/1523166444950856.gif',
-          'http://p1.img.cctvpic.com/uploadimg/2018/04/08/1523166444950856.gif'
-        ]
+        imgUrls: []
       }
     }
   },
@@ -74,7 +75,7 @@ export default {
     getStudentReport () {
       api.studentReport({ studentId: this.sid }).then(res => {
         if (res.status === 'succ') {
-          // this.sReport = res.data
+          this.sReport = res.data
         }
       })
     }
@@ -221,6 +222,7 @@ export default {
 .sr-evaluate,
 .sr-imgs {
   margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .sr-evaluate .tname,
@@ -337,5 +339,10 @@ export default {
   left: 0;
   bottom: -20%;
   z-index: -1;
+}
+.no-data{
+  text-align: center !important;
+  padding-top: 50px;
+  box-sizing: border-box;
 }
 </style>

@@ -6,8 +6,9 @@
         <div class="news-top" @click="goSchool">
           <img class="img-news-top" src="../assets/news_top.jpg">
           <div class="nt-desc">
-            <p class="nt-title">做最专业的艺术基础教育</p>
-            <p class="nt-sub">让艺术为孩子成长助航</p>
+            <p class="nt-title">我们给孩子：</p>
+            <p class="nt-title">不仅是最专业艺术基础教育，</p>
+            <p class="nt-title">还有最广阔的艺术展示平台</p>
           </div>
         </div>
       </div>
@@ -303,19 +304,19 @@ export default {
   top: 10px;
 }
 .nt-title{
-  font-size:22px;
+  font-size:18px;
   color:#fff;
-  text-align:center;
-  line-height:28px;
+  text-align:left;
+  line-height:26px;
 }
 .nt-desc{
-  width: 100%;
+  width: 75%;
   height: 100%;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 12.5%;
   color: #fff;
-  padding-top: 60px;
+  padding-top: 40px;
   box-sizing: border-box;
 }
 .nt-sub{
