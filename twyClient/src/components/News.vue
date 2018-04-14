@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="tab-cont" v-else-if="tabIndex == 2">
-          <div class="nl-item" v-for="(item, index) in openList" :key="index" @click="gotoActivityDetail(item)">
+          <div class="nl-item" v-for="(item, index) in openList" :key="index" @click="gotoOpenDetail(item)">
             <div class="ns-panel">
               <div class="ns-img-wrap" :style="'background-image: url(' + item.imgUrl + ')'"> </div>
               <div class="ns-info">
@@ -100,19 +100,19 @@ export default {
       page1: 0,
       page2: 0,
       page3: 0,
-      pageSize: 2
+      pageSize: 4
     }
   },
   created () {},
   methods: {
-    getNewsList (page = 1, fn) {
+    getNewsList (page = 1, fn = null) {
       this.page1 = page
       this.newsList = this.page1 === 1 ? [] : this.newsList
       api.newsList({page: this.page1, pageSize: this.pageSize}).then(res => {
         if (res.status === 'succ') {
           if (res.data.array < this.pageSize) {
             this.page1--
-            fn(true)
+            if (fn) fn(true)
             return
           } else {
             if (fn) fn()
@@ -121,14 +121,14 @@ export default {
         }
       })
     },
-    getActivityList (page = 1, fn) {
+    getActivityList (page = 1, fn = null) {
       this.page2 = page
       this.activityList = this.page2 === 1 ? [] : this.activityList
       api.activityList({page: this.page2, pageSize: this.pageSize}).then(res => {
         if (res.status === 'succ') {
           if (res.data.array < this.pageSize) {
             this.page2--
-            fn(true)
+            if (fn) fn(true)
             return
           } else {
             if (fn) fn()
@@ -137,14 +137,14 @@ export default {
         }
       })
     },
-    getOpenList (page = 1, fn) {
+    getOpenList (page = 1, fn = null) {
       this.page3 = page
       this.openList = this.page3 === 1 ? [] : this.openList
       api.openList({page: this.page3, pageSize: this.pageSize}).then(res => {
         if (res.status === 'succ') {
           if (res.data.array < this.pageSize) {
             this.page3--
-            fn(true)
+            if (fn) fn(true)
             return
           } else {
             if (fn) fn()
@@ -176,6 +176,16 @@ export default {
     },
     onItemClick (idx) {
       this.tabIndex = idx
+      if (this.tabIndex === 0) {
+        this.page1++
+        this.getNewsList(this.page1)
+      } else if (this.tabIndex === 1) {
+        this.page2++
+        this.getActivityList(this.page2)
+      } else if (this.tabIndex === 2) {
+        this.page3++
+        this.getOpenList(this.page3)
+      }
     },
     goSchool () {
       this.$router.push({name: 'school'})

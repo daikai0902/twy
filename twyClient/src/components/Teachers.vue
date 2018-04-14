@@ -34,14 +34,14 @@ export default {
           title: '宁波天唯艺星教育名誉校长'
         },
         {
-          name: '严建红',
-          img: 'teachers/t2.jpg',
-          title: '宁波天唯艺星教育董事长'
-        },
-        {
           name: '汪平',
           img: 'teachers/3.jpg',
           title: '常驻专家顾问'
+        },
+        {
+          name: '严建红',
+          img: 'teachers/t2.jpg',
+          title: '宁波天唯艺星教育董事长'
         },
         {
           name: '姚皓',
