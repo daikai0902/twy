@@ -9,17 +9,20 @@
           针对零基础以上儿童<br/>分为初级、中级、高级课程<br/>每班 <span style="font-size:20px;">2</span> 位专业教师 <span style="font-size:20px;">1</span> 位生活教师
         </div>
       </swiper-item>
-      <swiper-item class="intro-item c-white" style="background-color:#242735;" :style="{height: h + 'px'}">
-        <img class="item-bg item-bg2" src="../assets/bg_intro2.jpg">
-        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:30px">声乐歌舞</p>
-        <div class="intro-desc1 txt-right pr45">
-          4-8周岁儿童<br/>每学期16周次，每次150分钟
+
+      <swiper-item class="intro-item c-white" style="background-color:#242735;" :style="{height: h + 'px'}" v-for="(item, index) in courserList" :key="index">
+        <img class="item-bg item-bg2" :src="item.coverUrl">
+        <div class="item-mask"></div>
+        <p class="intro-title fadeInUp animated pr45" style="margin-top:240px">{{item.name}}</p>
+        <div class="intro-desc1  pr45">
+          {{item.age}}<br/>{{parseInt(item.zc) > 0 ? '每学期' +item.zc+'周次' : item.zc}},每次{{item.ksl}}课时,共{{item.sc}}分钟
         </div>
-        <div class="intro-desc2 txt-right pr45">
-          发挥儿童歌舞表演天性，全面塑造舞台艺术表现力
+        <div class="intro-desc2  pr45">
+          {{item.intro}}
         </div>
       </swiper-item>
-      <swiper-item class="intro-item c-white"  style="background-color:#362505;" :style="{height: h + 'px'}">
+
+      <!-- <swiper-item class="intro-item c-white"  style="background-color:#362505;" :style="{height: h + 'px'}">
         <img class="item-bg" src="../assets/bg_intro3.jpg">
         <p class="intro-title fadeInUp animated" style="margin-top:30px">影视表演</p>
         <div class="intro-desc1">
@@ -79,7 +82,7 @@
           专业院校师资，感受古典音乐的<br/>魅力，打造孩子的贵族气质
         </div>
         <router-link :to="{name: 'pianoSucc', query: { 'type': 'intro' }}" class="txt-right pr45 piano-link">查看详细入学报名细则</router-link>
-      </swiper-item>
+      </swiper-item> -->
     </swiper>
     <router-link :to="{name: 'signUp'}" class="signUp-link">立即报名</router-link>
   </div>
@@ -87,6 +90,7 @@
 
 <script>
 import { Swiper, SwiperItem } from 'vux'
+import api from '../api/index.js'
 
 export default {
   name: 'Introduce',
@@ -98,10 +102,12 @@ export default {
     return {
       pt: 50,
       h: 450,
-      w: 320
+      w: 320,
+      courserList: []
     }
   },
   created () {
+    this.getCourseList()
     let _w = window.innerWidth * 0.9
     let _h = window.innerHeight
     if (_w > 320) {
@@ -112,6 +118,15 @@ export default {
       this.h = parseInt(_w * 450 / 320)
     }
     this.pt = parseInt((_h - this.h - 77) / 2)
+  },
+  methods: {
+    getCourseList () {
+      api.courserList().then(res => {
+        if (res.status === 'succ') {
+          this.courserList = res.data.array
+        }
+      })
+    }
   }
 }
 </script>
@@ -178,11 +193,15 @@ export default {
 }
 .item-bg2{
   bottom: 0;
+  height: 100%;
+  width: initial;
 }
 .intro-title{
   font-size:34px;
   width: 256px;
-  margin: 0 auto
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
 }
 .intro-desc{
   font-size:14px;
@@ -193,14 +212,16 @@ export default {
   line-height:32px;
   width: 256px;
   margin: 0 auto 5px;
-  /* font-weight: lighter; */
+  position: relative;
+  z-index: 10;
 }
 .intro-desc2{
   width: 256px;
   margin: 0 auto;
   font-size:16px;
   line-height:26px;
-  /* font-weight: lighter; */
+  position: relative;
+  z-index: 10;
 }
 .txt-right{
   text-align: right;
@@ -239,5 +260,14 @@ export default {
 }
 .item-bg1{
   border-radius: 0;
+}
+.item-mask{
+  background-image:linear-gradient(-180deg, rgba(0,0,0,0.02) 39%, rgba(0,0,0,0.69) 100%);
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 </style>

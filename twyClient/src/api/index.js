@@ -46,8 +46,8 @@ export default {
   },
   studentReport (params) {
     return service(`/api/student/report`, qs.stringify(params), 'POST', { 'Content-Type': typewww })
+  },
+  courserList (params) {
+    return service(`/api/show/course/list`, qs.stringify(params), 'POST', { 'Content-Type': typewww })
   }
-  // wxStudents (params) {
-  //   return service(`/wx/students`, qs.stringify(params), 'POST', { 'Content-Type': typewww })
-  // }
 }
