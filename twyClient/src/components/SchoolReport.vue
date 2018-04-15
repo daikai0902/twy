@@ -44,7 +44,7 @@ export default {
   data () {
     return {
       clazzStudentVOS: [],
-      code: null,
+      code: null
     }
   },
   created () {
