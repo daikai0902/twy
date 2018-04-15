@@ -40,7 +40,7 @@ export default {
         },
         {
           name: '严建红',
-          img: 'teachers/t2.jpg',
+          img: 'teachers/2.jpg',
           title: '宁波天唯艺星教育董事长'
         },
         {
