@@ -23,8 +23,11 @@
       </div>
       <div class="sr-evaluate">
         <div class="tname">评价</div>
-        <div class="" v-if="sReport.starComment">
-          {{sReport.starComment}}
+        <div class="star-com" v-if="sReport.starComment">
+          <div class="star-item" v-for="(item, index) in sReport.starComment" :key="index">
+            <div class="lab">{{item.split('+')[0]}}</div>
+            <rater v-model="starCom[index]" disable active-color="#FF9900" :margin="4"></rater>
+          </div>
         </div>
         <div class="no-data" v-else>
           未填写
@@ -51,9 +54,13 @@
 </template>
 
 <script>
+import { Rater } from 'vux'
 import api from '../api/index.js'
 export default {
   name: 'Report',
+  components: {
+    Rater
+  },
   data () {
     return {
       sid: null,
@@ -64,7 +71,8 @@ export default {
         comment: null,
         starComment: null,
         imgUrls: []
-      }
+      },
+      starCom: []
     }
   },
   created () {
@@ -76,6 +84,13 @@ export default {
       api.studentReport({ studentId: this.sid }).then(res => {
         if (res.status === 'succ') {
           this.sReport = res.data
+          this.sReport.starComment = res.data.starComment.split('=')
+          this.sReport.imgUrls = res.data.imgUrls.split(',')
+
+          this.sReport.starComment.shift(1)
+          this.sReport.starComment.forEach((item, idx) => {
+            this.starCom[idx] = parseInt(item.split('+')[1])
+          })
         }
       })
     }
@@ -241,7 +256,6 @@ export default {
 .sr-evaluate {
   text-align: right;
   position: relative;
-  height: 250px;
 }
 .sr-evaluate:after{
   content: '';
@@ -343,6 +357,26 @@ export default {
 .no-data{
   text-align: center !important;
   padding-top: 50px;
+  padding-bottom: 30px;
   box-sizing: border-box;
+}
+.star-com{
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+  margin-top: 20px;
+}
+.star-com .star-item{
+  margin-bottom: 6px;
+}
+.star-com .lab{
+  width: 120px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.star-com .vux-rater{
+  vertical-align: middle;
 }
 </style>
