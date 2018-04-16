@@ -198,7 +198,7 @@ export default {
 }
 .intro-title{
   font-size:34px;
-  width: 256px;
+  width: 280px;
   margin: 0 auto;
   position: relative;
   z-index: 10;
@@ -210,13 +210,13 @@ export default {
 .intro-desc1{
   font-size:16px;
   line-height:32px;
-  width: 256px;
+  width: 280px;
   margin: 0 auto 5px;
   position: relative;
   z-index: 10;
 }
 .intro-desc2{
-  width: 256px;
+  width: 280px;
   margin: 0 auto;
   font-size:16px;
   line-height:26px;
@@ -236,7 +236,7 @@ export default {
   padding-right: 5%;
 }
 .piano-link{
-  width:256px !important;
+  width:280px !important;
   display:block;
   margin:5px auto 0;
   font-size:14px;
