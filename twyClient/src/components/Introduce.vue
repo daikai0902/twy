@@ -13,11 +13,11 @@
       <swiper-item class="intro-item c-white" style="background-color:#242735;" :style="{height: h + 'px'}" v-for="(item, index) in courserList" :key="index">
         <img class="item-bg item-bg2" :src="item.coverUrl">
         <div class="item-mask"></div>
-        <p class="intro-title fadeInUp animated pr45" style="margin-top:240px">{{item.name}}</p>
-        <div class="intro-desc1  pr45">
+        <p class="intro-title fadeInUp animated" style="margin-top:240px">{{item.name}}</p>
+        <div class="intro-desc1">
           {{item.age}}<br/>{{parseInt(item.zc) > 0 ? '每学期' +item.zc+'周次' : item.zc}},每次{{item.ksl}}课时,共{{item.sc}}分钟
         </div>
-        <div class="intro-desc2  pr45">
+        <div class="intro-desc2">
           {{item.intro}}
         </div>
       </swiper-item>
