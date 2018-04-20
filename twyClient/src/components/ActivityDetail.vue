@@ -13,40 +13,40 @@
 </template>
 
 <script>
-import api from "../api/index.js";
+import api from '../api/index.js'
 export default {
-  name: "ActivityDetail",
-  data() {
+  name: 'ActivityDetail',
+  data () {
     return {
       id: null,
       title: null,
       time: null,
       address: null,
       desc: null
-    };
+    }
   },
-  created() {
-    this.id = this.$route.query.id;
-    this.getActivityDetail();
+  created () {
+    this.id = this.$route.query.id
+    this.getActivityDetail()
   },
   methods: {
-    getActivityDetail() {
+    getActivityDetail () {
       api.activityDetail({ activityId: this.id }).then(res => {
-        if (res.status === "succ") {
-          this.title = res.data.name;
-          this.address = res.data.address;
-          this.time = res.data.time;
-          document.querySelector(".ac-cont").innerHTML = res.data.content;
+        if (res.status === 'succ') {
+          this.title = res.data.name
+          this.address = res.data.address
+          this.time = res.data.time
+          document.querySelector('.ac-cont').innerHTML = res.data.content
           if (res.data.videoUrl) {
-            document.querySelector(".vdo-cont").innerHTML = res.data.videoUrl;
-            document.querySelector(".vdo-cont iframe").width = "100%";
-            document.querySelector(".vdo-cont iframe").height = "auto";
+            document.querySelector('.vdo-cont').innerHTML = res.data.videoUrl
+            document.querySelector('.vdo-cont iframe').width = '100%'
+            document.querySelector('.vdo-cont iframe').height = 'auto'
           }
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style scoped>
