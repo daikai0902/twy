@@ -82,11 +82,10 @@ export default {
   mounted() {
     let that = this;
     window.addEventListener("popstate", function(e) {
-      var state = {  
-        title: "宁波天唯艺星教育",
-        url: "/schoolReport"  
-      };  
-      window.history.pushState(state, "宁波天唯艺星教育", "/schoolReport");  
+      console.log('history')
+      this.$router.push({
+        path: '/studentReport'
+      })
     }, false);
   },
   methods: {
