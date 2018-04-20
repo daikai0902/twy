@@ -17,7 +17,7 @@
             <p class="p1 p2">{{item.name}}</p>
           </div>
           <div class="report-course clearfix" v-if="item.arriveList">
-            <div class="rc-item" v-for="(item2, idx) in item.arriveList" :key="idx" :class="[item2 === 1 ? 'succ': '', item2 === 0 ? 'err': '']">{{idx + 1}}</div>
+            <div class="rc-item" v-for="(item2, idx) in item.arriveList" :key="idx" :class="[item2 == '1' ? 'succ': '', item2 == '0' ? 'err': '']">{{idx + 1}}</div>
           </div>
           <div class="report-nodata" v-else>未开课</div>
           <div class="report-view">
