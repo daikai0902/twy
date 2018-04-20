@@ -61,16 +61,16 @@ export default {
     getStudentArriveInfo () {
       api.getOpenId({code: this.code}).then(wxres => {
         if (wxres.status === 'succ') {
-          // this.clazzStudentVOS = wxres.data.clazzStudentVOS
-          this.clazzStudentVOS = wxres.data.clazzStudentVOS.map((item, index) => {
-            let _item = item
-            _item.arriveList = _item.arriveDetail ? _item.arriveDetail.split('') : []
-            let arrLen = _item.arriveDetail ? _item.arriveDetail.length : 0
-            for (let i = arrLen; i < this.times; i++) {
-              _item.arriveList.push('')
-            }
-            return _item
-          })
+          this.clazzStudentVOS = wxres.data.clazzStudentVOS
+          // this.clazzStudentVOS = wxres.data.clazzStudentVOS.map((item, index) => {
+          //   let _item = item
+          //   _item.arriveList = _item.arriveDetail ? _item.arriveDetail.split('') : []
+          //   let arrLen = _item.arriveDetail ? _item.arriveDetail.length : 0
+          //   for (let i = arrLen; i < this.times; i++) {
+          //     _item.arriveList.push('')
+          //   }
+          //   return _item
+          // })
         }
       })
     },
