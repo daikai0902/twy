@@ -79,6 +79,16 @@ export default {
     this.sid = this.$route.query.sid
     this.getStudentReport()
   },
+  mounted() {
+    let that = this;
+    window.addEventListener("popstate", function(e) {
+      var state = {  
+        title: "宁波天唯艺星教育",
+        url: "/schoolReport"  
+      };  
+      window.history.pushState(state, "宁波天唯艺星教育", "/schoolReport");  
+    }, false);
+  },
   methods: {
     getStudentReport () {
       api.studentReport({ studentId: this.sid }).then(res => {

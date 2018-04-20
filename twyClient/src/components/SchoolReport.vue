@@ -22,7 +22,8 @@
           <div class="report-nodata" v-else>未开课</div>
           <div class="report-view">
             <img src="../assets/icon_report.jpg">
-            <router-link :to="{name: 'studentReport', query:{sid: item.studentId}}" class="view-link">查看成绩单</router-link>
+            <a href="javascript:;" class="view-link" @click="viewReport(item.reportStatus, item.studentId)">查看成绩单</a>
+            <!-- <router-link :to="{name: 'studentReport', query:{sid: item.studentId}}" class="view-link" >查看成绩单</router-link> -->
           </div>
         </div>
       </div>
@@ -58,6 +59,13 @@ export default {
     this.getStudentArriveInfo()
   },
   methods: {
+    viewReport (reportStatus, studentId) {
+      if (reportStatus === '已完成') {
+        this.$router.push({name: 'studentReport', query: {sid: studentId}})
+      } else {
+        alert('暂无成绩单')
+      }
+    },
     getStudentArriveInfo () {
       api.getOpenId({code: this.code}).then(wxres => {
         if (wxres.status === 'succ') {
