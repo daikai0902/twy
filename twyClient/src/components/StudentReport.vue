@@ -8,7 +8,7 @@
       <div class="user-info">
         <p class="clazz-name">
           <span>{{sReport.clazzName}}</span>
-          <span>{{sReport.clazzName}}</span>
+          <!-- <span>{{sReport.clazzName}}</span> -->
         </p>
         <p class="user-name">
           <span>{{sReport.studentName}}</span>
