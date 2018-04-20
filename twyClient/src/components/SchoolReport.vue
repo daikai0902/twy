@@ -64,7 +64,7 @@ export default {
           // this.clazzStudentVOS = wxres.data.clazzStudentVOS
 
           this.clazzStudentVOS = wxres.data.clazzStudentVOS.map((item, index) => {
-            let times = item.data.array[0].arrive.split('/')[1]
+            let times = item.arrive.split('/')[1]
             let _item = item
             _item.arriveList = _item.arriveDetail ? _item.arriveDetail.split('') : []
             let arrLen = _item.arriveDetail ? _item.arriveDetail.length : 0
