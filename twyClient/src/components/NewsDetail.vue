@@ -4,7 +4,7 @@
       <p class="title">{{title}}</p>
       <div class="info">
         <p class="org">{{org}}</p>
-        <p class="time">{{time}}</p>
+        <p class="time">{{time}}  宁波天唯艺星教育</p>
       </div>
       <div class="vdo-cont"></div>
       <div class="news-cont"></div>

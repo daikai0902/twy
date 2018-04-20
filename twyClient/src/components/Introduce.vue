@@ -1,6 +1,7 @@
 <template>
   <div class="intro-wrap">
     <img class="intro-bg" src="../assets/bg_intro.jpg">
+    
     <swiper class="swiper-wrap" dots-class="intro-dot" dots-position="center" :style="{height: h + 'px', 'padding-top': pt + 'px'}">
       <swiper-item class="intro-item" style="background-color:#fff;" :style="{height: h + 'px'}">
         <img class="item-bg item-bg1" src="../assets/bg_intro21.jpg" style="top:0;">
@@ -13,13 +14,14 @@
       <swiper-item class="intro-item c-white" style="background-color:#242735;" :style="{height: h + 'px'}" v-for="(item, index) in courserList" :key="index">
         <img class="item-bg item-bg2" :src="item.coverUrl">
         <div class="item-mask"></div>
-        <p class="intro-title fadeInUp animated" style="margin-top:240px">{{item.name}}</p>
+        <p class="intro-title fadeInUp animated" style="margin-top:220px">{{item.name}}</p>
         <div class="intro-desc1">
           {{item.age}}<br/>{{parseInt(item.zc) > 0 ? '每学期' +item.zc+'周次' : item.zc}},每次{{item.ksl}}课时,共{{item.sc}}分钟
         </div>
         <div class="intro-desc2">
           {{item.intro}}
         </div>
+        <router-link v-if="item.imgUrl" :to="{name: 'pianoSucc', query: { 'type': item.imgUrl }}" class="txt-right pr45 piano-link">查看详细入学报名细则</router-link>
       </swiper-item>
 
       <!-- <swiper-item class="intro-item c-white"  style="background-color:#362505;" :style="{height: h + 'px'}">
@@ -126,6 +128,10 @@ export default {
           this.courserList = res.data.array
         }
       })
+    },
+    gotoDetail (url) {
+      console.log(url)
+      alert(url)
     }
   }
 }
@@ -240,8 +246,13 @@ export default {
   display:block;
   margin:5px auto 0;
   font-size:14px;
-  color:#fff;
+  color:#999;
+  text-align: left;
   text-decoration: underline;
+  height: inherit;
+  position: relative;
+  z-index: 100;
+  padding-right: 0;
 }
 .signUp-link{
   font-size:16px;

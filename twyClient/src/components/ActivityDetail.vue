@@ -2,7 +2,7 @@
   <div class="activity-wrap">
     <div class="ac-wrap">
       <p class="title">{{title}}</p>
-      <p class="time">{{time}}</p>
+      <p class="time">{{time}}  宁波天唯艺星教育</p>
       
       <div class="vdo-cont"></div>
       <div class="ac-cont"></div>
