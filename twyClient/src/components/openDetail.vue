@@ -84,6 +84,7 @@ export default {
     margin: 20px auto;
   }
   .ac-cont img{
-    width: 100%;
+    max-width: 100%;
+    margin: 10px auto;
   }
 </style>
