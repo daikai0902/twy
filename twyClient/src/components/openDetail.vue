@@ -37,6 +37,10 @@ export default {
           this.address = res.data.address
           this.time = res.data.time
           document.querySelector('.ac-cont').innerHTML = res.data.content
+          var imgList = document.querySelectorAll('img')
+          for (var key in imgList) {
+            imgList[key].style.maxWidth = '100%'
+          }
           if (res.data.videoUrl) {
             document.querySelector('.vdo-cont').innerHTML = res.data.videoUrl
             document.querySelector('.vdo-cont iframe').width = '100%'
@@ -78,13 +82,10 @@ export default {
     margin: 5px 0;
   }
   .ac-wrap .ac-cont img{
-    width: 100%;
+    max-width: 100% !important;
+    margin: 10px auto;
   }
   .vdo-cont{
     margin: 20px auto;
-  }
-  .ac-cont img{
-    max-width: 100%;
-    margin: 10px auto;
   }
 </style>
