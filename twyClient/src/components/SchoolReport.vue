@@ -60,7 +60,8 @@ export default {
   },
   mounted() {
     window.addEventListener("popstate", function(e) {
-      window.WeixinJSBridge.call('closeWindow')
+      console.log('123')
+      // window.WeixinJSBridge.call('closeWindow')
     }, false);
   },
   methods: {

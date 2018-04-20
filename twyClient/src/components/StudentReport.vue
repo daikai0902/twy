@@ -82,7 +82,7 @@ export default {
   mounted() {
     let that = this;
     window.addEventListener("popstate", function(e) {
-      window.location = '/SchoolReport'
+      window.location = '/schoolReport'
     }, false);
   },
   methods: {
