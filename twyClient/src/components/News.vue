@@ -7,8 +7,8 @@
           <img class="img-news-top" src="../assets/news_top.jpg">
           <div class="nt-desc">
             <p class="nt-title">我们给孩子：</p>
-            <p class="nt-title">不仅是最专业艺术基础教育，</p>
-            <p class="nt-title">还有最广阔的艺术展示平台</p>
+            <p class="nt-title">不仅是专业艺术基础教育，</p>
+            <p class="nt-title">还有广阔的艺术展示平台</p>
           </div>
         </div>
       </div>
