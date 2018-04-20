@@ -16,8 +16,8 @@
             <p class="p1 p2">{{item.number}}</p>
             <p class="p1 p2">{{item.name}}</p>
           </div>
-          <div class="report-course clearfix" v-if="item.arriveDetail">
-            <div class="rc-item" v-for="(item2, idx) in item.arriveDetail.split('')" :key="idx" :class="[item2 == 1 ? 'succ': '', item2 == 0 ? 'err': '']">{{idx + 1}}</div>
+          <div class="report-course clearfix" v-if="item.arriveList">
+            <div class="rc-item" v-for="(item2, idx) in item.arriveList.split('')" :key="idx" :class="[item2 == 1 ? 'succ': '', item2 == 0 ? 'err': '']">{{idx + 1}}</div>
           </div>
           <div class="report-nodata" v-else>未开课</div>
           <div class="report-view">
@@ -60,9 +60,17 @@ export default {
   methods: {
     getStudentArriveInfo () {
       api.getOpenId({code: this.code}).then(wxres => {
-        console.log(wxres)
         if (wxres.status === 'succ') {
-          this.clazzStudentVOS = wxres.data.clazzStudentVOS
+          // this.clazzStudentVOS = wxres.data.clazzStudentVOS
+          this.clazzStudentVOS = wxres.data.clazzStudentVOS.map((item, index) => {
+            let _item = item
+            _item.arriveList = _item.arriveDetail ? _item.arriveDetail.split('') : []
+            let arrLen = _item.arriveDetail ? _item.arriveDetail.length : 0
+            for (let i = arrLen; i < this.times; i++) {
+              _item.arriveList.push('')
+            }
+            return _item
+          })
         }
       })
     },
