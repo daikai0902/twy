@@ -39,14 +39,14 @@ export default {
           this.address = res.data.address
           this.time = res.data.createTime
           document.querySelector('.news-cont').innerHTML = res.data.content
-          var imgList = document.querySelectorAll('img')
-          for (var key in imgList) {
-            imgList[key].style.maxWidth = '100%'
-          }
           if (res.data.videoUrl) {
             document.querySelector('.vdo-cont').innerHTML = res.data.videoUrl
             document.querySelector('.vdo-cont iframe').width = '100%'
             document.querySelector('.vdo-cont iframe').height = 'auto'
+          }
+          var imgList = document.querySelectorAll('.news-cont img')
+          for (var key in imgList) {
+            imgList[key].style.maxWidth = '100%'
           }
         }
       })
