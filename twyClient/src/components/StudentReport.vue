@@ -82,10 +82,7 @@ export default {
   mounted() {
     let that = this;
     window.addEventListener("popstate", function(e) {
-      console.log('history')
-      this.$router.push({
-        path: '/studentReport'
-      })
+      window.location = '/SchoolReport'
     }, false);
   },
   methods: {
