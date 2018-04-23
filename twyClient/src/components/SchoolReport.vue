@@ -58,11 +58,10 @@ export default {
 
     this.getStudentArriveInfo()
   },
-  mounted() {
-    window.addEventListener("popstate", function(e) {
-      console.log('123')
+  mounted () {
+    window.addEventListener('popstate', function (e) {
       // window.WeixinJSBridge.call('closeWindow')
-    }, false);
+    }, false)
   },
   methods: {
     viewReport (reportStatus, studentId) {
@@ -76,7 +75,6 @@ export default {
       api.getOpenId({code: this.code}).then(wxres => {
         if (wxres.status === 'succ') {
           // this.clazzStudentVOS = wxres.data.clazzStudentVOS
-          
           this.clazzStudentVOS = wxres.data.clazzStudentVOS.map((item, index) => {
             let times = item.arrive.split('/')[1]
             let _item = item

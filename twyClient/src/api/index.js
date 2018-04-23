@@ -49,5 +49,8 @@ export default {
   },
   courserList (params) {
     return service(`/api/show/course/list`, qs.stringify(params), 'POST', { 'Content-Type': typewww })
+  },
+  teacherList (params) {
+    return service(`/api/show/teacher/list`, params, 'GET')
   }
 }

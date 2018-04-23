@@ -79,11 +79,10 @@ export default {
     this.sid = this.$route.query.sid
     this.getStudentReport()
   },
-  mounted() {
-    let that = this;
-    window.addEventListener("popstate", function(e) {
+  mounted () {
+    window.addEventListener('popstate', function (e) {
       window.location = '/schoolReport'
-    }, false);
+    }, false)
   },
   methods: {
     getStudentReport () {

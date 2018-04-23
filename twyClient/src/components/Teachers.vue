@@ -11,10 +11,10 @@
     <div class="teacher-wrap">
       <div class="t-item" v-for="(item, index) in teacherList" :key="index" @click="gotoTeacherDetail(index)">
         <p class="t-team" v-if="item.title == 'TEAM'">{{item.title}}</p>
-        <img class="t-img" v-else :src="'/static/'+item.img" >
+        <img class="t-img" v-else :src="item.listimgUrl" >
         <div class="t-info">
           <p class="t-name">{{item.name}}</p>
-          <p class="t-title" v-if="item.title !== 'TEAM'">{{item.title}}</p>
+          <p class="t-title">{{item.job.split(',')[0]}}</p>
         </div>
       </div>
     </div>
@@ -23,85 +23,96 @@
 </template>
 
 <script>
+import api from '../api/index.js'
 export default {
   name: 'Teacher',
   data () {
     return {
-      teacherList: [
-        {
-          name: '徐明德',
-          img: 'teachers/t1.jpg',
-          title: '宁波天唯艺星教育名誉校长'
-        },
-        {
-          name: '汪平',
-          img: 'teachers/3.jpg',
-          title: '常驻专家顾问'
-        },
-        {
-          name: '严建红',
-          img: 'teachers/2.jpg',
-          title: '宁波天唯艺星教育董事长'
-        },
-        {
-          name: '姚皓',
-          img: 'teachers/4.jpg',
-          title: '学校总部培训负责人'
-        },
-        {
-          name: '王舵',
-          img: 'teachers/5.jpg',
-          title: '教学主任，播音主持、影视表演教师'
-        },
-        {
-          name: '陆倩雯',
-          img: 'teachers/6.jpg',
-          title: '舞蹈教师'
-        },
-        {
-          name: '周臻',
-          img: 'teachers/7.jpg',
-          title: '声乐教师'
-        },
-        {
-          name: '黄纯纯',
-          img: 'teachers/8.jpg',
-          title: '舞蹈教师'
-        },
-        {
-          name: '罗明',
-          img: 'teachers/9.jpg',
-          title: '声乐教师'
-        },
-        {
-          name: '董姬麟',
-          img: 'teachers/10.jpg',
-          title: '声乐教师'
-        },
-        {
-          name: '陈艳',
-          img: 'teachers/11.jpg',
-          title: '学校内部管理工作'
-        },
-        {
-          name: '俞磊',
-          img: 'teachers/12.jpg',
-          title: '负责学校工程、拓展等工作'
-        },
-        {
-          name: '吴悦',
-          img: 'teachers/13.jpg',
-          title: '学校宣传、活动策划、拓展等工作'
-        },
-        {
-          name: '吴建峰',
-          img: 'teachers/14.jpg',
-          title: '学校网络管理'
-        }
-      ]
+      // teacherList: [
+      //   {
+      //     name: '徐明德',
+      //     img: 'teachers/t1.jpg',
+      //     title: '宁波天唯艺星教育名誉校长'
+      //   },
+      //   {
+      //     name: '汪平',
+      //     img: 'teachers/3.jpg',
+      //     title: '常驻专家顾问'
+      //   },
+      //   {
+      //     name: '严建红',
+      //     img: 'teachers/2.jpg',
+      //     title: '宁波天唯艺星教育董事长'
+      //   },
+      //   {
+      //     name: '姚皓',
+      //     img: 'teachers/4.jpg',
+      //     title: '学校总部培训负责人'
+      //   },
+      //   {
+      //     name: '王舵',
+      //     img: 'teachers/5.jpg',
+      //     title: '教学主任，播音主持、影视表演教师'
+      //   },
+      //   {
+      //     name: '陆倩雯',
+      //     img: 'teachers/6.jpg',
+      //     title: '舞蹈教师'
+      //   },
+      //   {
+      //     name: '周臻',
+      //     img: 'teachers/7.jpg',
+      //     title: '声乐教师'
+      //   },
+      //   {
+      //     name: '黄纯纯',
+      //     img: 'teachers/8.jpg',
+      //     title: '舞蹈教师'
+      //   },
+      //   {
+      //     name: '罗明',
+      //     img: 'teachers/9.jpg',
+      //     title: '声乐教师'
+      //   },
+      //   {
+      //     name: '董姬麟',
+      //     img: 'teachers/10.jpg',
+      //     title: '声乐教师'
+      //   },
+      //   {
+      //     name: '陈艳',
+      //     img: 'teachers/11.jpg',
+      //     title: '学校内部管理工作'
+      //   },
+      //   {
+      //     name: '俞磊',
+      //     img: 'teachers/12.jpg',
+      //     title: '负责学校工程、拓展等工作'
+      //   },
+      //   {
+      //     name: '吴悦',
+      //     img: 'teachers/13.jpg',
+      //     title: '学校宣传、活动策划、拓展等工作'
+      //   },
+      //   {
+      //     name: '吴建峰',
+      //     img: 'teachers/14.jpg',
+      //     title: '学校网络管理'
+      //   }
+      // ],
+      teacherList: []
     }
   },
+  created () {
+    this.getTeacherList()
+  },
   methods: {
+    getTeacherList () {
+      api.teacherList().then(res => {
+        // console.log(res.data.array)
+        this.teacherList = res.data.array
+      })
+    },
     gotoTeacherDetail (num) {
       this.$router.push({name: 'teacherDetail', query: {id: num}})
     }
