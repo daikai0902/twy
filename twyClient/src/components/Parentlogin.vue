@@ -39,11 +39,13 @@ export default {
         if (wxres.status === 'succ') {
           that.openId = wxres.data.openId
           api.bindStudent({openId: that.openId, number: this.number}).then(res => {
-            api.studentReport({studentId: '11'}).then(res3 => {
-              console.log(res3)
-            })
-            if (res.status) {
+            // api.studentReport({studentId: '11'}).then(res3 => {
+            //   console.log(res3)
+            // })
+            if (res.status === 'succ') {
               that.$router.push({ name: 'schoolReport', query: {sid: res.data.studentId} })
+            } else {
+              alert(res.message)
             }
           })
         }
