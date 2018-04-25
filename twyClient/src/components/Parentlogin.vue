@@ -7,15 +7,19 @@
       <input type="text" v-model="number" placeholder="请输入小朋友的学号" class="ipt-login">
       <a href="javascript:;" class="btn-parent-login" @click="bindParentLogin">查询</a>
     </div>
-    <img class="bg-home" src="../assets/bg_home.jpg">
+    <img class="bg-home" src="../assets/plogin.jpg">
     <div class="home-wrap"></div>
   </div>
 </template>
 
 <script>
 import api from '../api/index.js'
+import { Loading } from 'vux'
 export default {
   name: 'Open',
+  components: {
+    Loading
+  },
   data () {
     return {
       code: null,
@@ -24,13 +28,20 @@ export default {
     }
   },
   created () {
+    this.$vux.loading.show()
     let _querystring = this.parseQueryString(window.location.href)
-
+    
     if (!_querystring.code) {
       window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fm.twyxedu.com%2FparentLogin&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect'
     } else {
       this.code = _querystring.code
     }
+  },
+  mounted () {
+    this.$vux.loading.hide()
+    window.addEventListener('popstate', function (e) {
+      window.location = '/schoolReport'
+    }, false)
   },
   methods: {
     bindParentLogin () {
@@ -126,7 +137,7 @@ export default {
   font-size: 14px;
 }
 .btn-parent-login{
-  background:#80225a;
+  background:#fccf74;
   display: block;
   border-radius:100px;
   width:286px;
@@ -136,5 +147,17 @@ export default {
   color:#fff;
   text-align: center;
   margin: 80px auto 0;
+}
+input::-webkit-input-placeholder{
+  color: rgba(255,255,255, .8);
+}
+input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+  color: rgba(255,255,255, .8);
+}
+input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+  color: rgba(255,255,255, .8);
+}
+input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+  color: rgba(255,255,255, .8);
 }
 </style>

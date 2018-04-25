@@ -5,7 +5,7 @@ import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import router from './router'
 import App from './App'
-import { AjaxPlugin, WechatPlugin } from 'vux'
+import { AjaxPlugin, WechatPlugin, LoadingPlugin } from 'vux'
 // vue滑块
 // import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import 'swiper/dist/css/swiper.min.css'
@@ -14,6 +14,7 @@ import VueScroller from 'vue-scroller'
 Vue.use(VueRouter)
 Vue.use(AjaxPlugin)
 Vue.use(WechatPlugin)
+Vue.use(LoadingPlugin)
 Vue.use(VueScroller)
 // Vue.use(VueAwesomeSwiper)
 
