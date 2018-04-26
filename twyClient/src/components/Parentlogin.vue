@@ -38,9 +38,8 @@ export default {
   },
   mounted () {
     this.$vux.loading.hide()
-    alert('我监听')
     window.addEventListener('popstate', function (e) {
-      window.location = '/schoolReport'
+      window.location.href = '/schoolReport'
     }, false)
   },
   methods: {

@@ -81,7 +81,7 @@ export default {
   },
   mounted () {
     window.addEventListener('popstate', function (e) {
-      window.location = '/schoolReport'
+      window.location.href = '/schoolReport'
     }, false)
   },
   methods: {
