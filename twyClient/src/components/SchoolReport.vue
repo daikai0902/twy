@@ -7,10 +7,10 @@
           <div class="t-txt">小朋友的课程课时与成绩单</div>
           <!-- <router-link :to="{name: 'parentLogin'}" class="parent-login-link">添加学号</router-link> -->
           <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fm.twyxedu.com%2FparentLogin&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect" class="parent-login-link">添加学号</a>
-          <img v-if="clazzStudentVOS.length == 0" src="../assets/commet.png" class="commet-img">
+          <img v-if="clazzStudentVOS.length == 0 && isComplete" src="../assets/commet.png" class="commet-img">
         </div>
       </div>
-      <div class="" v-if="clazzStudentVOS.length > 0">
+      <div class="" v-if="clazzStudentVOS.length > 0 && isComplete">
         <div class="report-item" v-for="(item, index) in clazzStudentVOS" :key="index">
           <div class="report-info">
             <p class="p1">{{item.courseName}} {{item.clazzName}}</p>
@@ -28,7 +28,7 @@
           </div>
         </div>
       </div>
-      <div class="no-report" v-else>
+      <div class="no-report" v-else-if="isComplete">
         <p>您好，目前暂无课时</p>
         <p>如报名成功获取到学号</p>
         <p>可点击 <router-link :to="{name: 'parentLogin'}" class="parent-login-link2">添加学号</router-link></p>
@@ -50,7 +50,8 @@ export default {
   data () {
     return {
       clazzStudentVOS: [],
-      code: null
+      code: null,
+      isComplete: false
     }
   },
   created () {
@@ -92,6 +93,7 @@ export default {
             return _item
           })
           this.$vux.loading.hide()
+          this.isComplete = true
         }
       })
     },
