@@ -16,7 +16,7 @@ export default {
 html{
   position: relative;
   min-height: 100%;
-  background: url('./assets/bg_home.jpg') no-repeat center center;
+  // background: url('./assets/bg_home.jpg') no-repeat center center;
   background-size: cover;
 }
 .vux-popup-dialog.popup-smenu{
@@ -51,8 +51,10 @@ html{
   background-color: #5b374f !important;
 }
 .home-wrap{
-  opacity:0.66;
+  // opacity:0.66;
   // background-image:linear-gradient(-141deg, #470c45 0%, rgba(34,5,33,0.00) 100%);
+  background: url('./assets/bg_home.jpg') no-repeat center center;
+  background-size: cover;
   position: fixed;
   z-index: 2;
   width: 100%;
