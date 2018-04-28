@@ -38,7 +38,7 @@ export default {
   mounted () {
     this.$vux.loading.hide()
     window.addEventListener('popstate', function (e) {
-      console.log('schoolReport')
+      alert('1234')
       window.location.href = '/schoolReport'
     }, false)
   },
