@@ -5,7 +5,8 @@
         <img src="../assets/teacher_top.jpg" class="teacher-top">
         <div class="rt-text">
           <div class="t-txt">小朋友的课程课时与成绩单</div>
-          <router-link :to="{name: 'parentLogin'}" class="parent-login-link">添加学号</router-link>
+          <!-- <router-link :to="{name: 'parentLogin'}" class="parent-login-link">添加学号</router-link> -->
+          <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fm.twyxedu.com%2FparentLogin&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect" class="parent-login-link">添加学号</a>
           <img v-if="clazzStudentVOS.length == 0" src="../assets/commet.png" class="commet-img">
         </div>
       </div>
