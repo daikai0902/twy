@@ -139,11 +139,11 @@ export default {
   created () {
     let _querystring = this.parseQueryString(window.location.href)
 
-    if (!_querystring.code) {
-      window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fm.twyxedu.com%2Fsignup&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect'
-    } else {
-      this.code = _querystring.code
-    }
+    // if (!_querystring.code) {
+    //   window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fm.twyxedu.com%2Fsignup&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect'
+    // } else {
+    //   this.code = _querystring.code
+    // }
 
     this.getOrgList()
   },
@@ -156,6 +156,7 @@ export default {
           this.readonly = true
         }
         this.courseList = res.data.array
+        this.courseOptions = []
         res.data.array.forEach((item, index) => {
           this.courseOptions.push({ value: item.name, key: item.id })
         })
@@ -192,7 +193,7 @@ export default {
     bindSignup () {
       let that = this
 
-      if (!this.name && !this.age && !this.clothsize && !this.shoessize && !this.momname && !this.momphone && !this.course) {
+      if (!this.name && !this.age && !this.clothsize && !this.shoessize && !this.momname && !this.momphone && !this.courseItem) {
         AlertModule.show({
           content: '您好，带星号的信息是必填的哦，请务必认真填写！'
         })
@@ -262,15 +263,15 @@ export default {
             content: res.message
           })
         } else {
-          if (that.courseId === 7) {
+          if (that.courseItem.name.indexOf('钢琴') >= 0) {
             that.$router.push({ name: 'pianoSucc', query: {type: 'signup'} })
-          } else if (that.courseId === 6) {
+          } else if (that.courseItem.name.indexOf('合唱') >= 0) {
             that.$router.push({ name: 'choirSucc' })
           } else if (that.payMethod === '微信') {
             api.getOpenId({code: that.code}).then(wxres => {
               if (wxres.status === 'succ') {
                 that.openId = wxres.data.openId
-                api.getUnifieOrder({courseStudentId: res.data.id, currentUrl: 'http://www.twyxedu.com/signup', openId: wxres.data.openId}).then(res2 => {
+                api.getUnifieOrder({courseStudentId: res.data.id, currentUrl: 'http://m.twyxedu.com/signup', openId: wxres.data.openId}).then(res2 => {
                   that.$wechat.config({
                     'appId': res2.data.appid
                   })
@@ -290,13 +291,6 @@ export default {
           } else {
             that.$router.push({ name: 'otherpaySucc', query: {n: that.name} })
           }
-          // if (that.course === '钢琴课') {
-          //   that.$router.push({ name: 'pianoSucc', query: {type: 'signup'} })
-          // } else if (that.course === '少儿合唱团') {
-          //   that.$router.push({ name: 'choirSucc' })
-          // } else {
-          //   that.$router.push({ name: 'qrcode' })
-          // }
         }
       })
     },
@@ -306,6 +300,7 @@ export default {
     courseOptionChange () {
       this.courseList.forEach((item, index) => {
         if (item.id === this.courseId) {
+          console.log(item)
           this.courseItem = item
           this.freeType = item.feeType
         }
@@ -500,7 +495,7 @@ export default {
 }
 .vux-popup-dialog{
   left: 10% !important;
-  bottom: 45% !important;
+  bottom: 35% !important;
   width: 80% !important;
   border-radius: 5px;
 }

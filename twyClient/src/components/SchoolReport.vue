@@ -80,7 +80,7 @@ export default {
     },
     getStudentArriveInfo () {
       api.getOpenId({code: this.code}).then(wxres => {
-        if (wxres.status === 'succ') {
+        if (wxres.status === 'succ' && wxres.data.clazzStudentVOS) {
           // this.clazzStudentVOS = wxres.data.clazzStudentVOS
           this.clazzStudentVOS = wxres.data.clazzStudentVOS.map((item, index) => {
             let times = item.arrive.split('/')[1]
@@ -92,6 +92,9 @@ export default {
             }
             return _item
           })
+          this.$vux.loading.hide()
+          this.isComplete = true
+        } else {
           this.$vux.loading.hide()
           this.isComplete = true
         }

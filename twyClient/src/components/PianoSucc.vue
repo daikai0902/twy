@@ -1,7 +1,7 @@
 <template>
   <div class="piano-room">
     <div class="piano-box">
-      <!-- <div class="piano-wrap">
+      <div class="piano-wrap">
         <p v-if="type == 'signup'"><img class="wepay-succ" src="../assets/wepay_succ.png"></p>
         <p v-if="type == 'signup'" class="p1">报名成功</p>
         <p class="p2">钢琴课程（一对一）</p>
@@ -62,9 +62,9 @@
 
         <p class="piano-contact pc1">学校电话 0574-88269588</p>
         <p class="piano-contact">官方微信 17367232260</p>
-      </div> -->
+      </div>
     </div>
-    <img class="bg-piano" :src="imgUrl">
+    <!-- <img class="bg-piano" :src="imgUrl"> -->
   </div>
 </template>
   
@@ -84,8 +84,7 @@ export default {
   },
   created () {
     this.type = this.$route.query.type
-    console.log(this.type)
-    this.imgUrl = this.$route.query.type
+    // this.imgUrl = this.$route.query.type
   }
 }
 </script>
