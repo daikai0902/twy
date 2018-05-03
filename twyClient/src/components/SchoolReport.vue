@@ -31,7 +31,7 @@
       <div class="no-report" v-else-if="isComplete">
         <p>您好，目前暂无课时</p>
         <p>如报名成功获取到学号</p>
-        <p>可点击 <router-link :to="{name: 'parentLogin'}" class="parent-login-link2">添加学号</router-link></p>
+        <p>可点击 <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fm.twyxedu.com%2FparentLogin&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect"  class="parent-login-link2">添加学号</a></p>
         <p>查看孩子的点到情况和成绩单</p>
       </div>
     </div>

@@ -86,7 +86,7 @@
         <router-link :to="{name: 'pianoSucc', query: { 'type': 'intro' }}" class="txt-right pr45 piano-link">查看详细入学报名细则</router-link>
       </swiper-item> -->
     </swiper>
-    <router-link :to="{name: 'signUp'}" class="signUp-link">立即报名</router-link>
+    <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fm.twyxedu.com%2Fsignup&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect" class="signUp-link">立即报名</a>
   </div>
 </template>
 
