@@ -105,7 +105,8 @@ export default {
       pt: 50,
       h: 450,
       w: 320,
-      courserList: []
+      courserList: [],
+      left: 0
     }
   },
   created () {
@@ -126,14 +127,22 @@ export default {
       api.courserList().then(res => {
         if (res.status === 'succ') {
           this.courserList = res.data.array
+          // this.left = (document.body.clientWidth - (this.courserList.length+1)*19)/2
+          document.querySelector('.intro-dot').style.left = (document.body.clientWidth - (this.courserList.length + 1) * 19) / 2 + 'px'
+        } else {
+          document.querySelector('.intro-dot').style.left = (document.body.clientWidth - 19) / 2 + 'px'
         }
       })
     },
     gotoDetail (url) {
-      console.log(url)
       alert(url)
     }
   }
+
+  // mounted () {
+    // console.log(document.body.clientWidth, this.courserList.length, (this.courserList.length + 1) * 19)
+    // document.querySelector('.intro-dot').style.left = (document.body.clientWidth - (this.courserList.length + 1) * 19) / 2 + 'px'
+  // }
 }
 </script>
 
@@ -167,8 +176,8 @@ export default {
 }
 
 .vux-slider > .vux-indicator-center{
-  -webkit-transform: translateX(74%) !important;
-  transform: translateX(74%) !important;
+  -webkit-transform: translateX(0%) !important;
+  transform: translateX(0%) !important;
 }
 </style>
 
