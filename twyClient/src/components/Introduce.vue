@@ -16,7 +16,9 @@
         <div class="item-mask"></div>
         <p class="intro-title fadeInUp animated" style="margin-top:220px">{{item.name}}</p>
         <div class="intro-desc1">
-          {{item.age}}<br/>{{parseInt(item.zc) > 0 ? '每学期' +item.zc+'周次' : item.zc}},每次{{item.ksl}}课时,共{{item.sc}}分钟
+          <span v-if="parseInt(item.zc) > 0">{{item.age}}<br/>{{parseInt(item.zc) > 0 ? '每学期' +item.zc+'周次' : item.zc}}, </span>
+          <span v-if="item.ksl">每次{{item.ksl}}课时, </span>
+          <span v-if="item.sc">共{{item.sc}}分钟</span>
         </div>
         <div class="intro-desc2">
           {{item.intro}}
