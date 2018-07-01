@@ -26,68 +26,6 @@
         </div>
         <router-link v-if="item.imgUrl" :to="{name: 'pianoSucc', query: { 'type': item.imgUrl }}" class="txt-right pr45 piano-link">查看详细入学报名细则</router-link>
       </swiper-item>
-
-      <!-- <swiper-item class="intro-item c-white"  style="background-color:#362505;" :style="{height: h + 'px'}">
-        <img class="item-bg" src="../assets/bg_intro3.jpg">
-        <p class="intro-title fadeInUp animated" style="margin-top:30px">影视表演</p>
-        <div class="intro-desc1">
-          4-8周岁儿童<br/>每学期16周次，每次150分钟
-        </div>
-        <div class="intro-desc2">
-          学在教室，用在生活<br/>培养观察和理解力，提高表现能力<br/>与沟通能力
-        </div>
-      </swiper-item>
-      <swiper-item class="intro-item" :style="{height: h + 'px'}">
-        <img class="item-bg" src="../assets/bg_intro4.jpg">
-        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:40px;margin-bottom:20px;">民族舞</p>
-        <div class="intro-desc1 txt-right pr45">
-          4-8周岁儿童<br/>每学期16周次，每次150分钟
-        </div>
-        <div class="intro-desc2 txt-right pr45">
-          学习民族舞精髓，体验民族舞风情
-        </div>
-      </swiper-item>
-      <swiper-item class="intro-item c-white" :style="{height: h + 'px'}">
-        <img class="item-bg" src="../assets/bg_intro5.jpg">
-        <p class="intro-title fadeInUp animated" style="margin-top:240px;">涂鸦创想课</p>
-        <div class="intro-desc1">
-          4-8周岁儿童<br/>滚动开班，每周1次，每次90分钟
-        </div>
-        <div class="intro-desc2">
-          培养美术兴趣，玩与学结合，发掘<br/>孩子艺术天赋
-        </div>
-      </swiper-item>
-      <swiper-item class="intro-item" :style="{height: h + 'px'}">
-        <img class="item-bg" src="../assets/bg_intro6.jpg">
-        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:90px;">素描课</p>
-        <div class="intro-desc1 txt-right pr45">
-          9岁以上零基础孩子<br/>滚动开班，每周1次，每次150分钟
-        </div>
-        <div class="intro-desc2 txt-right pr45">
-          感受艺术的美感，培养孩子的观察力、造型能力与表现能力
-        </div>
-      </swiper-item>
-      <swiper-item class="intro-item c-white" :style="{height: h + 'px'}">
-        <img class="item-bg" src="../assets/bg_intro7.jpg">
-        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:20px;">少儿合唱团</p>
-        <div class="intro-desc1 txt-right pr45">
-          5-9周岁儿童<br/>每学期16周次，每次150分钟
-        </div>
-        <div class="intro-desc2 txt-right pr45">
-          开发儿童智力，培养专注力与团队<br/>合作能力
-        </div>
-      </swiper-item>
-      <swiper-item class="intro-item c-white" :style="{height: h + 'px'}">
-        <img class="item-bg" src="../assets/bg_intro8.jpg">
-        <p class="intro-title fadeInUp animated txt-right pr45" style="margin-top:155px;">钢琴课</p>
-        <div class="intro-desc1 txt-right pr45">
-          4岁以上儿童，一对一教学<br/>每周一次，每次45分钟
-        </div>
-        <div class="intro-desc2 txt-right pr45">
-          专业院校师资，感受古典音乐的<br/>魅力，打造孩子的贵族气质
-        </div>
-        <router-link :to="{name: 'pianoSucc', query: { 'type': 'intro' }}" class="txt-right pr45 piano-link">查看详细入学报名细则</router-link>
-      </swiper-item> -->
     </swiper>
     <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx959b4c6d0334b80c&redirect_uri=http%3A%2F%2Fm.twyxedu.com%2Fsignup&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect" class="signUp-link">立即报名</a>
   </div>
@@ -109,10 +47,12 @@ export default {
       h: 450,
       w: 320,
       courserList: [],
-      left: 0
+      left: 0,
+      cid: 0
     }
   },
   created () {
+    this.cid = this.$route.query.cid
     this.getCourseList()
     let _w = window.innerWidth * 0.9
     let _h = window.innerHeight
@@ -127,7 +67,7 @@ export default {
   },
   methods: {
     getCourseList () {
-      api.courserList().then(res => {
+      api.courseClassifyGroup({page: 1, pageSize: 200, classifyId: this.cid}).then(res => {
         if (res.status === 'succ') {
           this.courserList = res.data.array
           // this.left = (document.body.clientWidth - (this.courserList.length+1)*19)/2

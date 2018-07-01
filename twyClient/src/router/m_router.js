@@ -29,6 +29,7 @@ const News = resolve => { require(['@/components/News'], resolve) }
 const PianoSucc = resolve => { require(['@/components/PianoSucc'], resolve) }
 const ChoirSucc = resolve => { require(['@/components/ChoirSucc'], resolve) }
 const Introduce = resolve => { require(['@/components/Introduce'], resolve) }
+const Classify = resolve => { require(['@/components/Classify'], resolve) }
 const Home = resolve => { require(['@/components/Home'], resolve) }
 const NewsDetail = resolve => { require(['@/components/NewsDetail'], resolve) }
 const Order = resolve => { require(['@/components/Order'], resolve) }
@@ -79,6 +80,11 @@ let routes = [
     path: '/introduce',
     name: 'introduce',
     component: Introduce
+  },
+  {
+    path: '/classify',
+    name: 'classify',
+    component: Classify
   },
   {
     path: '/news',

@@ -18,7 +18,7 @@
       </router-link>
       <flexbox>
         <flexbox-item>
-          <router-link to="introduce" class="flex-demo flex-item2">
+          <router-link to="classify" class="flex-demo flex-item2">
             <img class="m-img" src="../assets/m3.png">
             <p class="m-name">课程介绍</p>
             <p class="m-ename">Course</p>

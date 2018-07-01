@@ -52,5 +52,11 @@ export default {
   },
   teacherList (params) {
     return service(`/api/show/teacher/list`, params, 'GET')
+  },
+  courseClassifyList (params) {
+    return service(`/api/show/course/classify/list`, qs.stringify(params), 'GET')
+  },
+  courseClassifyGroup (params) {
+    return service(`/api/show/course/group`, qs.stringify(params), 'POST', { 'Content-Type': typewww })
   }
 }
