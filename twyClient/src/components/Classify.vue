@@ -3,9 +3,8 @@
     <img class="classify-bg" src="../assets/bg_intro.jpg">
     <div class="classify-list">
       <div class="classify-item" v-for="(item, index) in classifyList" :key="index" @click="handleClassify(item.id, item.courseNum)">
-        <div class="ci-img">
-          <img src="../assets/course_img.png">
-        </div>
+        <div class="ci-img" :style="{'background-image': 'url('+ item.coverUrl+')'}" v-if="item.coverUrl"></div>
+        <div class="ci-img" v-else></div>
         <div class="ci-info">
           <div class="ci-name">{{item.name}}</div>
           <div class="ci-num">开设课程: {{item.courseNum}}</div>
@@ -82,13 +81,14 @@ export default {
   height: 80px;
   border-radius: 8px;
   overflow: hidden;
+  background-size: cover;
+  background-image: url(../assets/course_img.png);
   box-shadow: 0 10px 20px 0 rgba(0,0,0,.3);
 }
-.classify-item .ci-img img{
-  width: 100%;
+/* .classify-item .ci-img img{
   height: 100%;
   border-radius: 5px;
-}
+} */
 .classify-item .ci-name{
   font-size: 16px;
   padding-top: 10px;
