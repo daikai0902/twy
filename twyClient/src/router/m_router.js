@@ -84,7 +84,10 @@ let routes = [
   {
     path: '/classify',
     name: 'classify',
-    component: Classify
+    component: Classify,
+    meta: {
+      title: '学校课程'
+    }
   },
   {
     path: '/news',

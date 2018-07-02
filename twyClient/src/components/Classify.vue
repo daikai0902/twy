@@ -4,7 +4,7 @@
     <div class="classify-list">
       <div class="classify-item" v-for="(item, index) in classifyList" :key="index" @click="handleClassify(item.id, item.courseNum)">
         <div class="ci-img">
-          <img src="../assets/active1.jpg">
+          <img src="../assets/course_img.png">
         </div>
         <div class="ci-info">
           <div class="ci-name">{{item.name}}</div>
@@ -80,8 +80,9 @@ export default {
   top: -15px;
   width: 80px;
   height: 80px;
-  border-radius: 5px;
+  border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 10px 20px 0 rgba(0,0,0,.3);
 }
 .classify-item .ci-img img{
   width: 100%;
