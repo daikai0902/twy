@@ -6,11 +6,14 @@
     </div>
     <div class="teacher-wrap">
       <div class="t-item" v-for="(item, index) in teacherList" :key="index" @click="gotoTeacherDetail(index)">
-        <p class="t-team" v-if="item.title == 'TEAM'">{{item.title}}</p>
-        <img class="t-img" v-else :src="item.listimgUrl" >
+        <!-- <p class="t-team" v-if="item.title == 'TEAM'">{{item.title}}</p> -->
+        <img class="t-img" :src="item.listimgUrl">
         <div class="t-info">
           <p class="t-name">{{item.name}}</p>
           <p class="t-title">{{item.job.split(',')[0]}}</p>
+          <p class="t-more">详细介绍 
+            <!-- <img src="../assets/t_more.png" /> -->
+          </p>
         </div>
       </div>
     </div>
@@ -50,7 +53,7 @@ export default {
     width: 94%;
     margin: 158px auto 0;
   }
-  .t-item{
+  /* .t-item{
     width: 32%;
     border-radius:12px;
     position: relative;
@@ -109,7 +112,57 @@ export default {
     position: absolute;
     right: 0;
     top: 0;
+  } */
+
+  .t-item{
+    position: relative;
+    padding-left: 2.8rem;
+    height: 3.2rem;
+    margin-bottom: .533333rem;
   }
+  .t-item .t-img{
+    height: 3.2rem;
+    width: 2.346667rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 6px;
+  }
+  .t-item .t-info{
+    position: relative;
+    height: 100%;
+  }
+  .t-item .t-name{
+    font-size:18px;
+    color:#000;
+    text-align:left;
+    height: 30px;
+  }
+  .t-item .t-title{
+    margin-top: .16rem;
+    font-size:14px;
+    color:#555;
+  }
+  .t-item .t-more{
+    position: absolute;
+    font-size:12px;
+    color:#999;
+    left: 0;
+    bottom: .266667rem;
+    padding-right: .373333rem;
+  }
+  .t-item .t-more::after{
+    content: '';
+    width: .16rem;
+    height: .32rem;
+    background-image: url(../assets/t_more.png);
+    position: absolute;
+    right: .053333rem;
+    top: .106667rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
   .t-header{
     width:100%;
     height:148px;
