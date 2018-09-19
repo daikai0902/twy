@@ -7,7 +7,7 @@
     <div class="teacher-wrap">
       <div class="t-item" v-for="(item, index) in teacherList" :key="index" @click="gotoTeacherDetail(index)">
         <!-- <p class="t-team" v-if="item.title == 'TEAM'">{{item.title}}</p> -->
-        <img class="t-img" :src="item.listimgUrl">
+        <div class="t-img" :style="{'background-image': 'url('+item.listimgUrl+')'}"></div>
         <div class="t-info">
           <p class="t-name">{{item.name}}</p>
           <p class="t-title">{{item.job.split(',')[0]}}</p>
@@ -47,6 +47,10 @@ export default {
 </script>
 
 <style scoped>
+  @font-face {
+    font-family: songyan;
+    src: url(../assets/font/songyan.otf) format("truetype")
+  }
   .teacher-wrap{
     position: relative;
     z-index: 10;
@@ -126,13 +130,16 @@ export default {
     position: absolute;
     left: 0;
     top: 0;
-    border-radius: 6px;
+    border-radius: .16rem;
+    background-size: cover;
+    background-position: top center;
   }
   .t-item .t-info{
     position: relative;
     height: 100%;
   }
   .t-item .t-name{
+    font-family: songyan;
     font-size:18px;
     color:#000;
     text-align:left;
@@ -144,12 +151,14 @@ export default {
     color:#555;
   }
   .t-item .t-more{
-    position: absolute;
+    position: relative;
     font-size:12px;
     color:#999;
-    left: 0;
-    bottom: .266667rem;
     padding-right: .373333rem;
+    height: .533333rem;
+    display: inline-block;
+    margin-top: .213333rem;
+    line-height: .586667rem;
   }
   .t-item .t-more::after{
     content: '';
@@ -158,9 +167,10 @@ export default {
     background-image: url(../assets/t_more.png);
     position: absolute;
     right: .053333rem;
-    top: .106667rem;
+    top: .146667rem;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
+    transform: scale(.8);
   }
 
   .t-header{
