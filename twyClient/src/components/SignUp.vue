@@ -273,9 +273,11 @@ export default {
                 that.openId = wxres.data.openId
                 api.getUnifieOrder({courseStudentId: res.data.id, currentUrl: 'http://m.twyxedu.com/signup', openId: wxres.data.openId}).then(res2 => {
                   that.$wechat.config({
-                    'appId': res2.data.appid
+                    'appId': res2.data.appid,
+                    'jsApiList': ['chooseWXPay']
                   })
                   that.$wechat.chooseWXPay({
+                    'appId': res2.data.appid,
                     'timestamp': res2.data.timestatm, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
                     'nonceStr': res2.data.noceStr, // 支付签名随机串，不长于 32 位
                     'package': 'prepay_id=' + res2.data.prepay_id, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
