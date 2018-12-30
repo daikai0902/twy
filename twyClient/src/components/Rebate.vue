@@ -20,8 +20,7 @@ export default {
     this.userId = _qString.state
   },
   methods: {
-    
-  },
+  }
 }
 </script>
 
