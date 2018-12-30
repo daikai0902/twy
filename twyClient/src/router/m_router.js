@@ -49,6 +49,7 @@ const OtherpaySucc = resolve => { require(['@/components/OtherpaySucc'], resolve
 const ParentLogin = resolve => { require(['@/components/ParentLogin'], resolve) }
 const SchoolReport = resolve => { require(['@/components/SchoolReport'], resolve) }
 const StudentReport = resolve => { require(['@/components/StudentReport'], resolve) }
+const Rebate = resolve => { require(['@/components/Rebate'], resolve) }
 
 let routes = [
   {
@@ -180,9 +181,14 @@ let routes = [
     component: SchoolReport
   },
   {
-    path: '/StudentReport',
+    path: '/studentReport',
     name: 'studentReport',
     component: StudentReport
+  },
+  {
+    path: '/rebate',
+    name: 'Rebate',
+    component: Rebate
   }
 ]
 export default routes
