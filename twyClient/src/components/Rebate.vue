@@ -21,7 +21,7 @@ export default {
       bindingwxComplete: false
     }
   },
-  created () {
+  mounted () {
     let _qString = this.$route.query
     this.code = _qString.code
     this.userId = _qString.state
