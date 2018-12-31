@@ -34,6 +34,7 @@ export default {
         if (res.code === 2000) {
           that.bindingwxComplete = true
         } else {
+          alert(res.message)
           that.msgTitle = '绑定失败'
           that.msgDesc = '您绑定返利人失败，请重新绑定'
           that.msgIcon = 'warn'
