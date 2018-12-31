@@ -1,8 +1,8 @@
 <template>
   <div class="">
     <msg :title="msgTitle" :description="msgDesc" :icon="msgIcon" v-if="bindingwxComplete"></msg>
-    <!-- <div class="">{{ code }}</div> -->
-    <!-- <div class="">{{ userId }}</div> -->
+    <div class="">{{ code }}</div>
+    <div class="">{{ userId }}</div>
   </div>
 </template>
 
