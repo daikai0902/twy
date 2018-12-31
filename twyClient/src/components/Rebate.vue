@@ -1,8 +1,8 @@
 <template>
   <div class="">
     <msg :title="msgTitle" :description="msgDesc" :icon="msgIcon" v-if="bindingwxComplete"></msg>
-    <div class="">{{ code }}</div>
-    <div class="">{{ userId }}</div>
+    <!-- <div class="">{{ code }}</div> -->
+    <!-- <div class="">{{ userId }}</div> -->
   </div>
 </template>
 
@@ -32,7 +32,7 @@ export default {
       let that = this
       axios.post(`https://ykapi.twyxedu.com/bms/rebate/user/openId/add?code=${this.code}&userId=${this.userId}`, '').then(res => {
         // if (res.code === 2000) {
-          that.bindingwxComplete = true
+        that.bindingwxComplete = true
         // } else {
         //   alert(res.message)
         //   that.msgTitle = '绑定失败'
