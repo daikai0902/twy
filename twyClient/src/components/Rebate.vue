@@ -1,8 +1,8 @@
 <template>
   <div class="">
     <msg :title="msgTitle" :description="msgDesc" :icon="msgIcon" v-if="bindingwxComplete"></msg>
-    <div class="">{{ code }}</div>
-    <div class="">{{ userId }}</div>
+    <!-- <div class="">{{ code }}</div> -->
+    <!-- <div class="">{{ userId }}</div> -->
   </div>
 </template>
 
@@ -17,7 +17,8 @@ export default {
       userId: null,
       msgTitle: '绑定成功',
       msgDesc: '您绑定返利人成功',
-      msgIcon: 'success'
+      msgIcon: 'success',
+      bindingwxComplete: false
     }
   },
   created () {
@@ -30,12 +31,11 @@ export default {
     bindingwxRebate () {
       let that = this
       axios.post(`https://ykapi.twyxedu.com/bms/rebate/user/openId/add?code=${this.code}&userId=${this.userId}`, '').then(res => {
-        // console.log(res)
         if (res.code === 2000) {
           that.bindingwxComplete = true
         } else {
-          that.msgTitle = '绑定失败',
-          that.msgDesc = '您绑定返利人失败，请重新绑定',
+          that.msgTitle = '绑定失败'
+          that.msgDesc = '您绑定返利人失败，请重新绑定'
           that.msgIcon = 'warn'
           that.bindingwxComplete = true
         }
